@@ -81,6 +81,7 @@ ein Fehler.
 | [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Offline-First, drei Sicherungsebenen, Datumsregeln |
 | [DATA-SCHEMA.md](docs/DATA-SCHEMA.md) | Exportformat, Feld für Feld |
 | [SETUP-CLOUD.md](docs/SETUP-CLOUD.md) | Supabase einrichten und die Sicherung prüfen |
+| [DEPLOY.md](docs/DEPLOY.md) | Veröffentlichen und aufs Handy holen |
 
 Mehrere Abschnitte tragen den Vermerk, welcher Fehler eine Regel erzwungen hat — etwa
 `PLAN-ENGINE.md` §9 („Vier Regeln, die erst die Simulation erzwungen hat") und
@@ -89,9 +90,11 @@ sie wird eine Regel beim nächsten Umbau wieder herausgenommen.
 
 ## Deployment
 
-`render.yaml` beschreibt eine statische Seite auf Render. **Achtung:** Die
-`VITE_*`-Variablen werden beim *Build* eingebacken, nicht zur Laufzeit gelesen — nach
-einer Änderung muss neu deployt werden.
+`render.yaml` beschreibt eine statische Seite auf Render. Schritt für Schritt:
+**[docs/DEPLOY.md](docs/DEPLOY.md)**.
+
+**Achtung:** Die `VITE_*`-Variablen werden beim *Build* eingebacken, nicht zur Laufzeit
+gelesen — nach einer Änderung muss neu deployt werden.
 
 ## Stand
 
