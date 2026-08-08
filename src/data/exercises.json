@@ -1,0 +1,8685 @@
+[
+  {
+    "id": "BRU-001",
+    "name": "Langhantel Bankdrücken flach",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-04"
+    ],
+    "primary": [
+      "Brust (mittel)"
+    ],
+    "secondary": [
+      "Trizeps",
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-002",
+    "name": "Langhantel Bankdrücken Schrägbank",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-05"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-05"
+    ],
+    "primary": [
+      "Brust (oben)"
+    ],
+    "secondary": [
+      "Trizeps",
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-003",
+    "name": "Langhantel Bankdrücken Negativbank",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-06"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-06"
+    ],
+    "primary": [
+      "Brust (unten)"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-004",
+    "name": "Langhantel Bankdrücken breiter Griff",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-04"
+    ],
+    "primary": [
+      "Brust (außen)"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-005",
+    "name": "Kurzhantel Bankdrücken flach",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Brust (mittel)"
+    ],
+    "secondary": [
+      "Trizeps",
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-006",
+    "name": "Kurzhantel Bankdrücken Schrägbank",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Brust (oben)"
+    ],
+    "secondary": [
+      "Trizeps",
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-007",
+    "name": "Kurzhantel Bankdrücken Negativbank",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-06"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-06"
+    ],
+    "primary": [
+      "Brust (unten)"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-008",
+    "name": "Kurzhantel Bankdrücken Neutralgriff (Hammer Press)",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Brust (innen)"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-009",
+    "name": "Kurzhantel Squeeze Press",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Brust (innen)"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-010",
+    "name": "Kurzhantel Fliegende flach",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Brust (mittel)"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BRU-011",
+    "name": "Kurzhantel Fliegende Schrägbank",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Brust (oben)"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BRU-012",
+    "name": "Kurzhantel Fliegende Negativbank",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-06"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-06"
+    ],
+    "primary": [
+      "Brust (unten)"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BRU-013",
+    "name": "Kurzhantel Überzüge (Pullover)",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Brust",
+      "Lat"
+    ],
+    "secondary": [
+      "Sägezahn",
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BRU-014",
+    "name": "Svend Press (Scheibe vor der Brust)",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "PLATES"
+      ]
+    ],
+    "equipmentIds": [
+      "PLATES"
+    ],
+    "primary": [
+      "Brust (innen)"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BRU-015",
+    "name": "Smith Bankdrücken flach",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08",
+      "FRE-03"
+    ],
+    "primary": [
+      "Brust (mittel)"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-016",
+    "name": "Smith Bankdrücken Schrägbank",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08",
+      "FRE-03"
+    ],
+    "primary": [
+      "Brust (oben)"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-017",
+    "name": "Smith Bankdrücken Negativbank",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08",
+      "FRE-03"
+    ],
+    "primary": [
+      "Brust (unten)"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-018",
+    "name": "Butterfly",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-01"
+    ],
+    "primary": [
+      "Brust (mittel)"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BRU-019",
+    "name": "Butterfly einarmig",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-01"
+    ],
+    "primary": [
+      "Brust (mittel)"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BRU-020",
+    "name": "Chest Press flach geführt",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-02"
+    ],
+    "primary": [
+      "Brust (mittel)"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-021",
+    "name": "Chest Press flach geführt, einarmig",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-02"
+    ],
+    "primary": [
+      "Brust (mittel)"
+    ],
+    "secondary": [
+      "Trizeps",
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-022",
+    "name": "Incline Chest Press geführt",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-03"
+    ],
+    "primary": [
+      "Brust (oben)"
+    ],
+    "secondary": [
+      "Trizeps",
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-023",
+    "name": "Incline Chest Press geführt, einarmig",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-03"
+    ],
+    "primary": [
+      "Brust (oben)"
+    ],
+    "secondary": [
+      "Trizeps",
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-024",
+    "name": "Cable Crossover hoch→tief",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04"
+    ],
+    "primary": [
+      "Brust (unten)"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BRU-025",
+    "name": "Cable Fly auf Schulterhöhe",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04"
+    ],
+    "primary": [
+      "Brust (mittel)"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BRU-026",
+    "name": "Cable Crossover tief→hoch",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04"
+    ],
+    "primary": [
+      "Brust (oben)"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BRU-027",
+    "name": "Cable Fly einarmig",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04"
+    ],
+    "primary": [
+      "Brust"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BRU-028",
+    "name": "Cable Chest Press stehend",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04"
+    ],
+    "primary": [
+      "Brust (mittel)"
+    ],
+    "secondary": [
+      "Trizeps",
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-029",
+    "name": "Cable Chest Press einarmig stehend",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04"
+    ],
+    "primary": [
+      "Brust"
+    ],
+    "secondary": [
+      "Rumpf",
+      "Trizeps"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-030",
+    "name": "Cable Chest Press sitzend auf Bank",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "CHE-04"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04",
+      "FRE-03"
+    ],
+    "primary": [
+      "Brust"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-031",
+    "name": "Cable Pullover (Straight-Arm)",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Lat",
+      "Brust"
+    ],
+    "secondary": [
+      "Sägezahn"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BRU-032",
+    "name": "Liegestütze",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Brust (mittel)"
+    ],
+    "secondary": [
+      "Trizeps",
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-033",
+    "name": "Liegestütze breit",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Brust (außen)"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-034",
+    "name": "Liegestütze eng / Diamond",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "Brust (innen)"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-035",
+    "name": "Liegestütze Füße erhöht (Decline)",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-03",
+        "FRE-12"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-03",
+      "FRE-12"
+    ],
+    "primary": [
+      "Brust (oben)"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-036",
+    "name": "Liegestütze Hände erhöht (Incline)",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-03",
+        "FRE-12"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-03",
+      "FRE-12"
+    ],
+    "primary": [
+      "Brust (unten)"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-037",
+    "name": "Liegestütze mit Zusatzgewicht",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "PLATES"
+      ]
+    ],
+    "equipmentIds": [
+      "PLATES"
+    ],
+    "primary": [
+      "Brust"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-038",
+    "name": "Liegestütze auf Kurzhanteln (Deep Push-Up)",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Brust"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-039",
+    "name": "Archer Push-Ups",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Brust"
+    ],
+    "secondary": [
+      "Trizeps",
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-040",
+    "name": "Dips brustbetont (vorgelehnt), unterstützt",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-11"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-11"
+    ],
+    "primary": [
+      "Brust (unten)"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BRU-041",
+    "name": "Dips brustbetont mit Zusatzgewicht",
+    "group": "Brust",
+    "equipmentGroups": [
+      [
+        "FRE-11"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-11"
+    ],
+    "primary": [
+      "Brust (unten)"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-001",
+    "name": "Latzug breit Obergriff",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-01"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-01"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps",
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-002",
+    "name": "Latzug eng Untergriff",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-01"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-01"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-003",
+    "name": "Latzug Neutralgriff (V-Griff)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-01"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-01"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps",
+      "Brachialis"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-004",
+    "name": "Latzug schulterbreit Obergriff",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-01"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-01"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-005",
+    "name": "Latzug einarmig",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-01"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-01"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps",
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-006",
+    "name": "Latzug mit Seil",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-01"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-01"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-007",
+    "name": "Latzug kniend vor dem Gerät",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-01"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-01"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-008",
+    "name": "Straight-Arm Pulldown",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-09",
+        "BAC-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09",
+      "BAC-01"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Trizeps (lang)",
+      "Sägezahn"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-009",
+    "name": "Straight-Arm Pulldown einarmig",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-010",
+    "name": "Lat Pulldown Dual (Maschine) beidarmig",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-06"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-06"
+    ],
+    "primary": [
+      "Lat",
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-011",
+    "name": "Lat Pulldown Dual (Maschine) einarmig",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-06"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-06"
+    ],
+    "primary": [
+      "Lat",
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Bizeps",
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-012",
+    "name": "Klimmzug Obergriff breit",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps",
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-013",
+    "name": "Klimmzug Obergriff schulterbreit",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-014",
+    "name": "Chin-Up (Untergriff)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "Lat",
+      "Bizeps"
+    ],
+    "secondary": [
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-015",
+    "name": "Klimmzug Neutralgriff",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Brachialis",
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-016",
+    "name": "Klimmzug gemischter Griff",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-017",
+    "name": "Klimmzug mit Zusatzgewicht (Kurzhantel zwischen den Füßen – kein Dipgürtel vorhanden)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ],
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10",
+      "FRE-01"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-018",
+    "name": "Klimmzug unterstützt",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-11"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-11"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-019",
+    "name": "Chin-Up unterstützt",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-11"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-11"
+    ],
+    "primary": [
+      "Lat",
+      "Bizeps"
+    ],
+    "secondary": [
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-020",
+    "name": "Negativ-Klimmzüge (exzentrisch)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-021",
+    "name": "Scapular Pull-Ups",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "unt. Trapez",
+      "Lat"
+    ],
+    "secondary": [
+      "Schulterblattstabilität"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-022",
+    "name": "Dead Hang",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "Griffkraft"
+    ],
+    "secondary": [
+      "Lat",
+      "Schultern"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "RUE-023",
+    "name": "Rudermaschine Brustpolster, breit",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-02"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-02"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Lat",
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-024",
+    "name": "Rudermaschine Brustpolster, eng",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-02"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-02"
+    ],
+    "primary": [
+      "ob. Rücken",
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-025",
+    "name": "Rudermaschine Brustpolster, neutral",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-02"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-02"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-026",
+    "name": "Rudermaschine Brustpolster, einarmig",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-02"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-02"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Rumpf",
+      "Bizeps"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-027",
+    "name": "Rudermaschine plate-loaded, beidarmig",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-03"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-03"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Lat",
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-028",
+    "name": "Rudermaschine plate-loaded, einarmig",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-03"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-03"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-029",
+    "name": "Kabelrudern eng sitzend",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-04"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-04"
+    ],
+    "primary": [
+      "ob. Rücken",
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-030",
+    "name": "Kabelrudern breit sitzend",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-04"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-04"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "hint. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-031",
+    "name": "Kabelrudern einarmig sitzend",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-04"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-04"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-032",
+    "name": "Kabelrudern mit Seil zum Hals (High Row)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-04"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-04"
+    ],
+    "primary": [
+      "ob. Rücken",
+      "hint. Schulter"
+    ],
+    "secondary": [
+      "Trapez"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-033",
+    "name": "High Row Dual (Maschine) beidarmig",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-07"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-07"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Lat",
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-034",
+    "name": "High Row Dual (Maschine) einarmig",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-07"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-07"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-035",
+    "name": "T-Bar Row eng (Neutralgriff)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-05"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-05"
+    ],
+    "primary": [
+      "ob. Rücken",
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-036",
+    "name": "T-Bar Row breit (Obergriff)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-05"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-05"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "hint. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-037",
+    "name": "Langhantelrudern vorgebeugt, Obergriff",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Lat",
+      "unt. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-038",
+    "name": "Langhantelrudern vorgebeugt, Untergriff (Yates)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Lat",
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-039",
+    "name": "Pendlay Row (vom Boden)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Lat",
+      "unt. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-040",
+    "name": "Kurzhantelrudern einarmig auf Bank",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Lat",
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-041",
+    "name": "Kurzhantelrudern beidarmig vorgebeugt",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Lat",
+      "unt. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-042",
+    "name": "Kurzhantelrudern brustunterstützt auf Schrägbank",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "hint. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-043",
+    "name": "Seal Row (bäuchlings auf hoher Bank)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-044",
+    "name": "Smith Rudern vorgebeugt",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08"
+    ],
+    "primary": [
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Lat"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-045",
+    "name": "Face Pull am Kabel (Seil)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-09",
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09",
+      "CHE-04"
+    ],
+    "primary": [
+      "hint. Schulter",
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Rotatorenmanschette"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-046",
+    "name": "Face Pull kniend",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "hint. Schulter"
+    ],
+    "secondary": [
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-047",
+    "name": "Kabel Reverse Fly (Crossover)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04"
+    ],
+    "primary": [
+      "hint. Schulter"
+    ],
+    "secondary": [
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-048",
+    "name": "Reverse Butterfly (Maschine)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "SHO-04"
+      ]
+    ],
+    "equipmentIds": [
+      "SHO-04"
+    ],
+    "primary": [
+      "hint. Schulter"
+    ],
+    "secondary": [
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-049",
+    "name": "Reverse Butterfly einarmig",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "SHO-04"
+      ]
+    ],
+    "equipmentIds": [
+      "SHO-04"
+    ],
+    "primary": [
+      "hint. Schulter"
+    ],
+    "secondary": [
+      "ob. Rücken"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-050",
+    "name": "Kurzhantel Reverse Fly vorgebeugt",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "hint. Schulter"
+    ],
+    "secondary": [
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-051",
+    "name": "Kurzhantel Reverse Fly auf Schrägbank liegend",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "hint. Schulter"
+    ],
+    "secondary": [
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-052",
+    "name": "Kabel Pullover einarmig",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Lat"
+    ],
+    "secondary": [
+      "Sägezahn"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-053",
+    "name": "Rückenstrecker Maschine sitzend",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "BAC-08"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-08"
+    ],
+    "primary": [
+      "unt. Rücken"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-054",
+    "name": "45°-Hyperextension",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "LEG-11"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-11"
+    ],
+    "primary": [
+      "unt. Rücken"
+    ],
+    "secondary": [
+      "Gesäß",
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-055",
+    "name": "45°-Hyperextension mit Scheibe",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "LEG-11"
+      ],
+      [
+        "PLATES"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-11",
+      "PLATES"
+    ],
+    "primary": [
+      "unt. Rücken"
+    ],
+    "secondary": [
+      "Gesäß",
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-056",
+    "name": "45°-Hyperextension gesäßbetont (runder Rücken, Füße auswärts)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "LEG-11"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-11"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-057",
+    "name": "45°-Hyperextension einbeinig",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "LEG-11"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-11"
+    ],
+    "primary": [
+      "unt. Rücken"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-058",
+    "name": "Kreuzheben konventionell",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "Rückenstrecker",
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings",
+      "Trapez",
+      "Griff"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-059",
+    "name": "Kreuzheben Sumo",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Gesäß",
+      "Adduktoren"
+    ],
+    "secondary": [
+      "Quadrizeps",
+      "Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-060",
+    "name": "Rack Pulls",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "ob. Rücken",
+      "Rückenstrecker"
+    ],
+    "secondary": [
+      "Trapez",
+      "Griff"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "RUE-061",
+    "name": "Rumänisches Kreuzheben (Langhantel)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Gesäß",
+      "unt. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-062",
+    "name": "Rumänisches Kreuzheben (Kurzhantel)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-063",
+    "name": "Smith Rumänisches Kreuzheben",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-064",
+    "name": "Smith Kreuzheben",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08"
+    ],
+    "primary": [
+      "Rückenstrecker",
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-065",
+    "name": "Good Mornings (Langhantel)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "Hamstrings",
+      "unt. Rücken"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-066",
+    "name": "Good Mornings an der Smith",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "unt. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-067",
+    "name": "Kabel Pull-Through",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Gesäß",
+      "Hamstrings"
+    ],
+    "secondary": [
+      "unt. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "RUE-068",
+    "name": "Einbeiniges Kreuzheben (Kurzhantel)",
+    "group": "Rücken",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Hamstrings",
+      "Gesäß"
+    ],
+    "secondary": [
+      "Rumpf",
+      "Balance"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRA-001",
+    "name": "Shrugs an der Shrug-Maschine",
+    "group": "Trapez",
+    "equipmentGroups": [
+      [
+        "BAC-09"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-09"
+    ],
+    "primary": [
+      "Trapez"
+    ],
+    "secondary": [
+      "Griff"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRA-002",
+    "name": "Langhantel Shrugs",
+    "group": "Trapez",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Trapez"
+    ],
+    "secondary": [
+      "Griff"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRA-003",
+    "name": "Kurzhantel Shrugs",
+    "group": "Trapez",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Trapez"
+    ],
+    "secondary": [
+      "Griff"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRA-004",
+    "name": "Smith Shrugs",
+    "group": "Trapez",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08"
+    ],
+    "primary": [
+      "Trapez"
+    ],
+    "secondary": [
+      "Griff"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRA-005",
+    "name": "Kabel Shrugs",
+    "group": "Trapez",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Trapez"
+    ],
+    "secondary": [
+      "Griff"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRA-006",
+    "name": "Aufrechtes Rudern Langhantel",
+    "group": "Trapez",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Trapez",
+      "seitl. Schulter"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRA-007",
+    "name": "Aufrechtes Rudern SZ-Stange",
+    "group": "Trapez",
+    "equipmentGroups": [
+      [
+        "ARM-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-03"
+    ],
+    "primary": [
+      "Trapez",
+      "seitl. Schulter"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRA-008",
+    "name": "Aufrechtes Rudern am Kabel",
+    "group": "Trapez",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Trapez",
+      "seitl. Schulter"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRA-009",
+    "name": "Aufrechtes Rudern Kurzhantel",
+    "group": "Trapez",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Trapez",
+      "seitl. Schulter"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRA-010",
+    "name": "Farmer's Walk",
+    "group": "Trapez",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Trapez",
+      "Griff"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "TRA-011",
+    "name": "Shrugs an der Shrug-Maschine einarmig",
+    "group": "Trapez",
+    "equipmentGroups": [
+      [
+        "BAC-09"
+      ]
+    ],
+    "equipmentIds": [
+      "BAC-09"
+    ],
+    "primary": [
+      "Trapez"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-001",
+    "name": "Schulterdrücken Maschine (Steckgewicht)",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "SHO-01"
+      ]
+    ],
+    "equipmentIds": [
+      "SHO-01"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-002",
+    "name": "Schulterdrücken Maschine einarmig",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "SHO-01"
+      ]
+    ],
+    "equipmentIds": [
+      "SHO-01"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-003",
+    "name": "Schulterdrücken Maschine (Plate-Loaded)",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "SHO-02"
+      ]
+    ],
+    "equipmentIds": [
+      "SHO-02"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-004",
+    "name": "Schulterdrücken Plate-Loaded einarmig",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "SHO-02"
+      ]
+    ],
+    "equipmentIds": [
+      "SHO-02"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-005",
+    "name": "Langhantel Schulterdrücken sitzend",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-03"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-006",
+    "name": "Langhantel Schulterdrücken stehend (Military Press)",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Trizeps",
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-007",
+    "name": "Push Press",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Beine",
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-008",
+    "name": "Kurzhantel Schulterdrücken sitzend",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-009",
+    "name": "Kurzhantel Schulterdrücken stehend",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Rumpf",
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-010",
+    "name": "Arnold Press",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "vord. + seitl. Schulter"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-011",
+    "name": "Kurzhantel Schulterdrücken einarmig",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-012",
+    "name": "Smith Schulterdrücken",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08",
+      "FRE-03"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-013",
+    "name": "Seitheben Maschine",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "SHO-03"
+      ]
+    ],
+    "equipmentIds": [
+      "SHO-03"
+    ],
+    "primary": [
+      "seitl. Schulter"
+    ],
+    "secondary": [
+      "Trapez"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-014",
+    "name": "Seitheben Maschine einarmig",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "SHO-03"
+      ]
+    ],
+    "equipmentIds": [
+      "SHO-03"
+    ],
+    "primary": [
+      "seitl. Schulter"
+    ],
+    "secondary": [
+      "Trapez"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-015",
+    "name": "Kurzhantel Seitheben stehend",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "seitl. Schulter"
+    ],
+    "secondary": [
+      "Trapez"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-016",
+    "name": "Kurzhantel Seitheben sitzend",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "seitl. Schulter"
+    ],
+    "secondary": [
+      "Trapez"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-017",
+    "name": "Kurzhantel Seitheben auf Schrägbank (Incline Lateral)",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "seitl. Schulter"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-018",
+    "name": "Kabel Seitheben einarmig",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-09",
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09",
+      "CHE-04"
+    ],
+    "primary": [
+      "seitl. Schulter"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-019",
+    "name": "Kabel Seitheben hinter dem Rücken",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04"
+    ],
+    "primary": [
+      "seitl. Schulter"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-020",
+    "name": "Kurzhantel Frontheben",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Brust (oben)"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-021",
+    "name": "Scheiben-Frontheben",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "PLATES"
+      ]
+    ],
+    "equipmentIds": [
+      "PLATES"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-022",
+    "name": "Kabel Frontheben",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-023",
+    "name": "Langhantel Frontheben",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-024",
+    "name": "Y-Raise auf Schrägbank",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "unt. Trapez",
+      "hint. Schulter"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-025",
+    "name": "Kabel Außenrotation",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Rotatorenmanschette"
+    ],
+    "secondary": [
+      "hint. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-026",
+    "name": "Kabel Innenrotation",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Rotatorenmanschette"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-027",
+    "name": "Cuban Press",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Rotatorenmanschette"
+    ],
+    "secondary": [
+      "Schulter gesamt"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-028",
+    "name": "Scheibe Around the World",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "PLATES"
+      ]
+    ],
+    "equipmentIds": [
+      "PLATES"
+    ],
+    "primary": [
+      "Schulter gesamt"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-029",
+    "name": "Kurzhantel Reverse Fly stehend vorgebeugt",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "hint. Schulter"
+    ],
+    "secondary": [
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "SCH-030",
+    "name": "Pike Push-Ups",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "SCH-031",
+    "name": "Pike Push-Ups Füße erhöht",
+    "group": "Schultern",
+    "equipmentGroups": [
+      [
+        "FRE-12"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-12"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "BIZ-001",
+    "name": "Bizepscurl Maschine",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "ARM-01"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-01"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [
+      "Brachialis"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-002",
+    "name": "Bizepscurl Maschine einarmig",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "ARM-01"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-01"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [
+      "Brachialis"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-003",
+    "name": "Langhantel Curls",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-004",
+    "name": "SZ-Curls",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "ARM-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-03"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-005",
+    "name": "SZ-Curls enger Griff",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "ARM-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-03"
+    ],
+    "primary": [
+      "Bizeps (langer Kopf)"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-006",
+    "name": "SZ-Curls weiter Griff",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "ARM-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-03"
+    ],
+    "primary": [
+      "Bizeps (kurzer Kopf)"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-007",
+    "name": "Kurzhantel Curls beidarmig",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-008",
+    "name": "Kurzhantel Curls im Wechsel",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-009",
+    "name": "Kurzhantel Curls sitzend",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-010",
+    "name": "Schrägbank-Curls (Incline Curls)",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Bizeps (langer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-011",
+    "name": "Spider Curls (bäuchlings auf Schrägbank)",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01",
+        "ARM-03"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "ARM-03",
+      "FRE-03"
+    ],
+    "primary": [
+      "Bizeps (kurzer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-012",
+    "name": "Konzentrationscurls",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-013",
+    "name": "Hammercurls stehend",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Brachialis",
+      "Bizeps"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-014",
+    "name": "Hammercurls im Wechsel",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Brachialis"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-015",
+    "name": "Hammercurls quer über den Körper (Cross-Body)",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Brachialis"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-016",
+    "name": "Hammercurls mit Multi-Grip-Stange",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "ARM-04"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-04"
+    ],
+    "primary": [
+      "Brachialis",
+      "Bizeps"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-017",
+    "name": "Kabelcurls mit gerader Stange",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-018",
+    "name": "Kabelcurls mit Seil",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Brachialis",
+      "Bizeps"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-019",
+    "name": "Kabelcurls einarmig",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-020",
+    "name": "Kabelcurls hinter dem Körper (Behind-the-Back)",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Bizeps (langer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-021",
+    "name": "High Cable Curl beidarmig (Doppelbizeps-Pose)",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04"
+    ],
+    "primary": [
+      "Bizeps (kurzer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-022",
+    "name": "Drag Curls",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-02",
+        "ARM-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "ARM-03"
+    ],
+    "primary": [
+      "Bizeps (langer Kopf)"
+    ],
+    "secondary": [
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-023",
+    "name": "Reverse Curls (SZ-Stange)",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "ARM-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-03"
+    ],
+    "primary": [
+      "Brachioradialis"
+    ],
+    "secondary": [
+      "Bizeps",
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-024",
+    "name": "Reverse Curls am Kabel",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Brachioradialis"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-025",
+    "name": "Zottman Curls",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Bizeps",
+      "Unterarm"
+    ],
+    "secondary": [
+      "Brachialis"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-026",
+    "name": "Preacher Curls auf Schrägbank (Bank als Ersatz)",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "ARM-03"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-03",
+      "FRE-03"
+    ],
+    "primary": [
+      "Bizeps (kurzer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-027",
+    "name": "21er Curls",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "ARM-03",
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-03",
+      "FRE-01"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "BIZ-028",
+    "name": "Chin-Ups bizepsbetont",
+    "group": "Bizeps",
+    "equipmentGroups": [
+      [
+        "FRE-10",
+        "FRE-11"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10",
+      "FRE-11"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [
+      "Lat"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRI-001",
+    "name": "Dip-Maschine sitzend",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "ARM-02"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-02"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "Brust (unten)"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRI-002",
+    "name": "Dips unterstützt, aufrecht",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-11"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-11"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "Brust"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRI-003",
+    "name": "Dips mit Zusatzgewicht, aufrecht",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-11"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-11"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "Brust"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRI-004",
+    "name": "Bankdips (Hände auf der Bank)",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-03"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRI-005",
+    "name": "Bankdips mit Zusatzgewicht",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-03"
+      ],
+      [
+        "PLATES"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-03",
+      "PLATES"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "vord. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRI-006",
+    "name": "Enges Bankdrücken Langhantel",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-04"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "Brust (innen)"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRI-007",
+    "name": "Enges Bankdrücken an der Smith",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08",
+      "FRE-03"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "Brust (innen)"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRI-008",
+    "name": "SZ Skullcrusher (French Press liegend)",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "ARM-03"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-03",
+      "FRE-03"
+    ],
+    "primary": [
+      "Trizeps (langer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRI-009",
+    "name": "Kurzhantel Skullcrusher",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-010",
+    "name": "Skullcrusher auf Schrägbank",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "ARM-03"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-03",
+      "FRE-03"
+    ],
+    "primary": [
+      "Trizeps (langer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-011",
+    "name": "JM Press",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "ARM-03",
+        "FRE-02"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-03",
+      "FRE-02",
+      "FRE-03"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "Brust"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRI-012",
+    "name": "Kurzhantel Trizepsdrücken über Kopf beidarmig",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Trizeps (langer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-013",
+    "name": "Kurzhantel Trizepsdrücken über Kopf einarmig",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Trizeps (langer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-014",
+    "name": "SZ Trizepsdrücken über Kopf sitzend",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "ARM-03"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-03",
+      "FRE-03"
+    ],
+    "primary": [
+      "Trizeps (langer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-015",
+    "name": "Kabel Pushdown mit Seil",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-016",
+    "name": "Kabel Pushdown mit gerader Stange",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Trizeps (lateraler Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-017",
+    "name": "Kabel Pushdown mit V-Stange",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-018",
+    "name": "Kabel Pushdown einarmig (Untergriff)",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Trizeps (medialer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-019",
+    "name": "Kabel Overhead Extension mit Seil",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-09",
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09",
+      "CHE-04"
+    ],
+    "primary": [
+      "Trizeps (langer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-020",
+    "name": "Kabel Overhead Extension einarmig",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Trizeps (langer Kopf)"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-021",
+    "name": "Kabel Kickbacks",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-022",
+    "name": "Kurzhantel Kickbacks",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "hint. Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-023",
+    "name": "Cross-Body Cable Extension",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "CHE-04"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-024",
+    "name": "Diamond Push-Ups",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "Brust (innen)"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRI-025",
+    "name": "Liegestütze Füße erhöht, enger Griff",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "FRE-12"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-12"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "Brust (oben)"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "TRI-026",
+    "name": "Trizepsmaschine",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "ARM-05"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-05"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "TRI-027",
+    "name": "Trizepsmaschine einarmig",
+    "group": "Trizeps",
+    "equipmentGroups": [
+      [
+        "ARM-05"
+      ]
+    ],
+    "equipmentIds": [
+      "ARM-05"
+    ],
+    "primary": [
+      "Trizeps"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "UNT-001",
+    "name": "Handgelenkcurls Langhantel",
+    "group": "Unterarme",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-03"
+    ],
+    "primary": [
+      "Unterarmbeuger"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "UNT-002",
+    "name": "Handgelenkcurls Kurzhantel",
+    "group": "Unterarme",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Unterarmbeuger"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "UNT-003",
+    "name": "Reverse Handgelenkcurls",
+    "group": "Unterarme",
+    "equipmentGroups": [
+      [
+        "FRE-02",
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-01"
+    ],
+    "primary": [
+      "Unterarmstrecker"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "UNT-004",
+    "name": "Handgelenkcurls hinter dem Rücken",
+    "group": "Unterarme",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Unterarmbeuger"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "UNT-005",
+    "name": "Kabel Handgelenkcurls",
+    "group": "Unterarme",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Unterarmbeuger"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "UNT-006",
+    "name": "Plate Pinch Hold",
+    "group": "Unterarme",
+    "equipmentGroups": [
+      [
+        "PLATES"
+      ]
+    ],
+    "equipmentIds": [
+      "PLATES"
+    ],
+    "primary": [
+      "Griffkraft"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "UNT-007",
+    "name": "Farmer's Walk schwer",
+    "group": "Unterarme",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Griffkraft"
+    ],
+    "secondary": [
+      "Trapez",
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "UNT-008",
+    "name": "Dead Hang auf Zeit",
+    "group": "Unterarme",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "Griffkraft"
+    ],
+    "secondary": [
+      "Lat"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "UNT-009",
+    "name": "Langhantel-Halten (Static Hold)",
+    "group": "Unterarme",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "Griffkraft"
+    ],
+    "secondary": [
+      "Trapez"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "QUA-001",
+    "name": "Beinstrecker",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "LEG-01"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-01"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "QUA-002",
+    "name": "Beinstrecker einbeinig",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "LEG-01"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-01"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "QUA-003",
+    "name": "Beinstrecker Füße einwärts / auswärts",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "LEG-01"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-01"
+    ],
+    "primary": [
+      "Quadrizeps (Betonung Vastus)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "QUA-004",
+    "name": "Beinpresse horizontal",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "LEG-03"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-03"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Gesäß",
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-005",
+    "name": "Beinpresse horizontal einbeinig",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "LEG-03"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-03"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-006",
+    "name": "Beinpresse 45° Standardstellung",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "LEG-04"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-04"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-007",
+    "name": "Beinpresse 45° tiefe Fußstellung (quadbetont)",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "LEG-04"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-04"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-008",
+    "name": "Beinpresse 45° enger Stand",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "LEG-04"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-04"
+    ],
+    "primary": [
+      "Quadrizeps (außen)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-009",
+    "name": "Beinpresse 45° einbeinig",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "LEG-04"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-04"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-010",
+    "name": "V-Squat",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "LEG-05"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-05"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-011",
+    "name": "V-Squat enger Stand",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "LEG-05"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-05"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-012",
+    "name": "Langhantel Kniebeuge (Back Squat)",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "Quadrizeps",
+      "Gesäß"
+    ],
+    "secondary": [
+      "Rumpf",
+      "unt. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-013",
+    "name": "Langhantel Frontkniebeuge",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Rumpf",
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-014",
+    "name": "Pause Squat",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-015",
+    "name": "Box Squat",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07",
+      "FRE-03"
+    ],
+    "primary": [
+      "Gesäß",
+      "Quadrizeps"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-016",
+    "name": "Smith Kniebeuge",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-017",
+    "name": "Smith Front Squat",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-018",
+    "name": "Smith Hack Squat (Füße weit vorn)",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-019",
+    "name": "Goblet Squat",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Rumpf",
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-020",
+    "name": "Kurzhantel Kniebeuge",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-021",
+    "name": "Ausfallschritte am Stand (Kurzhantel)",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-022",
+    "name": "Walking Lunges (Kurzhantel)",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Quadrizeps",
+      "Gesäß"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-023",
+    "name": "Ausfallschritte rückwärts (Kurzhantel)",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Gesäß",
+      "Quadrizeps"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-024",
+    "name": "Smith Split Squat",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-025",
+    "name": "Bulgarian Split Squat (Kurzhantel)",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Quadrizeps",
+      "Gesäß"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-026",
+    "name": "Bulgarian Split Squat an der Smith",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08",
+      "FRE-03"
+    ],
+    "primary": [
+      "Quadrizeps",
+      "Gesäß"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-027",
+    "name": "Step-Ups auf Bank (Kurzhantel)",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Quadrizeps",
+      "Gesäß"
+    ],
+    "secondary": [
+      "Balance"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-028",
+    "name": "Step-Ups auf Stepbox",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-12"
+      ],
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-12",
+      "FRE-01"
+    ],
+    "primary": [
+      "Quadrizeps",
+      "Gesäß"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-029",
+    "name": "Sissy Squat",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "BODY",
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY",
+      "FRE-07"
+    ],
+    "primary": [
+      "Quadrizeps (Rectus)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-030",
+    "name": "Wall Sit",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "QUA-031",
+    "name": "Cyclist Squat (Fersen erhöht)",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "PLATES"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "PLATES"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "QUA-032",
+    "name": "Zercher Squat",
+    "group": "Quadrizeps",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Rumpf",
+      "ob. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "HAM-001",
+    "name": "Beinbeuger liegend",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "LEG-02"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-02"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Waden"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "HAM-002",
+    "name": "Beinbeuger liegend einbeinig",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "LEG-02"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-02"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "HAM-003",
+    "name": "Beinbeuger liegend, Füße einwärts / auswärts",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "LEG-02"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-02"
+    ],
+    "primary": [
+      "Hamstrings (Betonung innen/außen)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "HAM-016",
+    "name": "Beinbeuger liegend, Fußspitzen angezogen (Dorsalflexion)",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "LEG-02"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-02"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "HAM-004",
+    "name": "Rumänisches Kreuzheben Langhantel",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Gesäß",
+      "unt. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "HAM-005",
+    "name": "Rumänisches Kreuzheben Kurzhantel",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "HAM-006",
+    "name": "Rumänisches Kreuzheben Smith",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "HAM-007",
+    "name": "Einbeiniges RDL Kurzhantel",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Gesäß",
+      "Balance"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "HAM-008",
+    "name": "Gestrecktes Kreuzheben (Stiff-Legged Deadlift)",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "unt. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "HAM-009",
+    "name": "Good Mornings",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "unt. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "HAM-010",
+    "name": "Nordic Curls (Beine fixiert an der Hyperextension)",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "LEG-11"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-11"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "HAM-011",
+    "name": "Glute-Ham Raise an der 45°-Extension",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "LEG-11"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-11"
+    ],
+    "primary": [
+      "Hamstrings",
+      "Gesäß"
+    ],
+    "secondary": [
+      "unt. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "HAM-012",
+    "name": "Beinpresse mit hoher Fußstellung",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "LEG-04",
+        "LEG-03"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-04",
+      "LEG-03"
+    ],
+    "primary": [
+      "Hamstrings",
+      "Gesäß"
+    ],
+    "secondary": [
+      "Quadrizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "HAM-013",
+    "name": "Kabel Pull-Through",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Hamstrings",
+      "Gesäß"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "HAM-014",
+    "name": "Kabel Beincurl einarmig (Fußschlaufe)",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "HAM-015",
+    "name": "Sliding Leg Curl (Füße auf Handtuch/Stepbox)",
+    "group": "Hamstrings",
+    "equipmentGroups": [
+      [
+        "FRE-12"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-12"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "GES-001",
+    "name": "Hip Thrust Maschine",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "LEG-10"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-10"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-002",
+    "name": "Hip Thrust Maschine einbeinig",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "LEG-10"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-10"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-003",
+    "name": "Hip Thrust Langhantel, Rücken auf der Bank",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-03"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-004",
+    "name": "Hip Thrust einbeinig, Rücken auf der Bank",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-03"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-005",
+    "name": "Hip Thrust an der Smith, Rücken auf der Bank",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08",
+      "FRE-03"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-006",
+    "name": "Glute Bridge am Boden (Langhantel)",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-007",
+    "name": "Glute Bridge am Boden mit Scheibe",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "PLATES"
+      ]
+    ],
+    "equipmentIds": [
+      "PLATES"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-008",
+    "name": "Glute Bridge einbeinig",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-009",
+    "name": "Frog Pumps",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "PLATES",
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "PLATES",
+      "BODY"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "GES-010",
+    "name": "Abduktorenmaschine aufrecht",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "LEG-08"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-08"
+    ],
+    "primary": [
+      "Gesäß (Gluteus medius)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "GES-011",
+    "name": "Abduktorenmaschine vorgelehnt",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "LEG-08"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-08"
+    ],
+    "primary": [
+      "Gesäß (Gluteus medius)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "GES-012",
+    "name": "Kabel Abduktion stehend (Fußschlaufe)",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Gluteus medius"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "GES-013",
+    "name": "Kabel Kickback nach hinten (Fußschlaufe)",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "GES-014",
+    "name": "Kabel Kickback über Kreuz",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "GES-015",
+    "name": "Kurzhantel Sumo-Kniebeuge",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Gesäß",
+      "Adduktoren"
+    ],
+    "secondary": [
+      "Quadrizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-016",
+    "name": "Langhantel Sumo-Kniebeuge",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "Gesäß",
+      "Adduktoren"
+    ],
+    "secondary": [
+      "Quadrizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-017",
+    "name": "Sumo-Kreuzheben",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Gesäß",
+      "Adduktoren"
+    ],
+    "secondary": [
+      "Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-018",
+    "name": "Curtsy Lunges",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Gluteus medius"
+    ],
+    "secondary": [
+      "Quadrizeps"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-019",
+    "name": "Deficit Reverse Lunge (von der Stepbox)",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-12"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-12"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Quadrizeps"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GES-020",
+    "name": "45°-Extension gesäßbetont",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "LEG-11"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-11"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "GES-021",
+    "name": "Step-Ups hoch (Bank)",
+    "group": "Gesäß",
+    "equipmentGroups": [
+      [
+        "FRE-03"
+      ],
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-03",
+      "FRE-01"
+    ],
+    "primary": [
+      "Gesäß"
+    ],
+    "secondary": [
+      "Quadrizeps"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "ADD-001",
+    "name": "Adduktorenmaschine",
+    "group": "Adduktoren",
+    "equipmentGroups": [
+      [
+        "LEG-09"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-09"
+    ],
+    "primary": [
+      "Adduktoren"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ADD-002",
+    "name": "Adduktorenmaschine mit Vorlehnen",
+    "group": "Adduktoren",
+    "equipmentGroups": [
+      [
+        "LEG-09"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-09"
+    ],
+    "primary": [
+      "Adduktoren"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ADD-003",
+    "name": "Kabel Adduktion stehend (Fußschlaufe)",
+    "group": "Adduktoren",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "Adduktoren"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ADD-004",
+    "name": "Cossack Squat",
+    "group": "Adduktoren",
+    "equipmentGroups": [
+      [
+        "FRE-01",
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "BODY"
+    ],
+    "primary": [
+      "Adduktoren"
+    ],
+    "secondary": [
+      "Quadrizeps",
+      "Mobilität"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "ADD-005",
+    "name": "Sumo-Kniebeuge weit",
+    "group": "Adduktoren",
+    "equipmentGroups": [
+      [
+        "FRE-01",
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-02"
+    ],
+    "primary": [
+      "Adduktoren"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "WAD-001",
+    "name": "Wadenheben stehend (Maschine)",
+    "group": "Waden",
+    "equipmentGroups": [
+      [
+        "LEG-06"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-06"
+    ],
+    "primary": [
+      "Gastrocnemius"
+    ],
+    "secondary": [
+      "Soleus"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "WAD-002",
+    "name": "Wadenheben stehend einbeinig",
+    "group": "Waden",
+    "equipmentGroups": [
+      [
+        "LEG-06"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-06"
+    ],
+    "primary": [
+      "Gastrocnemius"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "WAD-003",
+    "name": "Wadenheben sitzend (Maschine)",
+    "group": "Waden",
+    "equipmentGroups": [
+      [
+        "LEG-07"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-07"
+    ],
+    "primary": [
+      "Soleus"
+    ],
+    "secondary": [
+      "Gastrocnemius"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "WAD-004",
+    "name": "Wadenheben sitzend einbeinig",
+    "group": "Waden",
+    "equipmentGroups": [
+      [
+        "LEG-07"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-07"
+    ],
+    "primary": [
+      "Soleus"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "WAD-005",
+    "name": "Wadendrücken an der Beinpresse 45°",
+    "group": "Waden",
+    "equipmentGroups": [
+      [
+        "LEG-04"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-04"
+    ],
+    "primary": [
+      "Gastrocnemius"
+    ],
+    "secondary": [
+      "Soleus"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "WAD-006",
+    "name": "Wadendrücken an der Beinpresse horizontal",
+    "group": "Waden",
+    "equipmentGroups": [
+      [
+        "LEG-03"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-03"
+    ],
+    "primary": [
+      "Gastrocnemius"
+    ],
+    "secondary": [
+      "Soleus"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "WAD-007",
+    "name": "Wadenheben an der Smith",
+    "group": "Waden",
+    "equipmentGroups": [
+      [
+        "FRE-08"
+      ],
+      [
+        "FRE-12"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-08",
+      "FRE-12"
+    ],
+    "primary": [
+      "Gastrocnemius"
+    ],
+    "secondary": [
+      "Soleus"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "WAD-008",
+    "name": "Wadenheben mit Kurzhantel einbeinig auf der Stepbox",
+    "group": "Waden",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ],
+      [
+        "FRE-12"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01",
+      "FRE-12"
+    ],
+    "primary": [
+      "Gastrocnemius"
+    ],
+    "secondary": [
+      "Balance"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "WAD-009",
+    "name": "Wadenheben mit Langhantel im Rack",
+    "group": "Waden",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ],
+      [
+        "FRE-07"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02",
+      "FRE-07"
+    ],
+    "primary": [
+      "Gastrocnemius"
+    ],
+    "secondary": [
+      "Soleus"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "WAD-010",
+    "name": "Wadenheben Füße einwärts / auswärts",
+    "group": "Waden",
+    "equipmentGroups": [
+      [
+        "LEG-06",
+        "LEG-07"
+      ]
+    ],
+    "equipmentIds": [
+      "LEG-06",
+      "LEG-07"
+    ],
+    "primary": [
+      "Gastrocnemius (innen/außen)"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "WAD-011",
+    "name": "Tibialis Raises (Rücken zur Wand)",
+    "group": "Waden",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Schienbeinmuskel"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "WAD-012",
+    "name": "Farmer's Walk auf Zehenspitzen",
+    "group": "Waden",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Waden"
+    ],
+    "secondary": [
+      "Griff"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "ABS-001",
+    "name": "Bauchmaschine Crunch",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "ABS-02"
+      ]
+    ],
+    "equipmentIds": [
+      "ABS-02"
+    ],
+    "primary": [
+      "gerader Bauchmuskel"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-002",
+    "name": "Rotationsmaschine (Twister)",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "ABS-01"
+      ]
+    ],
+    "equipmentIds": [
+      "ABS-01"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-003",
+    "name": "Kabel Crunch kniend (Seil)",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "gerader Bauchmuskel"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-004",
+    "name": "Kabel Crunch stehend",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "gerader Bauchmuskel"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-005",
+    "name": "Kabel Woodchopper hoch→tief",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "CHE-04",
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04",
+      "FRE-09"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-006",
+    "name": "Kabel Woodchopper tief→hoch",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "CHE-04",
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04",
+      "FRE-09"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [
+      "Schultern"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-007",
+    "name": "Pallof Press",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "CHE-04",
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "CHE-04",
+      "FRE-09"
+    ],
+    "primary": [
+      "Rumpfstabilität"
+    ],
+    "secondary": [
+      "schräge Bauchmuskeln"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-008",
+    "name": "Kabel Seitbeuge",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-09"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-09"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-009",
+    "name": "Hängendes Beinheben gestreckt",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "unt. Bauch"
+    ],
+    "secondary": [
+      "Hüftbeuger",
+      "Griff"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-010",
+    "name": "Hängendes Knieheben",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "unt. Bauch"
+    ],
+    "secondary": [
+      "Hüftbeuger"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-011",
+    "name": "Toes to Bar",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "Bauch gesamt"
+    ],
+    "secondary": [
+      "Griff",
+      "Lat"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-012",
+    "name": "Hanging Windshield Wipers",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-10"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-10"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [
+      "Griff"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "ABS-013",
+    "name": "Beinheben an der Klimmzugmaschine (abgestützt)",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-11"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-11"
+    ],
+    "primary": [
+      "unt. Bauch"
+    ],
+    "secondary": [
+      "Hüftbeuger"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-014",
+    "name": "Crunches am Boden",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "gerader Bauchmuskel"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-015",
+    "name": "Sit-Ups an der Negativbank",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-06"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-06"
+    ],
+    "primary": [
+      "gerader Bauchmuskel"
+    ],
+    "secondary": [
+      "Hüftbeuger"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-016",
+    "name": "Sit-Ups an der Negativbank mit Scheibe",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-06"
+      ],
+      [
+        "PLATES"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-06",
+      "PLATES"
+    ],
+    "primary": [
+      "gerader Bauchmuskel"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-017",
+    "name": "Reverse Crunch auf der Bank",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-03"
+    ],
+    "primary": [
+      "unt. Bauch"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-018",
+    "name": "Russian Twists mit Scheibe",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "PLATES"
+      ]
+    ],
+    "equipmentIds": [
+      "PLATES"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-019",
+    "name": "Plank",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Rumpfstabilität"
+    ],
+    "secondary": [
+      "Schultern"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "ABS-020",
+    "name": "Plank mit Zusatzgewicht",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "PLATES"
+      ]
+    ],
+    "equipmentIds": [
+      "PLATES"
+    ],
+    "primary": [
+      "Rumpfstabilität"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "ABS-021",
+    "name": "Seitstütz (Side Plank)",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [
+      "Gluteus medius"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "ABS-022",
+    "name": "Seitstütz mit Hüftsenken",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "ABS-023",
+    "name": "Hollow Hold",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "gerader Bauchmuskel"
+    ],
+    "secondary": [
+      "Hüftbeuger"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "ABS-024",
+    "name": "Dead Bug",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Rumpfstabilität"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-025",
+    "name": "Bird Dog",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Rumpfstabilität"
+    ],
+    "secondary": [
+      "unt. Rücken"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-026",
+    "name": "Mountain Climbers",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Bauch"
+    ],
+    "secondary": [
+      "Schultern",
+      "Kondition"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-027",
+    "name": "V-Ups",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "gerader Bauchmuskel"
+    ],
+    "secondary": [
+      "Hüftbeuger"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-028",
+    "name": "Käfer (Bicycle Crunch)",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-029",
+    "name": "Seitbeuge mit Kurzhantel",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-030",
+    "name": "Suitcase Carry (einseitig)",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Rumpfstabilität"
+    ],
+    "secondary": [
+      "Griff",
+      "Trapez"
+    ],
+    "unilateral": true,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "ABS-031",
+    "name": "Overhead Carry (einarmig)",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Rumpfstabilität"
+    ],
+    "secondary": [
+      "Schulter"
+    ],
+    "unilateral": true,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "ABS-032",
+    "name": "Plank mit Füßen auf der Stepbox",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-12"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-12"
+    ],
+    "primary": [
+      "Rumpfstabilität"
+    ],
+    "secondary": [
+      "Schultern"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "ABS-033",
+    "name": "Sit-Ups auf der Schrägbank mit Rotation",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "FRE-06"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-06"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-034",
+    "name": "Rumpfrotation einseitig an der Rotationsmaschine",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "ABS-01"
+      ]
+    ],
+    "equipmentIds": [
+      "ABS-01"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-035",
+    "name": "Beinheben liegend am Boden",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "unt. Bauch"
+    ],
+    "secondary": [
+      "Hüftbeuger"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-036",
+    "name": "Flutter Kicks",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "unt. Bauch"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-037",
+    "name": "Knieheben an der Beinheben-Station",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "ABS-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ABS-03"
+    ],
+    "primary": [
+      "unt. Bauch"
+    ],
+    "secondary": [
+      "Hüftbeuger"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-038",
+    "name": "Beinheben gestreckt an der Beinheben-Station",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "ABS-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ABS-03"
+    ],
+    "primary": [
+      "unt. Bauch"
+    ],
+    "secondary": [
+      "Hüftbeuger"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-039",
+    "name": "Knieheben seitlich (Oblique) an der Beinheben-Station",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "ABS-03"
+      ]
+    ],
+    "equipmentIds": [
+      "ABS-03"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "ABS-040",
+    "name": "Knieheben mit Kurzhantel zwischen den Füßen",
+    "group": "Bauch",
+    "equipmentGroups": [
+      [
+        "ABS-03"
+      ],
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "ABS-03",
+      "FRE-01"
+    ],
+    "primary": [
+      "unt. Bauch"
+    ],
+    "secondary": [
+      "Hüftbeuger"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "GAN-001",
+    "name": "Power Clean",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Ganzkörper explosiv"
+    ],
+    "secondary": [
+      "Rücken",
+      "Beine"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GAN-002",
+    "name": "Hang Clean",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Ganzkörper explosiv"
+    ],
+    "secondary": [
+      "Trapez",
+      "Beine"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": true
+  },
+  {
+    "id": "GAN-003",
+    "name": "High Pull",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-02"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-02"
+    ],
+    "primary": [
+      "Trapez",
+      "Schulter"
+    ],
+    "secondary": [
+      "Beine"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GAN-004",
+    "name": "Kurzhantel Thruster",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Beine",
+      "Schulter"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GAN-005",
+    "name": "Kurzhantel Snatch einarmig",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Ganzkörper explosiv"
+    ],
+    "secondary": [
+      "Schulter"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GAN-006",
+    "name": "Kurzhantel Clean and Press",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Ganzkörper"
+    ],
+    "secondary": [
+      "Schulter"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GAN-007",
+    "name": "Burpees",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Ganzkörper",
+      "Kondition"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GAN-008",
+    "name": "Renegade Rows",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-01"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-01"
+    ],
+    "primary": [
+      "Rumpf",
+      "ob. Rücken"
+    ],
+    "secondary": [
+      "Brust"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GAN-009",
+    "name": "Bear Crawl",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "BODY"
+      ]
+    ],
+    "equipmentIds": [
+      "BODY"
+    ],
+    "primary": [
+      "Rumpf"
+    ],
+    "secondary": [
+      "Schultern"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "GAN-010",
+    "name": "Step-Ups im Tempo (Kondition)",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-12"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-12"
+    ],
+    "primary": [
+      "Beine",
+      "Kondition"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "GAN-011",
+    "name": "Kettlebell Swings beidarmig",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Gesäß",
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "KET-001",
+    "name": "Kettlebell Swings beidarmig",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Gesäß",
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Rumpf",
+      "Griff"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "KET-002",
+    "name": "Kettlebell Swings einarmig",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Gesäß",
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "KET-003",
+    "name": "Kettlebell Goblet Squat",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Quadrizeps"
+    ],
+    "secondary": [
+      "Gesäß",
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "KET-004",
+    "name": "Kettlebell Clean einarmig",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Ganzkörper explosiv"
+    ],
+    "secondary": [
+      "Schulter"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "KET-005",
+    "name": "Kettlebell Clean and Press",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Schulter",
+      "Ganzkörper"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "KET-006",
+    "name": "Kettlebell Overhead Press einarmig",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "vord. Schulter"
+    ],
+    "secondary": [
+      "Trizeps",
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "KET-007",
+    "name": "Kettlebell Rudern einarmig vorgebeugt",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "ob. Rücken",
+      "Lat"
+    ],
+    "secondary": [
+      "Bizeps"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "KET-008",
+    "name": "Kettlebell Rumänisches Kreuzheben",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Hamstrings"
+    ],
+    "secondary": [
+      "Gesäß"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "KET-009",
+    "name": "Kettlebell Einbeiniges Kreuzheben",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Hamstrings",
+      "Gesäß"
+    ],
+    "secondary": [
+      "Balance"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "KET-010",
+    "name": "Kettlebell Snatch einarmig",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Ganzkörper explosiv"
+    ],
+    "secondary": [
+      "Schulter"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "KET-011",
+    "name": "Turkish Get-Up",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Rumpf",
+      "Schulterstabilität"
+    ],
+    "secondary": [
+      "Ganzkörper"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "KET-012",
+    "name": "Kettlebell Front Rack Carry",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Rumpf"
+    ],
+    "secondary": [
+      "Schulter",
+      "Griff"
+    ],
+    "unilateral": false,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "KET-013",
+    "name": "Kettlebell Suitcase Carry",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Rumpfstabilität"
+    ],
+    "secondary": [
+      "Griff",
+      "Trapez"
+    ],
+    "unilateral": true,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "KET-014",
+    "name": "Kettlebell Overhead Carry",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Schulterstabilität"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "time",
+    "compound": false
+  },
+  {
+    "id": "KET-015",
+    "name": "Kettlebell Halo",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Schultermobilität"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "KET-016",
+    "name": "Kettlebell Windmill",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "schräge Bauchmuskeln"
+    ],
+    "secondary": [
+      "Schulter",
+      "Hamstrings"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "KET-017",
+    "name": "Kettlebell Ausfallschritte",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Quadrizeps",
+      "Gesäß"
+    ],
+    "secondary": [
+      "Rumpf"
+    ],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "KET-018",
+    "name": "Kettlebell Bulgarian Split Squat",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ],
+      [
+        "FRE-03"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13",
+      "FRE-03"
+    ],
+    "primary": [
+      "Quadrizeps",
+      "Gesäß"
+    ],
+    "secondary": [],
+    "unilateral": true,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "KET-019",
+    "name": "Kettlebell Floor Press",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Brust"
+    ],
+    "secondary": [
+      "Trizeps"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": true
+  },
+  {
+    "id": "KET-020",
+    "name": "Kettlebell Curls",
+    "group": "Ganzkörper",
+    "equipmentGroups": [
+      [
+        "FRE-13"
+      ]
+    ],
+    "equipmentIds": [
+      "FRE-13"
+    ],
+    "primary": [
+      "Bizeps"
+    ],
+    "secondary": [
+      "Unterarm"
+    ],
+    "unilateral": false,
+    "metric": "reps",
+    "compound": false
+  },
+  {
+    "id": "CAR-101",
+    "name": "Laufen locker (Zone 2)",
+    "group": "Cardio",
+    "equipmentGroups": [
+      [
+        "CAR-01"
+      ]
+    ],
+    "equipmentIds": [
+      "CAR-01"
+    ],
+    "primary": [
+      "Grundlagenausdauer"
+    ],
+    "secondary": [
+      "Steigung 1–2 %"
+    ],
+    "unilateral": false,
+    "metric": "cardio",
+    "compound": false
+  },
+  {
+    "id": "CAR-102",
+    "name": "Laufintervalle",
+    "group": "Cardio",
+    "equipmentGroups": [
+      [
+        "CAR-01"
+      ]
+    ],
+    "equipmentIds": [
+      "CAR-01"
+    ],
+    "primary": [
+      "VO2max"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "cardio",
+    "compound": false
+  },
+  {
+    "id": "CAR-103",
+    "name": "Gehen mit Steigung (Incline Walk)",
+    "group": "Cardio",
+    "equipmentGroups": [
+      [
+        "CAR-01"
+      ]
+    ],
+    "equipmentIds": [
+      "CAR-01"
+    ],
+    "primary": [
+      "Fettstoffwechsel"
+    ],
+    "secondary": [
+      "gelenkschonend"
+    ],
+    "unilateral": false,
+    "metric": "cardio",
+    "compound": false
+  },
+  {
+    "id": "CAR-104",
+    "name": "Stepper gleichmäßig",
+    "group": "Cardio",
+    "equipmentGroups": [
+      [
+        "CAR-02"
+      ]
+    ],
+    "equipmentIds": [
+      "CAR-02"
+    ],
+    "primary": [
+      "Grundlagenausdauer"
+    ],
+    "secondary": [
+      "Gesäß",
+      "Beine"
+    ],
+    "unilateral": false,
+    "metric": "cardio",
+    "compound": false
+  },
+  {
+    "id": "CAR-105",
+    "name": "StairMaster gleichmäßig",
+    "group": "Cardio",
+    "equipmentGroups": [
+      [
+        "CAR-03"
+      ]
+    ],
+    "equipmentIds": [
+      "CAR-03"
+    ],
+    "primary": [
+      "Grundlagenausdauer"
+    ],
+    "secondary": [
+      "Gesäß",
+      "Waden"
+    ],
+    "unilateral": false,
+    "metric": "cardio",
+    "compound": false
+  },
+  {
+    "id": "CAR-106",
+    "name": "StairMaster Intervalle",
+    "group": "Cardio",
+    "equipmentGroups": [
+      [
+        "CAR-03"
+      ]
+    ],
+    "equipmentIds": [
+      "CAR-03"
+    ],
+    "primary": [
+      "Kondition"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "cardio",
+    "compound": false
+  },
+  {
+    "id": "CAR-107",
+    "name": "Liegeergometer gleichmäßig",
+    "group": "Cardio",
+    "equipmentGroups": [
+      [
+        "CAR-04"
+      ]
+    ],
+    "equipmentIds": [
+      "CAR-04"
+    ],
+    "primary": [
+      "Grundlagenausdauer"
+    ],
+    "secondary": [
+      "rückenschonend"
+    ],
+    "unilateral": false,
+    "metric": "cardio",
+    "compound": false
+  },
+  {
+    "id": "CAR-108",
+    "name": "Ergometer gleichmäßig",
+    "group": "Cardio",
+    "equipmentGroups": [
+      [
+        "CAR-05"
+      ]
+    ],
+    "equipmentIds": [
+      "CAR-05"
+    ],
+    "primary": [
+      "Grundlagenausdauer"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "cardio",
+    "compound": false
+  },
+  {
+    "id": "CAR-109",
+    "name": "Ergometer Intervalle",
+    "group": "Cardio",
+    "equipmentGroups": [
+      [
+        "CAR-05"
+      ]
+    ],
+    "equipmentIds": [
+      "CAR-05"
+    ],
+    "primary": [
+      "VO2max"
+    ],
+    "secondary": [],
+    "unilateral": false,
+    "metric": "cardio",
+    "compound": false
+  }
+]

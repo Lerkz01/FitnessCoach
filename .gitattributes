@@ -1,0 +1,11 @@
+# Zeilenenden im Repository immer LF.
+#
+# Ohne diese Angabe schreibt Git unter Windows CRLF und der Build auf Render
+# liest LF — jeder Wechsel zwischen beiden erzeugte dann Änderungen an
+# Dateien, die niemand angefasst hat.
+* text=auto eol=lf
+
+# Binärdateien nicht anfassen.
+*.png binary
+*.ico binary
+*.woff2 binary

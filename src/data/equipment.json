@@ -1,0 +1,612 @@
+[
+  {
+    "id": "CAR-01",
+    "name": "Laufband",
+    "category": "Cardio",
+    "loadType": "cardio",
+    "description": "Mehrere vorhanden",
+    "stepKg": null,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "CAR-02",
+    "name": "Stepper",
+    "category": "Cardio",
+    "loadType": "cardio",
+    "description": "Klassischer Stepper",
+    "stepKg": null,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "CAR-03",
+    "name": "StairMaster",
+    "category": "Cardio",
+    "loadType": "cardio",
+    "description": "Laufende Treppe",
+    "stepKg": null,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "CAR-04",
+    "name": "Liegeergometer (Recumbent Bike)",
+    "category": "Cardio",
+    "loadType": "cardio",
+    "description": "Sitzend, Pedale vorne vor dem Körper",
+    "stepKg": null,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "CAR-05",
+    "name": "Ergometer / Upright Bike",
+    "category": "Cardio",
+    "loadType": "cardio",
+    "description": "Aufrechtes Fahrrad, Pedale unter dem Körper",
+    "stepKg": null,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "LEG-01",
+    "name": "Beinstrecker (Leg Extension)",
+    "category": "Beine",
+    "loadType": "stack",
+    "description": "gym80 Sygnum Beinstrecker sitzend",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "LEG-02",
+    "name": "Beinbeuger liegend (Lying Leg Curl)",
+    "category": "Beine",
+    "loadType": "stack",
+    "description": "Bauchlage. Es gibt **ausschließlich** die liegende Variante – keinen sitzenden Beinbeuger",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "LEG-03",
+    "name": "Beinpresse horizontal (Seated Leg Press)",
+    "category": "Beine",
+    "loadType": "stack",
+    "description": "Sitzend, Platte wird waagerecht nach vorne gedrückt, kein Winkel",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "LEG-04",
+    "name": "Beinpresse 45°",
+    "category": "Beine",
+    "loadType": "plate",
+    "description": "Klassische Schrägbeinpresse",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "LEG-05",
+    "name": "V-Squat (Hyperlever V-Squat, Atletica)",
+    "category": "Beine",
+    "loadType": "plate",
+    "description": "Geführte Kniebeugenmaschine",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "LEG-06",
+    "name": "Wadenheben stehend (Standing Calf Raise)",
+    "category": "Beine",
+    "loadType": "stack",
+    "description": "",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "LEG-07",
+    "name": "Wadenheben sitzend (Seated Calf Raise)",
+    "category": "Beine",
+    "loadType": "plate",
+    "description": "",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "LEG-08",
+    "name": "Abduktorenmaschine",
+    "category": "Beine",
+    "loadType": "stack",
+    "description": "Beine nach außen",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "LEG-09",
+    "name": "Adduktorenmaschine",
+    "category": "Beine",
+    "loadType": "stack",
+    "description": "Beine nach innen",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "LEG-10",
+    "name": "Hip-Thrust-Maschine (Glute Drive)",
+    "category": "Beine",
+    "loadType": "stack",
+    "description": "Oberer Rücken auf Polster, Gurt über der Hüfte, Hüfte drückt nach oben",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "LEG-11",
+    "name": "45°-Hyperextension (Back Extension)",
+    "category": "Beine",
+    "loadType": "body",
+    "description": "Oberschenkel liegen auf dem 45°-Polster, Oberkörper fällt nach vorne unten. Trainiert unteren Rücken, Gesäß, Hamstrings. Zusatzgewicht mit Scheibe möglich",
+    "stepKg": null,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "BAC-01",
+    "name": "Latzug",
+    "category": "Rücken",
+    "loadType": "stack",
+    "description": "Klassischer Latzug, alle gängigen Griffe verfügbar (gym80 Rückenzugmaschine 3020)",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "BAC-02",
+    "name": "Rudermaschine mit Brustpolster",
+    "category": "Rücken",
+    "loadType": "stack",
+    "description": "Sitzend, Brust gegen Polster, zwei frei bewegliche Griffe → enges und breites Ziehen möglich (gym80 Rower Innovation 5003)",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "BAC-03",
+    "name": "Rudermaschine mit Brustpolster",
+    "category": "Rücken",
+    "loadType": "plate",
+    "description": "Baugleiches Prinzip wie BAC-02, aber Plate-Loaded",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "BAC-04",
+    "name": "Kabelzug-Rudern (Seated Cable Row)",
+    "category": "Rücken",
+    "loadType": "stack",
+    "description": "Am Stationsturm, breite und enge Griffe vorhanden",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "BAC-05",
+    "name": "T-Bar Row",
+    "category": "Rücken",
+    "loadType": "plate",
+    "description": "",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "BAC-06",
+    "name": "gym80 Pure Kraft Lat Pulldown Dual 4311",
+    "category": "Rücken",
+    "loadType": "plate",
+    "description": "Sitzend mit Brustpolster, unabhängig bewegliche Arme (Dual). Zug im Bogen erst nach hinten, dann nach unten. **Einteilung: Latissimus UND oberer Rücken** – ich spüre dieses Gerät sehr stark im oberen Rücken, es darf daher auch als Übung für den oberen Rücken eingeplant werden",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "BAC-07",
+    "name": "gym80 Pure Kraft High Row Dual 4340",
+    "category": "Rücken",
+    "loadType": "plate",
+    "description": "Sitzend mit Brustpolster, unabhängig bewegliche Arme (Dual). Zug im Bogen erst nach unten, dann nach hinten. Oberer Rücken",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "BAC-08",
+    "name": "Rückenstrecker sitzend (Lower Back)",
+    "category": "Rücken",
+    "loadType": "stack",
+    "description": "Rolle am oberen Rücken wird nach hinten gedrückt (gym80 Rückenstrecker 3007)",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "BAC-09",
+    "name": "Shrug-/Deadlift-Maschine",
+    "category": "Rücken",
+    "loadType": "plate",
+    "description": "Griffe rechts und links dicht am Boden, für Shrugs und ähnliche Bewegungen",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "CHE-01",
+    "name": "Butterfly",
+    "category": "Brust",
+    "loadType": "stack",
+    "description": "gym80 Butterfly 3022",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "CHE-02",
+    "name": "Chest Press flach, geführt",
+    "category": "Brust",
+    "loadType": "plate",
+    "description": "Geführtes Bankdrücken in der Waagerechten",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "CHE-03",
+    "name": "Incline Chest Press, geführt",
+    "category": "Brust",
+    "loadType": "plate",
+    "description": "Geführtes Schrägbankdrücken",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "CHE-04",
+    "name": "Cable Crossover / Dual Pulley",
+    "category": "Brust",
+    "loadType": "stack",
+    "description": "Zwei Kabelzüge rechts und links, man steht in der Mitte. Für Cable Flys, Crossovers etc.",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "CHE-05",
+    "name": "Bankdrücken flach, frei",
+    "category": "Brust",
+    "loadType": "free",
+    "description": "Langhantel an FRE-04 **oder** Kurzhanteln auf verstellbarer Bank (FRE-03)",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "CHE-06",
+    "name": "Schrägbankdrücken ~45°, frei",
+    "category": "Brust",
+    "loadType": "free",
+    "description": "Langhantel an FRE-05 **oder** Kurzhanteln auf verstellbarer Bank (FRE-03)",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "CHE-07",
+    "name": "Negativbankdrücken, frei",
+    "category": "Brust",
+    "loadType": "free",
+    "description": "Langhantel an FRE-06 oder Kurzhanteln",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "CHE-08",
+    "name": "Bankdrücken an der Smith-Maschine",
+    "category": "Brust",
+    "loadType": "plate",
+    "description": "FRE-08, Bank frei einstellbar → flach, schräg und negativ möglich",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "SHO-01",
+    "name": "Schulterdrückmaschine",
+    "category": "Schultern",
+    "loadType": "stack",
+    "description": "",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "SHO-02",
+    "name": "Schulterdrückmaschine",
+    "category": "Schultern",
+    "loadType": "plate",
+    "description": "Separate Maschine, beide Varianten vorhanden",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "SHO-03",
+    "name": "Seitheben-Maschine (Lateral Raise)",
+    "category": "Schultern",
+    "loadType": "stack",
+    "description": "Rollen an den Ellenbogen, Bewegung im Bogen nach oben (gym80 Seithebemaschine 3015)",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "SHO-04",
+    "name": "Reverse Butterfly",
+    "category": "Schultern",
+    "loadType": "stack",
+    "description": "Hintere Schulter (gym80 Butterfly Reverse 3025)",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "ARM-01",
+    "name": "Bizepscurl-Maschine",
+    "category": "Arme",
+    "loadType": "stack",
+    "description": "gym80 Bizepsmaschine",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "ARM-02",
+    "name": "Dip-Maschine sitzend",
+    "category": "Arme",
+    "loadType": "stack",
+    "description": "Sitzend, je eine Stange rechts und links, Drückbewegung nach unten (Trizeps)",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "ARM-05",
+    "name": "Trizepsmaschine",
+    "category": "Arme",
+    "loadType": "stack",
+    "description": "Dedizierte Trizepsmaschine (gym80 Sygnum Trizepsmaschine 3011 o. ä.)",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "ARM-03",
+    "name": "SZ-Stange",
+    "category": "Arme",
+    "loadType": "free",
+    "description": "",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "ARM-04",
+    "name": "Hammer-Curl-Stange / Multi-Grip-Bar",
+    "category": "Arme",
+    "loadType": "free",
+    "description": "",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "ABS-01",
+    "name": "Rotationsmaschine (Twister)",
+    "category": "Bauch / Rumpf",
+    "loadType": "stack",
+    "description": "Drehung um die eigene Achse nach rechts und links (gym80 Twister 3024)",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "ABS-02",
+    "name": "Bauchmaschine (Abdominal Crunch)",
+    "category": "Bauch / Rumpf",
+    "loadType": "stack",
+    "description": "Rolle vor der Brust wird nach vorne gedrückt",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "ABS-03",
+    "name": "Beinheben-Station (Captain's Chair)",
+    "category": "Bauch / Rumpf",
+    "loadType": "body",
+    "description": "Unterarme auf Polstern, Rücken angelehnt, Beine hängen frei",
+    "stepKg": null,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-01",
+    "name": "Kurzhanteln 1–60 kg",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "free",
+    "description": "1–10 kg in 1-kg-Schritten, darüber 2-kg-Schritte",
+    "stepKg": 2,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-02",
+    "name": "Langhantel (Olympiastange)",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "free",
+    "description": "",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-03",
+    "name": "Verstellbare Bänke",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "free",
+    "description": "Von flach bis 90° einstellbar",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-04",
+    "name": "Flachbank mit Ablage",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "plate",
+    "description": "Klassisches Bankdrücken",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-05",
+    "name": "Schrägbank ~45° mit Ablage",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "plate",
+    "description": "Bankdrücken schräg nach oben",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-06",
+    "name": "Negativbank mit Ablage",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "plate",
+    "description": "Kopf liegt tiefer als die Beine",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-07",
+    "name": "Squat Racks",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "plate",
+    "description": "Mehrere vorhanden",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-08",
+    "name": "Smith-Maschine",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "plate",
+    "description": "Geführte Langhantel, Bänke können hineingestellt werden",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-09",
+    "name": "Kabelzugturm (High/Low Pulley)",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "stack",
+    "description": "Griff von oben oder unten einhängbar, alle gängigen Griffe verfügbar",
+    "stepKg": 5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-10",
+    "name": "Klimmzugstangen",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "body",
+    "description": "Alle Griffvarianten möglich",
+    "stepKg": null,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-11",
+    "name": "Klimmzug-/Dip-Maschine mit Unterstützung",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "stack",
+    "description": "Man kniet auf einem Polster, das eingestellte Steckgewicht wird als Unterstützung abgenommen. **Achtung:** Höheres Gewicht = leichter, nicht schwerer. Muss in der App invertiert behandelt werden",
+    "stepKg": 5,
+    "inverted": true,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-12",
+    "name": "Steppbretter / Stepboxen",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "body",
+    "description": "",
+    "stepKg": null,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-13",
+    "name": "Kettlebells",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "free",
+    "description": "Gewichtsspanne und Abstufung **noch zu ergänzen**",
+    "stepKg": 2.5,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "FRE-14",
+    "name": "Fußschlaufen für den Kabelzug (Ankle Straps)",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "accessory",
+    "description": "Zubehör, nutzbar an FRE-09 und CHE-04",
+    "stepKg": null,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "BODY",
+    "name": "Körpergewicht",
+    "category": "Körpergewicht",
+    "loadType": "body",
+    "description": "Übungen ohne Zusatzgerät (nur Körpergewicht).",
+    "stepKg": null,
+    "inverted": false,
+    "maxKg": null
+  },
+  {
+    "id": "PLATES",
+    "name": "Hantelscheiben (lose)",
+    "category": "Freihantel & Multifunktion",
+    "loadType": "free",
+    "description": "Lose Hantelscheiben, z.B. für Svend Press, Frontheben, Russian Twists.",
+    "stepKg": 1.25,
+    "inverted": false,
+    "maxKg": null
+  }
+]

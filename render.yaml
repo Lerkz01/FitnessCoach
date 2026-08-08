@@ -1,0 +1,81 @@
+# ====================================================================
+#  Deployment als statische Seite
+#
+#  Die App braucht keinen Server: Sie ist eine PWA, die im Browser läuft,
+#  und die Datenschicht liegt bei Supabase. Also eine reine Auslieferung
+#  fertiger Dateien.
+#
+#  Zwei Dinge, die man bei Render leicht übersieht:
+#
+#  1. Statische Seiten schlafen NICHT ein. Anders als Web Services im
+#     Gratistarif — beim Öffnen im Gym gibt es keine Wartezeit von 30
+#     Sekunden.
+#
+#  2. Die Umgebungsvariablen werden beim BUILD eingebacken, nicht zur
+#     Laufzeit gelesen. Vite ersetzt `import.meta.env.VITE_*` durch den
+#     Textwert. Wer sie ändert, muss neu deployen — sonst wirkt die
+#     Änderung nicht.
+# ====================================================================
+
+services:
+  - type: web
+    name: fitness-coach
+    runtime: static
+    # `npm ci` statt `npm install`: baut exakt die Versionen aus dem
+    # Lockfile. Sonst kann ein Deployment mit anderen Abhängigkeiten
+    # laufen als die geprüfte Fassung.
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+
+    envVars:
+      # Vite 8 verlangt Node 20.19+ oder 22.12+. Ohne diese Angabe nimmt
+      # Render seine Standardversion, die älter sein kann.
+      - key: NODE_VERSION
+        value: 22.12.0
+      # `sync: false` heißt: Wert NICHT hier hinterlegen, sondern im
+      # Render-Dashboard. Beides sind keine Geheimnisse — der anon-Schlüssel
+      # ist öffentlich vorgesehen — aber sie gehören trotzdem nicht ins
+      # Repository, damit ein Projektwechsel kein Commit braucht.
+      - key: VITE_SUPABASE_URL
+        sync: false
+      - key: VITE_SUPABASE_ANON_KEY
+        sync: false
+
+    routes:
+      # Alles auf die index.html: Die App ist eine Einzelseite. Ohne diese
+      # Regel gibt ein Neuladen unter einem Unterpfad einen 404.
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+    headers:
+      # Der Service Worker darf NIE aus dem Zwischenspeicher kommen. Sonst
+      # bleibt die App auf einer alten Fassung stehen, obwohl längst eine
+      # neue ausgeliefert wird — der klassische PWA-Fehler.
+      - path: /sw.js
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+      - path: /manifest.webmanifest
+        name: Cache-Control
+        value: no-cache
+
+      # Die Dateien unter /assets/ tragen einen Hash im Namen. Sie ändern
+      # sich nie unter demselben Namen und dürfen deshalb dauerhaft
+      # zwischengespeichert werden.
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+
+      # Die App wird nirgends eingebettet und braucht keine Fremdinhalte.
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin

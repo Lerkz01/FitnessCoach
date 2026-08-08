@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ */
+/*  Design-Tokens (Tailwind v4 @theme)                                 */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-bg: #0b0f17;
+  --color-surface: #141a24;
+  --color-surface-2: #1c2431;
+  --color-border: #26303f;
+  --color-muted: #8b97a8;
+  --color-text: #e7edf5;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-accent: #22d3ee;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  --font-sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  --radius-card: 1rem;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Basis                                                              */
+/* ------------------------------------------------------------------ */
+html {
+  color-scheme: dark;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* sichere Bereiche für Notch / Home-Indicator auf dem Handy */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+#root {
+  min-height: 100svh;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+/* Zahlen tabellarisch ausrichten (Gewichte, Wiederholungen) */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
