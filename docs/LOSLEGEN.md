@@ -184,10 +184,20 @@ Token** (github.com → Settings → Developer settings → Tokens (classic) →
 **4.2** GitHub verbinden, Repository `fitness-coach` auswählen. Render liest
 `render.yaml` und schlägt einen Dienst vor.
 
-**4.3** Render fragt nach den beiden Variablen. Dieselben Werte wie in `.env`:
+**4.3** Render fragt nach zwei Variablen. **Wichtig: In das Wertfeld gehört nur der WERT,
+nicht die ganze Zeile.** Genau hier ist es beim Einrichten schiefgegangen — die
+komplette Zeile `VITE_SUPABASE_ANON_KEY=…` landete als Wert im Feld, und die App
+meldete beim Anmelden „Invalid API key", ohne zu sagen, warum.
 
-* `VITE_SUPABASE_URL`
-* `VITE_SUPABASE_ANON_KEY`
+| Key (Name der Variable) | Value (nur das hier) |
+|---|---|
+| `VITE_SUPABASE_URL` | die Projektadresse, z. B. `https://abcdefgh.supabase.co` |
+| `VITE_SUPABASE_ANON_KEY` | der öffentliche Schlüssel, z. B. `sb_publishable_…` |
+
+Kein `=`, keine Anführungszeichen, kein Leerzeichen am Anfang oder Ende.
+
+Die App erkennt diesen Fehler inzwischen selbst und sagt es auf dem Anmeldebildschirm —
+aber verhindern ist besser.
 
 **4.4** **Apply**. Der Build läuft etwa zwei Minuten. Danach steht oben die Adresse,
 etwa `https://fitness-coach.onrender.com`.

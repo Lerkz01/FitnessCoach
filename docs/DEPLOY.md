@@ -48,9 +48,20 @@ Im Repository liegt `render.yaml`, das alles beschreibt. Also:
 
 1. Auf [render.com](https://render.com) → **New** → **Blueprint**
 2. Repository auswählen, Render liest `render.yaml`
-3. Es fragt nach den beiden Variablen, die dort mit `sync: false` stehen:
-   * `VITE_SUPABASE_URL`
-   * `VITE_SUPABASE_ANON_KEY`
+3. Render fragt nach zwei Variablen. **Wichtig: In das Wertfeld gehört nur der WERT,
+   nicht die ganze Zeile.** Genau hier ist es beim Einrichten schiefgegangen — die
+   komplette Zeile `VITE_SUPABASE_ANON_KEY=…` landete als Wert im Feld, und die App
+   meldete beim Anmelden „Invalid API key", ohne zu sagen, warum.
+   
+   | Key (Name der Variable) | Value (nur das hier) |
+   |---|---|
+   | `VITE_SUPABASE_URL` | die Projektadresse, z. B. `https://abcdefgh.supabase.co` |
+   | `VITE_SUPABASE_ANON_KEY` | der öffentliche Schlüssel, z. B. `sb_publishable_…` |
+   
+   Kein `=`, keine Anführungszeichen, kein Leerzeichen am Anfang oder Ende.
+   
+   Die App erkennt diesen Fehler inzwischen selbst und sagt es auf dem Anmeldebildschirm —
+   aber verhindern ist besser.
 4. **Apply**
 
 Was `render.yaml` mitbringt und warum:

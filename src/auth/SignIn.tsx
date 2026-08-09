@@ -16,6 +16,7 @@
 
 import { useState } from 'react'
 import { Button, Notice, StepTitle, TextField } from '../ui/controls'
+import { configProblem } from '../sync/supabaseClient'
 import { signIn, signUp } from './session'
 
 export function SignIn({ onSignedIn }: { onSignedIn: () => void }) {
@@ -25,6 +26,15 @@ export function SignIn({ onSignedIn }: { onSignedIn: () => void }) {
   const [error, setError] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
   const [hint, setHint] = useState<string | null>(null)
+
+  /**
+   * Fehler in der Cloud-Konfiguration.
+   *
+   * Wird VOR dem Formular gezeigt und sperrt es: Ohne gültige Zugangsdaten
+   * führt jeder Versuch nur zu „Invalid API key", und diese Meldung sagt
+   * nicht, was falsch ist.
+   */
+  const problem = configProblem()
 
   const submit = async () => {
     if (busy) return
@@ -76,6 +86,13 @@ export function SignIn({ onSignedIn }: { onSignedIn: () => void }) {
       </header>
 
       <main className="px-5 pb-8 flex-1 space-y-3">
+        {problem ? (
+          <Notice tone="warning">
+            <span className="font-medium text-text">Die Cloud ist falsch eingerichtet. </span>
+            {problem}
+          </Notice>
+        ) : null}
+
         <TextField
           label="E-Mail"
           value={email}
@@ -100,7 +117,7 @@ export function SignIn({ onSignedIn }: { onSignedIn: () => void }) {
         {error ? <Notice tone="warning">{error}</Notice> : null}
         {hint ? <Notice>{hint}</Notice> : null}
 
-        <Button full disabled={busy} onClick={() => void submit()}>
+        <Button full disabled={busy || problem !== null} onClick={() => void submit()}>
           {busy ? 'Moment …' : mode === 'in' ? 'Anmelden' : 'Konto anlegen'}
         </Button>
 
