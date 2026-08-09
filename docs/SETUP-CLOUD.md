@@ -37,8 +37,24 @@ Das legt an:
 | Row Level Security | die Trennung der beiden Profile, von der Datenbank erzwungen |
 | `upsert_records` | idempotentes Hochladen — derselbe Satz zweimal gesendet erzeugt keinen Doppeleintrag |
 
-Prüfen: Unter **Table Editor** muss `records` auftauchen, und in der Zeile darüber
-sollte **RLS enabled** stehen.
+Prüfen — nicht über die Oberfläche, deren Beschriftung sich zwischen Versionen
+verschiebt, sondern per Abfrage im SQL Editor:
+
+```sql
+select
+  (select relrowsecurity from pg_class where oid = 'public.records'::regclass)
+    as rls_aktiv,
+  (select count(*) from pg_policies
+    where schemaname = 'public' and tablename = 'records')
+    as anzahl_policies,
+  (select count(*) from pg_proc p
+    join pg_namespace n on n.oid = p.pronamespace
+    where n.nspname = 'public' and p.proname = 'upsert_records')
+    as upsert_funktion;
+```
+
+Erwartet: `true`, `3`, `1`. Weicht etwas ab, die Migration noch einmal vollständig
+ausführen.
 
 ## 3. Zugangsdaten in die App
 

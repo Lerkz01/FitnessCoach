@@ -24,8 +24,38 @@ Handy.
 
 Erwartete Antwort: *Success. No rows returned.*
 
-**1.3** Prüfen: Links **Table Editor** → in der Liste muss `records` stehen, und darüber
-der Hinweis **RLS enabled**. Fehlt der, war das SQL nicht vollständig eingefügt.
+**1.3** Prüfen, dass alles angekommen ist. Die Anzeige „RLS enabled" wandert zwischen
+Supabase-Versionen — deshalb nicht danach suchen, sondern im **SQL Editor** eine neue
+Abfrage absetzen:
+
+```sql
+select
+  (select relrowsecurity from pg_class where oid = 'public.records'::regclass)
+    as rls_aktiv,
+  (select count(*) from pg_policies
+    where schemaname = 'public' and tablename = 'records')
+    as anzahl_policies,
+  (select count(*) from pg_proc p
+    join pg_namespace n on n.oid = p.pronamespace
+    where n.nspname = 'public' and p.proname = 'upsert_records')
+    as upsert_funktion;
+```
+
+Richtig ist genau das:
+
+| rls_aktiv | anzahl_policies | upsert_funktion |
+|---|---|---|
+| `true` | `3` | `1` |
+
+Damit sind alle drei Dinge geprüft, die das Skript anlegen musste: die Zeilensicherheit,
+die drei Zugriffsregeln und die Upload-Funktion.
+
+Stimmt etwas nicht, die Datei einfach noch einmal **vollständig** ausführen — sie ist so
+geschrieben, dass mehrfaches Ausführen nichts kaputt macht. Steht `upsert_funktion` auf
+`0`, war wahrscheinlich nur der obere Teil markiert; die Funktion steht weit unten.
+
+> RLS ist nicht Formsache: Sie ist die einzige Stelle, an der eure beiden Profile
+> getrennt werden. Ohne sie könnte jedes angemeldete Konto die Daten des anderen lesen.
 
 **1.4** Links **Authentication** → **Sign In / Providers** → **Email** aufklappen →
 **Confirm email** **ausschalten** → **Save**.
