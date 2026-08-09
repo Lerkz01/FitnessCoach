@@ -15,7 +15,10 @@ npm run dev
 ```
 
 Ohne Cloud-Konfiguration läuft alles lokal — die App sagt das auf dem Startbildschirm
-auch deutlich. Für die Sicherung in der Cloud: **[docs/SETUP-CLOUD.md](docs/SETUP-CLOUD.md)**.
+auch deutlich.
+
+**Zum ersten Mal einrichten und aufs Handy holen:
+[docs/LOSLEGEN.md](docs/LOSLEGEN.md)** — Schritt für Schritt, etwa 40 Minuten.
 
 | Befehl | Wozu |
 |---|---|
@@ -80,7 +83,8 @@ ein Fehler.
 | [UI-UX.md](docs/UI-UX.md) | Bedienung, abgeleitet aus der Gym-Realität |
 | [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Offline-First, drei Sicherungsebenen, Datumsregeln |
 | [DATA-SCHEMA.md](docs/DATA-SCHEMA.md) | Exportformat, Feld für Feld |
-| [SETUP-CLOUD.md](docs/SETUP-CLOUD.md) | Supabase einrichten und die Sicherung prüfen |
+| [LOSLEGEN.md](docs/LOSLEGEN.md) | **Von null bis zum ersten echten Training** |
+| [SETUP-CLOUD.md](docs/SETUP-CLOUD.md) | Supabase im Detail, Ausfallverhalten |
 | [DEPLOY.md](docs/DEPLOY.md) | Veröffentlichen und aufs Handy holen |
 
 Mehrere Abschnitte tragen den Vermerk, welcher Fehler eine Regel erzwungen hat — etwa
