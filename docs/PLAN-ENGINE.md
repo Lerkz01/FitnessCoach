@@ -724,6 +724,41 @@ LANGFRISTIG STABIL gehalten — sie sind der Kraftmaßstab. Rotiert werden
 Accessory- und Isolationsübungen.
 ```
 
+**Wie der Tausch umgesetzt ist**
+
+Als **Pool-Ausschluss**, nicht als nachträglicher Eingriff in den fertigen Plan. Die
+rotierte Übung fällt für sechs Wochen aus dem Angebot, und der Generator wählt von sich
+aus die nächstbeste — damit greifen alle übrigen Regeln (Verletzungen, Überlappung,
+Volumenbudget, Reihenfolge) ohne Sonderbehandlung.
+
+Welche Übungen gerade draußen sind, wird aus dem **Anpassungsprotokoll abgeleitet**, nicht
+als Zustand gespeichert. Der Eintrag ist die Ursache der Wirkung, nicht ihr Vermerk.
+Unterschieden wird über den Regelkreis: Kreis 3 ist die Wochenrotation und sperrt,
+Kreis 1 ist der Tausch bei besetztem Gerät und sperrt nichts für die Zukunft.
+
+Die Frist ist nötig. Ein Dauerausschluss würde den Übungspool über die Jahre leerräumen,
+und eine Übung, die vor einem halben Jahr stagnierte, ist heute wieder ein brauchbarer
+Reiz. Umgekehrt: Würde der Ausschluss mehr als die Hälfte des Pools treffen, setzt die
+App die Rotation aus und sagt das — ein leerer Plan wäre schlechter als eine wiederholte
+Übung.
+
+**Der Ersatz wird beim Check-in benannt, nicht erst beim Planaufbau.** Ein Vorschlag ohne
+Namen ist keiner; angezeigt wird „Seitheben Maschine → Kabel Seitheben einarmig".
+
+Bei der Auswahl gilt zusätzlich zur Muskelüberlappung:
+
+| Zuschlag | Warum |
+|---|---|
+| andere Unterregion (+35) | Wer auf „Brust (mittel)" feststeckt, kommt mit „(unten)" weiter |
+| gleiche anatomische Bezeichnung (+12) | Bricht Gleichstände, die die Volumen-Taxonomie erzeugt |
+| anderes Gerät (+15) | andere Belastungskurve |
+
+Der Zuschlag für die anatomische Bezeichnung war nötig, weil die Volumen-Taxonomie mit
+18 Muskeln gröber ist als die Anatomie: „gerader Bauchmuskel" und „schräge
+Bauchmuskeln" sind beide „Bauch". Bei gleicher Überlappung entschied deshalb die
+Reihenfolge im Pool, und die Bauchmaschine bekam die Rotationsmaschine als Ersatz —
+also einen anderen Muskel.
+
 **e) Optik-Feedback nutzen**
 
 Die Antwort auf Frage 2 ist ein subjektives, aber wertvolles Signal — sie fließt

@@ -368,3 +368,51 @@ describe('findAlternatives', () => {
 function besterGruppenwert(exercise: Exercise): string {
   return exercise.group
 }
+
+describe('findAlternatives — Rotation', () => {
+  it('sperrt beim Rotieren kein Gerät, denn es ist frei', () => {
+    // Anders als bei „besetzt": Die Übung stagniert, das Gerät steht bereit.
+    // Ein Ersatz am selben Gerät ist also zulässig.
+    // Hohe Obergrenze, sonst verdeckt der Deckel den Unterschied.
+    const gemeinsam = { exercise: ex('BRU-001'), pool: POOL, profile: profile(), limit: 500 }
+    const besetztModus = findAlternatives(gemeinsam)
+    const rotationsModus = findAlternatives({ ...gemeinsam, purpose: 'rotation' })
+
+    expect(rotationsModus.length).toBeGreaterThan(besetztModus.length)
+
+    // Und konkret: Eine Übung, die die Flachbank braucht, ist beim Rotieren
+    // erlaubt und bei „besetzt" nicht.
+    const brauchtFlachbank = (liste: typeof besetztModus) =>
+      liste.some((a) => a.exercise.equipmentIds.includes('FRE-04'))
+    expect(brauchtFlachbank(besetztModus)).toBe(false)
+    expect(brauchtFlachbank(rotationsModus)).toBe(true)
+  })
+
+  it('bevorzugt beim Rotieren eine andere Unterregion', () => {
+    // „Brust (mittel)" stagniert → „Brust (unten)" oder „(oben)" bringt den
+    // neuen Reiz (docs/PLAN-ENGINE.md §9 Kreis 3d).
+    const [erste] = findAlternatives({
+      exercise: ex('BRU-020'), // Chest Press flach, primary „Brust (mittel)"
+      purpose: 'rotation',
+      pool: POOL,
+      profile: profile(),
+      limit: 1,
+    })
+    expect(erste.exercise.primary.join(' ')).not.toContain('mittel')
+    expect(erste.reason).toContain('Region')
+  })
+
+  it('wechselt nicht auf einen anatomisch anderen Muskel, nur weil die Volumen-Taxonomie ihn zusammenfasst', () => {
+    // „gerader Bauchmuskel" und „schräge Bauchmuskeln" sind beide „Bauch".
+    // Bei gleicher Überlappung entschied vorher die Reihenfolge im Pool, und
+    // die Bauchmaschine bekam die Rotationsmaschine als Ersatz.
+    const [erste] = findAlternatives({
+      exercise: ex('ABS-001'),
+      purpose: 'rotation',
+      pool: POOL,
+      profile: profile(),
+      limit: 1,
+    })
+    expect(erste.exercise.primary.join(' ')).toContain('gerader Bauchmuskel')
+  })
+})

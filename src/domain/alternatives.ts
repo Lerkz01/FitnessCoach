@@ -28,6 +28,7 @@ import {
   movementPatternOf,
   overlapScore,
 } from './exerciseMeta'
+import { muscleRegion } from './muscles'
 import type { UserProfile } from './records'
 
 // ────────────────────────────────────────────────────────────────────
@@ -103,9 +104,26 @@ export interface Alternative {
   reason: string
 }
 
+/**
+ * Wofür eine Alternative gesucht wird. Die beiden Fälle unterscheiden sich
+ * in zwei Punkten, deshalb ein Zweck statt zweier einzelner Schalter:
+ *
+ *   `occupied`  Das Gerät ist belegt → seine Einzelstationen sind gesperrt.
+ *               Eine andere Griffvariante am selben Gerät hilft nicht.
+ *
+ *   `rotation`  Die Übung stagniert → das Gerät ist frei, es geht um einen
+ *               NEUEN Reiz. Deshalb keine Gerätesperre, aber eine andere
+ *               Unterregion wird bevorzugt (docs/PLAN-ENGINE.md §9 Kreis 3d):
+ *               Wer auf „Brust (mittel)" feststeckt, kommt mit „Brust (oben)"
+ *               weiter, nicht mit derselben Region an einem anderen Gerät.
+ */
+export type AlternativePurpose = 'occupied' | 'rotation'
+
 export interface AlternativeInput {
-  /** Die besetzte Übung. */
+  /** Die besetzte oder stagnierende Übung. */
   exercise: Exercise
+  /** Standard `occupied`. */
+  purpose?: AlternativePurpose
   pool: readonly Exercise[]
   profile: UserProfile
   /** Übungen, die in dieser Einheit schon vorkommen. */
@@ -131,8 +149,11 @@ export function findAlternatives(input: AlternativeInput): Alternative[] {
   const { exercise, pool, profile } = input
   const limit = input.limit ?? 5
 
+  const purpose = input.purpose ?? 'occupied'
+
+  // Bei Rotation ist das Gerät frei — nur bei „besetzt" wird gesperrt.
   const blocked = new Set<string>([
-    ...blockedEquipmentFor(exercise),
+    ...(purpose === 'occupied' ? blockedEquipmentFor(exercise) : []),
     ...(input.alsoBlocked ?? []),
   ])
   const disabled = new Set(profile.disabledEquipmentIds)
@@ -141,6 +162,8 @@ export function findAlternatives(input: AlternativeInput): Alternative[] {
 
   const originalPattern = movementPatternOf(exercise)
   const originalLoadable = loadEstimateOf(exercise).basis !== 'none'
+  const originalRegions = regionsOf(exercise)
+  const originalPrimary = new Set(exercise.primary.map((p) => p.toLowerCase().trim()))
 
   /**
    * Intern mit Punktzahl, nach außen ohne.
@@ -193,10 +216,38 @@ export function findAlternatives(input: AlternativeInput): Alternative[] {
 
     if (verdict === 'deprioritize') score -= 40
 
+    // Gleiche ANATOMISCHE Bezeichnung, nicht nur gleicher Volumen-Muskel.
+    //
+    // Die Volumen-Taxonomie kennt 18 Muskeln und fasst dabei zusammen, was
+    // anatomisch getrennt ist: „gerader Bauchmuskel" und „schräge
+    // Bauchmuskeln" sind beide „Bauch". Bei gleicher Überlappung entschied
+    // deshalb die Reihenfolge im Pool — die Bauchmaschine bekam die
+    // Rotationsmaschine als Ersatz, obwohl ein anderer Muskel gemeint ist.
+    // Dieser kleine Zuschlag bricht solche Gleichstände sinnvoll.
+    if (candidate.primary.some((p) => originalPrimary.has(p.toLowerCase().trim()))) {
+      score += 12
+    }
+
+    // Rotation lebt vom neuen Reiz. Eine andere Unterregion ist genau das;
+    // dieselbe Region an einem anderen Gerät ist es nur zur Hälfte.
+    const andereRegion =
+      originalRegions.size > 0 &&
+      [...regionsOf(candidate)].some((r) => !originalRegions.has(r))
+    if (purpose === 'rotation') {
+      if (andereRegion) score += 35
+      // Ein Gerätewechsel bringt zusätzlich eine andere Belastungskurve.
+      if (equipmentKey(candidate) !== equipmentKey(exercise)) score += 15
+    }
+
     candidates.push({
       exercise: candidate,
       match: Math.round(match * 100) / 100,
-      reason: describe({ candidate, gleichesMuster, gewichtBekannt }),
+      reason: describe({
+        candidate,
+        gleichesMuster,
+        gewichtBekannt,
+        neueRegion: purpose === 'rotation' && andereRegion,
+      }),
       score,
     })
   }
@@ -261,6 +312,20 @@ function equipmentKey(exercise: Exercise): string {
 }
 
 /**
+ * Unterregionen, die die Übung direkt trifft — etwa „oben" bei
+ * „Brust (oben)". Grundlage für die Bevorzugung einer anderen Region beim
+ * Rotieren.
+ */
+function regionsOf(exercise: Exercise): Set<string> {
+  const out = new Set<string>()
+  for (const raw of exercise.primary) {
+    const region = muscleRegion(raw)
+    if (region !== null) out.add(`${raw.split('(')[0].trim()}:${region}`)
+  }
+  return out
+}
+
+/**
  * Begründung für die Anzeige.
  *
  * Bewusst OHNE Ähnlichkeitsstufe („trifft praktisch dasselbe"). Sortiert
@@ -275,6 +340,7 @@ function describe(input: {
   candidate: Exercise
   gleichesMuster: boolean
   gewichtBekannt: boolean
+  neueRegion?: boolean
 }): string {
   const geraet = input.candidate.equipmentIds
     .map((id) => equipmentById.get(id)?.name)
@@ -282,6 +348,7 @@ function describe(input: {
     .join(' + ')
 
   const zusatz: string[] = []
+  if (input.neueRegion) zusatz.push('trifft die Region anders')
   if (input.gleichesMuster) zusatz.push('gleiche Bewegung')
   if (input.gewichtBekannt) zusatz.push('Gewicht kann ich ableiten')
 

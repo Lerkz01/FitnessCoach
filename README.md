@@ -109,5 +109,9 @@ Sicherung auf drei Ebenen.
 Dazu der „Gerät besetzt"-Übungstausch: regelbasiert, offline, höchstens vier
 Vorschläge, Gewicht aus der Historie oder umgerechnet (`docs/UI-UX.md` §10.1).
 
-Fehlt noch: Ausführung der Rotationsvorschläge aus dem Check-in, monatlicher Check-in
-mit Umfängen, Regelkreis 4, Übungsanleitungen, KI-Chat.
+Die Übungsrotation aus dem Check-in wirkt: Eine Übung, die drei Einheiten stagniert,
+wird beim Check-in namentlich gegen ihren Ersatz getauscht und bleibt sechs Wochen
+draußen (`docs/PLAN-ENGINE.md` §9 Kreis 3d).
+
+Fehlt noch: monatlicher Check-in mit Umfängen, Regelkreis 4, Übungsanleitungen,
+KI-Chat.

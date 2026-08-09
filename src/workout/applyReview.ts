@@ -214,8 +214,18 @@ export async function applyReview(input: ApplyReviewInput): Promise<ApplyReviewR
     )
   }
 
-  // ── Rotationsvorschläge ──
+  // ── Übungsrotation ──
+  //
+  // Wird als ANGEWANDT protokolliert, sobald ein Ersatz gefunden wurde. Der
+  // Eintrag ist die Wahrheit, aus der `rotatedOutExerciseIds` ableitet, was
+  // beim nächsten Planaufbau draußen bleibt — er ist also kein Vermerk,
+  // sondern die Ursache der Wirkung.
+  //
+  // Wirksam wird er erst beim nächsten Planaufbau, nicht mitten in der
+  // Woche: Ein Tausch zwischen zwei Einheiten derselben Woche zerstört die
+  // Vergleichbarkeit, auf der die Progression beruht.
   for (const rotation of review.rotations) {
+    const hatErsatz = rotation.replacementId !== null
     adjustments.push(
       record({
         appliedAt: at,
@@ -224,11 +234,11 @@ export async function applyReview(input: ApplyReviewInput): Promise<ApplyReviewR
         targetId: rotation.exerciseId,
         targetLabel: rotation.exerciseName,
         before: rotation.exerciseName,
-        after: 'Tausch vorgeschlagen',
+        after: hatErsatz
+          ? (rotation.replacementName as string)
+          : 'kein passender Ersatz gefunden',
         reason: rotation.reason,
-        // Vorschlag, nicht Tat: Ein Tausch mitten in der Woche zerstört die
-        // Vergleichbarkeit, auf der die Progression beruht.
-        applied: false,
+        applied: hatErsatz,
         userAccepted: null,
       }),
     )

@@ -20,7 +20,8 @@
 //  jederzeit neu gerechnet werden.
 // ====================================================================
 
-import { exerciseById } from '../data'
+import { exerciseById, exercises as ALL_EXERCISES } from '../data'
+import { findAlternatives } from './alternatives'
 import { exerciseHistory } from './history'
 import type { VolumeMuscle } from './muscles'
 import { macrosFor } from './nutrition'
@@ -119,6 +120,16 @@ export interface RotationProposal {
   exerciseName: string
   weeksStagnant: number
   reason: string
+  /**
+   * Die konkrete Ersatzübung. `null`, wenn keine passt.
+   *
+   * Wird HIER schon bestimmt, nicht erst beim nächsten Planaufbau: Ein
+   * Vorschlag ohne Namen ist keiner. Der Nutzer soll lesen „Seitheben
+   * Maschine → Kabel Seitheben einarmig" und nicht „irgendwas wird getauscht"
+   * (docs/UI-UX.md §11).
+   */
+  replacementId: string | null
+  replacementName: string | null
 }
 
 export interface WeeklyReview {
@@ -212,6 +223,7 @@ export function weeklyReview(input: WeeklyReviewInput): WeeklyReview {
     sessions: completed,
     logsBySession: input.logsBySession,
     volumeRaised: volume.some((change) => change.after > change.before),
+    profile: input.profile,
   })
 
   return { recovery, volume, nutrition, deload, rotations, notes }
@@ -629,22 +641,44 @@ function findRotations(input: {
   sessions: readonly WorkoutSession[]
   logsBySession: ReadonlyMap<string, readonly SetLog[]>
   volumeRaised: boolean
+  profile: UserProfile
 }): RotationProposal[] {
   // Erst tauschen, wenn das Volumen schon erhöht wurde: Sonst wird eine
   // Übung ausgewechselt, die nur zu wenig Reiz bekam (docs §9 Kreis 3d).
   if (!input.volumeRaised) return []
 
-  return exerciseTrends(input)
-    .filter(
-      (trend) =>
-        trend.stagnantSessions >= ROTATION_STAGNATION_WEEKS && !isAnchor(trend.exerciseName),
-    )
-    .map((trend) => ({
+  const kandidaten = exerciseTrends(input).filter(
+    (trend) =>
+      trend.stagnantSessions >= ROTATION_STAGNATION_WEEKS && !isAnchor(trend.exerciseName),
+  )
+
+  // Damit nicht zwei stagnierende Übungen denselben Ersatz bekommen.
+  const schonVergeben = new Set<string>(kandidaten.map((k) => k.exerciseId))
+
+  return kandidaten.map((trend) => {
+    const stagnierend = exerciseById.get(trend.exerciseId)
+    const ersatz = stagnierend
+      ? findAlternatives({
+          exercise: stagnierend,
+          purpose: 'rotation',
+          pool: ALL_EXERCISES,
+          profile: input.profile,
+          usedExerciseIds: schonVergeben,
+          limit: 1,
+        })[0]
+      : undefined
+
+    if (ersatz) schonVergeben.add(ersatz.exercise.id)
+
+    return {
       exerciseId: trend.exerciseId,
       exerciseName: trend.exerciseName,
       weeksStagnant: trend.stagnantSessions,
       reason: `Seit ${trend.stagnantSessions} Einheiten kein Bestwert, obwohl das Volumen erhöht wurde.`,
-    }))
+      replacementId: ersatz?.exercise.id ?? null,
+      replacementName: ersatz?.exercise.name ?? null,
+    }
+  })
 }
 
 function isAnchor(exerciseName: string): boolean {

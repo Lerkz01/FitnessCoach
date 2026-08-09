@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { equipmentById, exerciseById } from '../data'
+import { equipmentById, exerciseById, exercises as allExercises } from '../data'
 import type { Exercise } from '../types'
 import { generateWeek, type GeneratedWeek } from './generator'
 import { movementPatternOf } from './exerciseMeta'
@@ -71,7 +71,11 @@ function makeReferences(): StrengthReference[] {
 
 function generate(
   overrides: Partial<UserProfile> = {},
-  options: { withReferences?: boolean; calibrationWeek?: boolean } = {},
+  options: {
+    withReferences?: boolean
+    calibrationWeek?: boolean
+    excludeExerciseIds?: ReadonlySet<string>
+  } = {},
 ): { week: GeneratedWeek; profile: UserProfile } {
   const profile = makeProfile(overrides)
   const volume = buildVolumePlan({
@@ -85,6 +89,7 @@ function generate(
     references: (options.withReferences ?? true) ? makeReferences() : [],
     bodyweightKg: 78,
     calibrationWeek: options.calibrationWeek ?? true,
+    excludeExerciseIds: options.excludeExerciseIds,
   })
   return { week, profile }
 }
@@ -632,5 +637,39 @@ describe('Abwechslung über die Woche', () => {
     for (const [muskel, ids] of perMuscle) {
       expect(ids.size, `${muskel}: ${[...ids].join(', ')}`).toBeLessThanOrEqual(4)
     }
+  })
+})
+
+describe('Rotation — herausrotierte Übungen bleiben draußen', () => {
+  it('plant eine ausgeschlossene Übung nicht ein', () => {
+    const { week: ohne } = generate()
+    const raus = ohne.sessions[0].exercises[1].exerciseId
+
+    const { week: mit } = generate({}, { excludeExerciseIds: new Set([raus]) })
+    const jetztGeplant = mit.sessions.flatMap((s) => s.exercises.map((e) => e.exerciseId))
+
+    expect(jetztGeplant).not.toContain(raus)
+  })
+
+  it('füllt den Platz mit einer anderen Übung, statt ihn leer zu lassen', () => {
+    const { week: ohne } = generate()
+    const vorher = ohne.sessions.flatMap((s) => s.exercises).length
+    const raus = ohne.sessions[0].exercises[1].exerciseId
+
+    const { week: mit } = generate({}, { excludeExerciseIds: new Set([raus]) })
+    const nachher = mit.sessions.flatMap((s) => s.exercises).length
+
+    // Der Plan darf nicht schrumpfen — das Wochenvolumen bleibt gleich.
+    expect(nachher).toBeGreaterThanOrEqual(vorher - 1)
+  })
+
+  it('ignoriert den Ausschluss, wenn er zu viel wegnehmen würde', () => {
+    // Ein leerer Plan wäre schlechter als eine wiederholte Übung. Lieber die
+    // Rotation aussetzen und das sagen.
+    const alle = new Set(allExercises.map((e) => e.id))
+    const { week } = generate({}, { excludeExerciseIds: alle })
+
+    expect(week.sessions.flatMap((s) => s.exercises).length).toBeGreaterThan(0)
+    expect(week.notes.join(' ')).toContain('Rotation')
   })
 })

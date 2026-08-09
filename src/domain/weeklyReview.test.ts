@@ -537,6 +537,56 @@ describe('Kreis 3d — Übungsrotation', () => {
     )
   })
 
+  it('nennt eine konkrete Ersatzübung, keinen leeren Vorschlag', () => {
+    // Ein Vorschlag ohne Namen ist keiner. Der Nutzer soll lesen
+    // „Seitheben → Kabel Seitheben", nicht „irgendwas wird getauscht".
+    const { sessions, logsBySession } = stagniert()
+    const review = weeklyReview(
+      input({ sessions, logsBySession, volumeTargets: { 'Seitliche Schulter': 10 } }),
+    )
+    const vorschlag = review.rotations[0]
+    expect(vorschlag.replacementId).not.toBeNull()
+    expect(vorschlag.replacementName).not.toBeNull()
+    // Nicht dieselbe Übung.
+    expect(vorschlag.replacementId).not.toBe(vorschlag.exerciseId)
+  })
+
+  it('sperrt beim Rotieren KEIN Gerät — es ist ja frei', () => {
+    // Anders als bei „Gerät besetzt": Die Übung stagniert, das Gerät steht
+    // zur Verfügung. Ein Ersatz am selben Gerät ist also erlaubt.
+    const { sessions, logsBySession } = stagniert()
+    const review = weeklyReview(
+      input({ sessions, logsBySession, volumeTargets: { 'Seitliche Schulter': 10 } }),
+    )
+    expect(review.rotations[0].replacementId).not.toBeNull()
+  })
+
+  it('gibt zwei stagnierenden Übungen nicht denselben Ersatz', () => {
+    const a = historyFor(
+      planned({ exerciseId: 'SCH-015', exerciseName: 'Kurzhantel Seitheben stehend' }),
+      [12, 12, 12, 12],
+    )
+    const b = historyFor(
+      planned({
+        exerciseId: 'SCH-016',
+        exerciseName: 'Kurzhantel Seitheben sitzend',
+        orderIndex: 1,
+      }),
+      [10, 10, 10, 10],
+    )
+    const review = weeklyReview(
+      input({
+        sessions: [...a.sessions, ...b.sessions],
+        logsBySession: new Map([...a.logsBySession, ...b.logsBySession]),
+        volumeTargets: { 'Seitliche Schulter': 10 },
+      }),
+    )
+    const ersatz = review.rotations
+      .map((r) => r.replacementId)
+      .filter((id): id is string => id !== null)
+    expect(new Set(ersatz).size).toBe(ersatz.length)
+  })
+
   it('begründet den Vorschlag mit der Anzahl stagnierender Einheiten', () => {
     const { sessions, logsBySession } = stagniert()
     const review = weeklyReview(

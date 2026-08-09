@@ -152,6 +152,17 @@ export interface GeneratorInput {
   bodyweightKg: number
   /** Erste Woche: konservativere Gewichte und deutlichere Korrektur. */
   calibrationWeek: boolean
+  /**
+   * Übungen, die derzeit nicht eingeplant werden sollen.
+   *
+   * Kommt aus der Rotation (docs/PLAN-ENGINE.md §9 Kreis 3d): Eine Übung,
+   * die drei Einheiten lang stagniert hat, bleibt einen Block draußen. Als
+   * Pool-Ausschluss umgesetzt, nicht als nachträglicher Tausch — dann
+   * greifen alle übrigen Regeln (Verletzungen, Überlappung, Volumen) ohne
+   * Sonderbehandlung, und der Generator wählt von sich aus die
+   * nächstbeste Übung.
+   */
+  excludeExerciseIds?: ReadonlySet<string>
   /** Für Tests überschreibbar. */
   pool?: readonly Exercise[]
 }
@@ -834,7 +845,20 @@ function reasonFor(
 export function generateWeek(input: GeneratorInput): GeneratedWeek {
   const { profile, volumeTargets, references, bodyweightKg, calibrationWeek } = input
 
-  const { pool, notes } = buildPool(profile, input.pool ?? ALL_EXERCISES)
+  const { pool: vollerPool, notes } = buildPool(profile, input.pool ?? ALL_EXERCISES)
+
+  // Herausrotierte Übungen fallen aus dem Pool. Bleibt dadurch zu wenig
+  // übrig, gilt der Ausschluss nicht — ein leerer Plan wäre schlechter als
+  // eine wiederholte Übung.
+  const ausgeschlossen = input.excludeExerciseIds ?? new Set<string>()
+  const gefiltert = vollerPool.filter((e) => !ausgeschlossen.has(e.id))
+  const pool = gefiltert.length >= vollerPool.length / 2 ? gefiltert : vollerPool
+  if (pool === vollerPool && ausgeschlossen.size > 0) {
+    notes.push(
+      'Die Rotation hätte zu viele Übungen ausgeschlossen — ich plane diese Woche mit dem vollen Pool.',
+    )
+  }
+
   const poolById = new Map(pool.map((e) => [e.id, e]))
 
   const split = splitForDays(profile.trainingDays.length)

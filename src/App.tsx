@@ -25,6 +25,7 @@ import {
   weekdayToDateDay,
   weeksBetween,
 } from './domain/week'
+import { rotatedOutExerciseIds } from './domain/rotation'
 import { weeklyReview, type WeeklyReview } from './domain/weeklyReview'
 import { Checkin } from './checkin/Checkin'
 import { ReviewResult } from './checkin/ReviewResult'
@@ -248,6 +249,9 @@ export default function App() {
         references: data.references,
         bodyweightKg,
         calibrationWeek,
+        // Herausrotierte Übungen bleiben einen Block draußen. Abgeleitet aus
+        // dem Anpassungsprotokoll, nicht als eigener Zustand gespeichert.
+        excludeExerciseIds: rotatedOutExerciseIds(data.adjustments),
       })
 
       // Der Generator wählt die Übungen, kennt aber keine Historie. Ohne
@@ -284,6 +288,7 @@ export default function App() {
     data?.references,
     data?.sessions,
     data?.metrics,
+    data?.adjustments,
     logsBySession,
     bodyweightKg,
     calibrationWeek,

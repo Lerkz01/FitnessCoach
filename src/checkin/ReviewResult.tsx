@@ -170,7 +170,24 @@ export function ReviewResult({
               <ul className="space-y-3 pt-1">
                 {review.rotations.map((rotation) => (
                   <li key={rotation.exerciseId}>
-                    <p className="text-sm font-medium">{rotation.exerciseName}</p>
+                    {rotation.replacementName !== null ? (
+                      <p className="text-sm font-medium leading-snug">
+                        {rotation.exerciseName}
+                        <span aria-hidden="true" className="text-muted mx-1.5">
+                          →
+                        </span>
+                        <span className="sr-only"> wird ersetzt durch </span>
+                        {rotation.replacementName}
+                      </p>
+                    ) : (
+                      <p className="text-sm font-medium leading-snug">
+                        {rotation.exerciseName}
+                        <span className="text-muted font-normal">
+                          {' '}
+                          — kein passender Ersatz gefunden
+                        </span>
+                      </p>
+                    )}
                     <p className="text-xs text-muted mt-0.5 leading-snug">
                       {rotation.reason}
                     </p>
@@ -178,8 +195,10 @@ export function ReviewResult({
                 ))}
               </ul>
               <p className="text-xs text-muted mt-3 leading-relaxed">
-                Ich tausche sie beim nächsten Planaufbau. Schwere Grundübungen bleiben
-                stehen — sie sind der Maßstab, an dem ich Kraft überhaupt messe.
+                Der Tausch greift beim nächsten Planaufbau, nicht mitten in der Woche —
+                sonst wäre der Kraftverlauf nicht mehr vergleichbar. Die alte Übung
+                kommt nach sechs Wochen wieder in Frage. Schwere Grundübungen werden
+                nie getauscht, sie sind der Maßstab, an dem ich Kraft überhaupt messe.
               </p>
             </Disclosure>
           ) : null}
