@@ -56,6 +56,16 @@ select
 Erwartet: `true`, `3`, `1`. Weicht etwas ab, die Migration noch einmal vollständig
 ausführen.
 
+Danach die Funktion **wirklich aufrufen** — das ist die aussagekräftigere Prüfung:
+
+```sql
+select * from public.upsert_records('[]'::jsonb);
+```
+
+Erwartet: *Success. No rows returned.* Postgres plant den Körper einer Funktion erst
+beim Aufruf; sie kann sich also fehlerfrei anlegen lassen und beim ersten Gebrauch
+abbrechen.
+
 ## 3. Zugangsdaten in die App
 
 Unter **Settings → API** zwei Werte kopieren:

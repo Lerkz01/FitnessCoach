@@ -57,6 +57,23 @@ geschrieben, dass mehrfaches Ausführen nichts kaputt macht. Steht `upsert_funkt
 > RLS ist nicht Formsache: Sie ist die einzige Stelle, an der eure beiden Profile
 > getrennt werden. Ohne sie könnte jedes angemeldete Konto die Daten des anderen lesen.
 
+**1.3b** Und noch eine Abfrage — die wichtigere. Die obige prüft nur, ob die Funktion
+*existiert*. Diese ruft sie tatsächlich auf:
+
+```sql
+select * from public.upsert_records('[]'::jsonb);
+```
+
+Erwartete Antwort: *Success. No rows returned.*
+
+Der Unterschied ist nicht akademisch: Postgres prüft den Körper einer Funktion erst beim
+**Aufruf**, nicht beim Anlegen. Eine Funktion kann sich anstandslos anlegen lassen und
+beim ersten echten Gebrauch abbrechen — genau das ist beim Einrichten passiert
+(`column reference "id" is ambiguous`).
+
+Kommt hier ein Fehler, spiel `supabase/migrations/0002_upsert_variable_conflict.sql`
+ein und wiederhole die Abfrage.
+
 **1.4** Links **Authentication** → **Sign In / Providers** → **Email** aufklappen →
 **Confirm email** **ausschalten** → **Save**.
 
