@@ -102,6 +102,21 @@ returns table (id uuid)
 language plpgsql
 security invoker
 as $$
+-- Diese Zeile ist NICHT optional.
+--
+-- `returns table (id uuid)` legt eine Funktionsvariable namens `id` an.
+-- Damit ist jede unqualifizierte Nennung von `id` im Funktionskörper
+-- doppeldeutig — auch das `on conflict (id)` weiter unten, wo eine
+-- Qualifizierung syntaktisch nicht erlaubt ist. Postgres bricht dann mit
+-- „column reference id is ambiguous" (42702) ab.
+--
+-- Der Fehler trat erst beim ersten Aufruf gegen ein echtes Projekt auf,
+-- nicht beim Anlegen der Funktion: Der Funktionskörper wird bei
+-- `create function` nicht geplant.
+--
+-- `use_column` sagt: Bei Doppeldeutigkeit gewinnt die Tabellenspalte. Das
+-- ist hier immer richtig — der Variable wird nie etwas zugewiesen.
+#variable_conflict use_column
 begin
   insert into public.records as r (
     id, user_id, kind, created_at, updated_at, deleted_at, data
@@ -132,7 +147,9 @@ begin
   -- nicht angekommen und würde ihn endlos erneut senden — die
   -- Warteschlange käme nie leer.
   return query
-  select (item ->> 'id')::uuid
+  -- Qualifiziert als `rec.id`, nicht als Ausdruck über `item`: gleicher
+  -- Wert, aber lesbar und ohne jede Doppeldeutigkeit.
+  select rec.id
   from jsonb_array_elements(payload) as item
   join public.records rec on rec.id = (item ->> 'id')::uuid
   where rec.user_id = auth.uid()
