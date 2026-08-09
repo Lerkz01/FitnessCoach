@@ -412,6 +412,11 @@ export default function App() {
         userId={userId}
         session={active}
         calibrationWeek={calibrationWeek}
+        profile={data.profile}
+        references={data.references}
+        bodyweightKg={bodyweightKg ?? 80}
+        previousSessions={data.sessions.filter((s) => s.id !== active.id)}
+        logsBySession={logsBySession}
         onFinished={(logs) => {
           setSessionLogs(logs)
           setScreen('complete')

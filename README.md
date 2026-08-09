@@ -106,5 +106,8 @@ Läuft: Onboarding, Trainingsplanung, Training tracken, Analyse nach jeder Einhe
 Wochen-Check-in mit Anpassung von Volumen und Kalorien, Fortschritt, Ernährung,
 Sicherung auf drei Ebenen.
 
-Fehlt noch: „Gerät besetzt"-Übungstausch, Ausführung der Rotationsvorschläge,
-monatlicher Check-in mit Umfängen, Regelkreis 4, Übungsanleitungen, KI-Chat.
+Dazu der „Gerät besetzt"-Übungstausch: regelbasiert, offline, höchstens vier
+Vorschläge, Gewicht aus der Historie oder umgerechnet (`docs/UI-UX.md` §10.1).
+
+Fehlt noch: Ausführung der Rotationsvorschläge aus dem Check-in, monatlicher Check-in
+mit Umfängen, Regelkreis 4, Übungsanleitungen, KI-Chat.

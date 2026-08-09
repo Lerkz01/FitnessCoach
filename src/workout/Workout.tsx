@@ -18,19 +18,32 @@
 // ====================================================================
 
 import { useMemo, useState } from 'react'
-import { equipmentById, exerciseById } from '../data'
+import { equipmentById, exerciseById, exercises as ALL_EXERCISES } from '../data'
+import {
+  blockedEquipmentFor,
+  findAlternatives,
+  type Alternative,
+} from '../domain/alternatives'
 import { inSessionCorrection } from '../domain/progression'
-import type { SetFeedback, SetLog, WorkoutSession } from '../domain/records'
+import type {
+  SetFeedback,
+  SetLog,
+  StrengthReference,
+  UserProfile,
+  WorkoutSession,
+} from '../domain/records'
 import { adjustBySteps, loadBearingEquipment, weightLabel } from '../domain/weights'
 import { Button, Notice } from '../ui/controls'
 import { RestTimer } from './RestTimer'
 import { abandonSession, logSet, setSlots, type SetSlot } from './session'
+import { swapExercise } from './swap'
+import { SwapSheet } from './SwapSheet'
 import { formatSeconds, useTicker } from './useTicker'
 
 // ────────────────────────────────────────────────────────────────────
 
 /** Wo im Ablauf eines Satzes wir stehen. */
-type Phase = 'input' | 'feedback' | 'rest'
+type Phase = 'input' | 'feedback' | 'rest' | 'swap'
 
 /**
  * Pause nach einem Aufwärmsatz.
@@ -51,16 +64,35 @@ export function Workout({
   userId,
   session,
   calibrationWeek,
+  profile,
+  references,
+  bodyweightKg,
+  previousSessions,
+  logsBySession,
   onFinished,
   onAbandoned,
 }: {
   userId: string
   session: WorkoutSession
   calibrationWeek: boolean
+  /** Für den Übungstausch: Sperrliste, Verletzungen, Level. */
+  profile: UserProfile
+  references: readonly StrengthReference[]
+  bodyweightKg: number
+  previousSessions: readonly WorkoutSession[]
+  logsBySession: ReadonlyMap<string, readonly SetLog[]>
   onFinished: (logs: SetLog[]) => void
   onAbandoned: () => void
 }) {
-  const exercises = session.planned
+  /**
+   * Die Einheit als eigener Zustand.
+   *
+   * Nötig, weil ein Übungstausch die Vorgabe verändert — und zwar mitten im
+   * Training. Als reine Eigenschaft gelesen, würde der Bildschirm nach dem
+   * Tausch weiter die alte Übung anzeigen.
+   */
+  const [current, setCurrent] = useState<WorkoutSession>(session)
+  const exercises = current.planned
   const [position, setPosition] = useState<Position>({ exerciseIndex: 0, slotIndex: 0 })
   const [phase, setPhase] = useState<Phase>('input')
   const [logs, setLogs] = useState<SetLog[]>([])
@@ -80,6 +112,15 @@ export function Workout({
   const [pendingReps, setPendingReps] = useState<number | null>(null)
   const [pendingSeconds, setPendingSeconds] = useState<number | null>(null)
   const [restSeconds, setRestSeconds] = useState(0)
+
+  /**
+   * Geräte, die in dieser Einheit als besetzt gemeldet wurden.
+   *
+   * Bleiben bis zum Ende gesperrt: Wer zweimal tauscht, soll nicht auf dem
+   * Gerät landen, das er gerade als besetzt gemeldet hat.
+   */
+  const [blockedEquipment, setBlockedEquipment] = useState<Set<string>>(new Set())
+  const [swapNote, setSwapNote] = useState<string | null>(null)
 
   const exercise = exercises[position.exerciseIndex]
   const slots = useMemo(() => (exercise ? setSlots(exercise) : []), [exercise])
@@ -109,6 +150,76 @@ export function Workout({
   const weightKg = corrected[exercise.exerciseId] ?? slot.weightKg
   const isTimed = slot.seconds !== null
 
+  /**
+   * Arbeitssätze, die für die aktuelle Übung schon stehen.
+   *
+   * Entscheidet, ob getauscht werden darf: Nach dem ersten Arbeitssatz ist
+   * die Übung angefangen. Ein Tausch würde einen Übungsplatz auf zwei
+   * Übungen aufteilen, und beide wären für die Progression nicht mehr
+   * auswertbar.
+   */
+  const loggedWorkingSets = exercise
+    ? logs.filter((log) => log.exerciseId === exercise.exerciseId && !log.isWarmup).length
+    : 0
+
+  const alternatives = useMemo<Alternative[]>(() => {
+    if (phase !== 'swap' || !exercise) return []
+    const besetzt = exerciseById.get(exercise.exerciseId)
+    if (!besetzt) return []
+    return findAlternatives({
+      exercise: besetzt,
+      pool: ALL_EXERCISES,
+      profile,
+      usedExerciseIds: new Set(exercises.map((e) => e.exerciseId)),
+      alsoBlocked: blockedEquipment,
+      limit: 4,
+    })
+  }, [phase, exercise, exercises, profile, blockedEquipment])
+
+  const blockedNames = useMemo(() => {
+    if (!exercise) return []
+    const besetzt = exerciseById.get(exercise.exerciseId)
+    if (!besetzt) return []
+    return blockedEquipmentFor(besetzt)
+      .map((id) => equipmentById.get(id)?.name)
+      .filter((name): name is string => Boolean(name))
+  }, [exercise])
+
+  async function applySwap(alternative: Alternative) {
+    if (!exercise || busy) return
+    setBusy(true)
+    try {
+      const result = await swapExercise({
+        userId,
+        session: current,
+        original: exercise,
+        replacement: alternative.exercise,
+        profile,
+        references,
+        bodyweightKg,
+        calibrationWeek,
+        previousSessions,
+        logsBySession,
+      })
+
+      setCurrent(result.session)
+      setBlockedEquipment((prev) => new Set([...prev, ...result.blockedEquipmentIds]))
+      // Beim Tausch von vorn: Die Ersatzübung hat eigene Aufwärmsätze.
+      setPosition({ ...position, slotIndex: 0 })
+      setPhase('input')
+      setCorrectionNote(null)
+      setSwapNote(
+        result.weightSource === 'history'
+          ? `${result.planned.exerciseName}: Gewicht aus deiner Historie.`
+          : result.weightSource === 'estimate'
+            ? `${result.planned.exerciseName}: Gewicht aus deinen Referenzwerten umgerechnet — der erste Satz messt es ein.`
+            : `${result.planned.exerciseName}: Körpergewichtsübung.`,
+      )
+    } finally {
+      setBusy(false)
+    }
+  }
+
   // ── Fortschritt innerhalb der Einheit ──
   function advance() {
     setPendingReps(null)
@@ -123,6 +234,7 @@ export function Workout({
     }
 
     setCorrectionNote(null)
+    setSwapNote(null)
     if (position.exerciseIndex + 1 < exercises.length) {
       setPosition({ exerciseIndex: position.exerciseIndex + 1, slotIndex: 0 })
       setPhase('input')
@@ -152,7 +264,7 @@ export function Workout({
     try {
       const log = await logSet({
         userId,
-        session,
+        session: current,
         exercise,
         setNumber: slot.setNumber,
         isWarmup: slot.isWarmup,
@@ -209,7 +321,7 @@ export function Workout({
     <div className="min-h-svh flex flex-col bg-bg">
       <header className="px-5 pt-6 pb-3 sticky top-0 bg-bg/95 backdrop-blur z-10">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-sm font-medium text-muted truncate">{session.label}</p>
+          <p className="text-sm font-medium text-muted truncate">{current.label}</p>
           <p className="text-sm tabular text-muted shrink-0">
             {doneSets} / {totalSets} Sätze
           </p>
@@ -227,7 +339,17 @@ export function Workout({
             deshalb über den Phasenwechsel hinweg stehen. */}
         {correctionNote ? <Notice tone="warning">{correctionNote}</Notice> : null}
 
-        {phase === 'rest' ? (
+        {swapNote ? <Notice>{swapNote}</Notice> : null}
+
+        {phase === 'swap' ? (
+          <SwapSheet
+            exerciseName={exercise.exerciseName}
+            blockedNames={blockedNames}
+            alternatives={alternatives}
+            onPick={(alternative) => void applySwap(alternative)}
+            onCancel={() => setPhase('input')}
+          />
+        ) : phase === 'rest' ? (
           <RestTimer seconds={restSeconds} nextLabel={nextLabel} onDone={advance} />
         ) : (
           <CurrentSet
@@ -249,6 +371,8 @@ export function Workout({
                 setCorrected((prev) => ({ ...prev, [exercise.exerciseId]: next }))
               }
             }}
+            canSwap={loggedWorkingSets === 0}
+            onSwap={() => setPhase('swap')}
             onAmount={submitAmount}
             onFeedback={(feedback) => {
               const amount = isTimed ? pendingSeconds : pendingReps
@@ -270,7 +394,7 @@ export function Workout({
           variant="ghost"
           full
           onClick={() => {
-            void abandonSession({ userId, session }).then(onAbandoned)
+            void abandonSession({ userId, session: current }).then(onAbandoned)
           }}
         >
           Training abbrechen
@@ -296,6 +420,8 @@ function CurrentSet({
   phase,
   busy,
   pending,
+  canSwap,
+  onSwap,
   onWeightChange,
   onAmount,
   onFeedback,
@@ -312,6 +438,9 @@ function CurrentSet({
   phase: Phase
   busy: boolean
   pending: number | null
+  /** Tauschen geht nur, solange kein Arbeitssatz steht. */
+  canSwap: boolean
+  onSwap: () => void
   onWeightChange: (steps: number) => void
   onAmount: (value: number) => void
   onFeedback: (feedback: SetFeedback) => void
@@ -373,8 +502,34 @@ function CurrentSet({
         )}
       </div>
 
+      {phase === 'input' ? (
+        <div className="mt-5">
+          {canSwap ? (
+            <button
+              type="button"
+              onClick={onSwap}
+              disabled={busy}
+              className={
+                'w-full min-h-12 rounded-xl border border-border bg-bg text-sm ' +
+                'font-medium text-muted hover:text-text hover:border-muted ' +
+                'transition-colors disabled:opacity-40 ' +
+                'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
+              }
+            >
+              Gerät besetzt — andere Übung
+            </button>
+          ) : (
+            <p className="text-xs text-muted leading-relaxed">
+              Tauschen geht nur vor dem ersten Arbeitssatz. Danach würde der
+              Übungsplatz auf zwei Übungen aufgeteilt, und keine von beiden wäre für
+              die Progression auswertbar.
+            </p>
+          )}
+        </div>
+      ) : null}
+
       {selectionReason && phase === 'input' ? (
-        <p className="text-xs text-muted mt-5 leading-relaxed">{selectionReason}</p>
+        <p className="text-xs text-muted mt-4 leading-relaxed">{selectionReason}</p>
       ) : null}
     </section>
   )

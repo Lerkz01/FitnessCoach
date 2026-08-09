@@ -424,6 +424,73 @@ ist eine Behauptung; mit Begründung ist sie Coaching.
 - **Wichtig:** Der Übungstausch geht auch ohne KI (Button, regelbasiert, sofort,
   offline). Die KI ist für *Erklärungen* und *freie Anliegen* — nie ein Nadelöhr.
 
+### 10.1 Der Übungstausch — gebaut und wie er entscheidet
+
+Im Trainingsbildschirm steht unter der Eingabe **„Gerät besetzt — andere Übung"**. Ein
+Tipp, höchstens vier Vorschläge, sofort, ohne Netz.
+
+**Was „besetzt" heißt, hängt am Gerätetyp.** Das ist die eigentliche Logik:
+
+| Gerätetyp | Bei „besetzt" | Warum |
+|---|---|---|
+| Maschine, Bank mit Ablage | fällt weg | gibt es einmal |
+| Kurzhanteln, Langhantel, verstellbare Bänke | bleibt verfügbar | gibt es mehrfach |
+| „Mehrere vorhanden" in der Gerätedatenbank | bleibt verfügbar | ausdrücklich vermerkt |
+| Zubehör (Fußschlaufen) | bleibt verfügbar | keine Station |
+
+Ist also die Flachbank belegt, bleibt die Langhantel im Spiel und Schrägbankdrücken wird
+vorgeschlagen. Ohne diese Unterscheidung wäre der Tausch entweder nutzlos (schlägt
+dieselbe Maschine vor) oder unnötig streng (streicht alle Kurzhantelübungen, weil eine
+Bank belegt ist).
+
+`loadType: 'body'` gilt **nicht** als mehrfach vorhanden — das war ein Fehlschluss im
+ersten Entwurf. Der Wert beschreibt, WIE die Last wirkt, nicht WIE VIELE es gibt: Die
+45°-Hyperextension ist eine Körpergewichtsübung an genau einer Station. Im Zweifel wird
+gesperrt, weil die Kosten unsymmetrisch sind — zu streng heißt ein etwas anderer
+Vorschlag, zu lasch macht die Funktion nutzlos.
+
+**Die Auswahl erhält den Reiz, nicht die Qualität.** Vorgeschlagen wird nur, was
+dieselbe Muskulatur trifft (Überlappung ≥ 0,5). Eine „bessere" Übung, die andere Muskeln
+trifft, wäre falsch: Das Wochenvolumen ist pro Muskel geplant, und ein Tausch darf es
+nicht verschieben.
+
+**Vielfalt statt Bestenliste.** Höchstens zwei Vorschläge pro Gerät, keine zwei
+praktisch identischen Übungen. Wären alle vier Vorschläge Kurzhantelübungen und die
+Kurzhanteln das Problem, stünde man wieder da.
+
+**Angezeigt wird kein Ähnlichkeitswert.** Sortiert wird nach einer Punktzahl, in die
+auch Bewegungsmuster und die Güte der Gewichtsschätzung eingehen — eine Prozentzahl
+würde der Reihenfolge sichtbar widersprechen und wie ein Fehler wirken. Stattdessen
+steht dort, was im Gym zählt: **an welches Gerät man geht**, und ob die Bewegung
+dieselbe ist.
+
+### 10.2 Was beim Tausch mit der Vorgabe passiert
+
+Der **Übungsplatz behält seine Aufgabe**, nur die Last wird übersetzt.
+
+| Bleibt | Wird neu gerechnet |
+|---|---|
+| Sätze, Ziel-Wdh., Wdh.-Bereich, RIR, Pause | Gewicht |
+| Position in der Einheit | Aufwärmsätze (hängen am Arbeitsgewicht) |
+
+Das Gewicht kommt, wenn möglich, aus der **eigenen Historie** — wer die Ersatzübung
+schon einmal gemacht hat, hat einen echten Wert, und der schlägt jede Schätzung. Erst
+sonst wird über die Bewegungsmuster-Koeffizienten umgerechnet. Die App sagt, welcher
+Fall vorliegt.
+
+Beispiel aus dem Durchlauf: `4 × 5 @ 72,5 kg` Langhantelbankdrücken wird zu
+`4 × 5 @ 26 kg` Kurzhantelbankdrücken, Aufwärmsätze von 37,5/50/62,5 auf 12/18/22 kg.
+
+**Getauscht wird nur VOR dem ersten Arbeitssatz.** Danach würde ein Übungsplatz auf zwei
+Übungen aufgeteilt, und keine von beiden wäre für die Progression auswertbar. Die App
+sagt das an der Stelle des Knopfes.
+
+Ein besetztes Gerät bleibt für die **restliche Einheit** gesperrt: Wer zweimal tauscht,
+soll nicht auf dem Gerät landen, das er gerade als besetzt gemeldet hat.
+
+Jeder Tausch geht ins Anpassungsprotokoll (`exercise_rotation`, Kreis 1) — mit
+Vorher, Nachher und Grund.
+
 ---
 
 ## 11. Check-in-Flow
