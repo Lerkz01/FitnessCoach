@@ -39,6 +39,31 @@ bedeutungslos.
 die **gesamte Historie neu durchrechnen** — weil die Rohdaten noch da sind. Mit
 gespeichertem Zustand ginge das nicht.
 
+### 1.0 Aufwachen aus dem Hintergrund
+
+Ein gesperrtes Handy ist der Normalfall, nicht die Ausnahme: Zwischen zwei Sätzen geht
+der Bildschirm aus. Die App muss das überleben, ohne etwas zu tun.
+
+**Ein erneuertes Token ist kein Nutzerwechsel.** Supabase erneuert das Zugangstoken,
+sobald die App wieder sichtbar wird, und meldet das über denselben Kanal wie An- und
+Abmelden. Wer daraufhin bedingungslos auf „Laden" schaltet, hängt fest: Das Laden wird
+von einer Änderung der Profilkennung ausgelöst, und die hat sich beim Token-Erneuern
+nicht geändert. Genau das ist passiert — nach dem Aufwecken zeigte die App nur noch
+„Lade …" und ließ sich nur durch einen Neustart retten.
+
+Deshalb entscheidet `screenAfterAuthChange()` anhand der Kennung:
+
+| vorher → nachher | Folge |
+|---|---|
+| Kennung unverändert | **nichts anfassen** — nur ein neues Token |
+| andere oder erste Kennung | neu laden |
+| keine Kennung mehr | Anmeldung zeigen |
+
+**Ein Ladezustand darf nie endgültig sein.** Scheitert das Laden, zeigt die App den
+Fehler und einen Knopf zum Wiederholen. Ein stummes, dauerhaftes „Lade …" ist der
+schlechteste denkbare Zustand: Es erklärt nichts und lässt sich nur durch einen
+Neustart auflösen.
+
 ### 1.1 Datumsregeln — die Achse jeder Zeitreihe
 
 Weil alles Abgeleitete aus Zeitreihen entsteht, entscheidet die Datumsbehandlung über

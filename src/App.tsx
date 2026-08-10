@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { equipmentById, exerciseById } from './data'
 import { listRecords } from './data/db'
 import { applyProgression } from './domain/applyProgression'
@@ -37,7 +37,13 @@ import { applyReview, recordDeloadDecision } from './workout/applyReview'
 import { Complete } from './workout/Complete'
 import { abandonSession, startSession } from './workout/session'
 import { Workout } from './workout/Workout'
-import { currentAuth, onAuthChange, signOut, type AuthState } from './auth/session'
+import {
+  currentAuth,
+  onAuthChange,
+  screenAfterAuthChange,
+  signOut,
+  type AuthState,
+} from './auth/session'
 import { SignIn } from './auth/SignIn'
 import { BackupSection } from './screens/Backup'
 import { setActiveSyncEngine } from './sync/active'
@@ -45,7 +51,7 @@ import { restoreFromCloud } from './sync/restore'
 import { SupabaseAdapter } from './sync/supabaseAdapter'
 import { supabase } from './sync/supabaseClient'
 import { SyncEngine, type SyncStatus } from './sync/sync'
-import { Notice } from './ui/controls'
+import { Button, Notice } from './ui/controls'
 import { SyncBar } from './ui/SyncBar'
 import { TabBar, type Tab } from './ui/TabBar'
 
@@ -87,83 +93,103 @@ export default function App() {
   const [review, setReview] = useState<WeeklyReview | null>(null)
   const [syncStatus, setSyncStatus] = useState<SyncStatus | null>(null)
   const [restoring, setRestoring] = useState<string | null>(null)
+  const [loadError, setLoadError] = useState<string | null>(null)
 
   const userId = auth?.userId ?? null
 
+  /**
+   * Die zuletzt bekannte Profilkennung.
+   *
+   * Als Ref, weil der Anmelde-Horcher genau einmal eingehängt wird und in
+   * seiner Abschlussumgebung sonst ewig den ersten Wert sähe.
+   */
+  const userIdRef = useRef<string | null>(null)
+  useEffect(() => {
+    userIdRef.current = userId
+  }, [userId])
+
   const load = useCallback(async () => {
     if (userId === null) return
-    const profiles = await listRecords(userId, 'profiles')
-    const profile = profiles.find((p) => p.onboardingCompletedAt !== null)
-    if (!profile) {
-      setScreen('onboarding')
-      return
-    }
+    try {
+      const profiles = await listRecords(userId, 'profiles')
+      const profile = profiles.find((p) => p.onboardingCompletedAt !== null)
+      if (!profile) {
+        setScreen('onboarding')
+        return
+      }
 
-    const [plans, targets, references, metrics, sessions, setLogs, checkins, adjustments] =
-      await Promise.all([
-        listRecords(userId, 'plans'),
-        listRecords(userId, 'nutritionTargets'),
-        listRecords(userId, 'strengthReferences'),
-        listRecords(userId, 'bodyMetrics'),
-        listRecords(userId, 'sessions'),
-        listRecords(userId, 'setLogs'),
-        listRecords(userId, 'checkins'),
-        listRecords(userId, 'adjustments'),
-      ])
+      const [plans, targets, references, metrics, sessions, setLogs, checkins, adjustments] =
+        await Promise.all([
+          listRecords(userId, 'plans'),
+          listRecords(userId, 'nutritionTargets'),
+          listRecords(userId, 'strengthReferences'),
+          listRecords(userId, 'bodyMetrics'),
+          listRecords(userId, 'sessions'),
+          listRecords(userId, 'setLogs'),
+          listRecords(userId, 'checkins'),
+          listRecords(userId, 'adjustments'),
+        ])
 
-    // Pläne und Ernährungsziele sind versioniert. Gültig ist der jüngste
-    // ohne Enddatum — nicht einfach der letzte in der Liste, denn die
-    // Reihenfolge aus der Ablage sagt nichts über die Gültigkeit.
-    const activePlan =
-      [...plans]
-        .filter((entry) => entry.deletedAt === null && entry.activeUntil === null)
-        .sort((a, b) => (a.version < b.version ? 1 : -1))
-        .at(0) ?? null
+      // Pläne und Ernährungsziele sind versioniert. Gültig ist der jüngste
+      // ohne Enddatum — nicht einfach der letzte in der Liste, denn die
+      // Reihenfolge aus der Ablage sagt nichts über die Gültigkeit.
+      const activePlan =
+        [...plans]
+          .filter((entry) => entry.deletedAt === null && entry.activeUntil === null)
+          .sort((a, b) => (a.version < b.version ? 1 : -1))
+          .at(0) ?? null
 
-    const nutritionHistory = [...targets]
-      .filter((entry) => entry.deletedAt === null)
-      .sort(chronologically((entry) => entry.effectiveFrom))
-
-    setData({
-      profile,
-      plans,
-      plan: activePlan ?? plans.at(-1) ?? null,
-      nutrition: nutritionHistory.at(-1) ?? null,
-      nutritionHistory,
-      references,
-      metrics,
-      sessions,
-      setLogs,
-      checkins: [...checkins]
+      const nutritionHistory = [...targets]
         .filter((entry) => entry.deletedAt === null)
-        .sort(chronologically((entry) => entry.weekOf)),
-      adjustments,
-    })
+        .sort(chronologically((entry) => entry.effectiveFrom))
 
-    // Eine begonnene Einheit hat Vorrang: Wer die App mitten im Training
-    // schließt, soll sie genau dort wieder aufmachen.
-    //
-    // Aber nur, wenn sie von HEUTE ist. Ein Training zieht sich nicht über
-    // Tage; eine liegengebliebene Einheit von letzter Woche wieder
-    // anzubieten wäre verwirrend. Ältere werden deshalb geschlossen — sonst
-    // sammeln sich offene Einheiten unbegrenzt an.
-    const day = today()
-    const open = sessions
-      .filter((session) => session.status === 'active' && session.deletedAt === null)
-      // Jüngste zuerst — bei mehreren offenen ist die letzte gemeint.
-      .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
+      setData({
+        profile,
+        plans,
+        plan: activePlan ?? plans.at(-1) ?? null,
+        nutrition: nutritionHistory.at(-1) ?? null,
+        nutritionHistory,
+        references,
+        metrics,
+        sessions,
+        setLogs,
+        checkins: [...checkins]
+          .filter((entry) => entry.deletedAt === null)
+          .sort(chronologically((entry) => entry.weekOf)),
+        adjustments,
+      })
 
-    const stale = open.filter((session) => dayOf(session) !== day)
-    for (const session of stale) {
-      await abandonSession({ userId, session, notes: 'Automatisch geschlossen (Vortag)' })
+      // Eine begonnene Einheit hat Vorrang: Wer die App mitten im Training
+      // schließt, soll sie genau dort wieder aufmachen.
+      //
+      // Aber nur, wenn sie von HEUTE ist. Ein Training zieht sich nicht über
+      // Tage; eine liegengebliebene Einheit von letzter Woche wieder
+      // anzubieten wäre verwirrend. Ältere werden deshalb geschlossen — sonst
+      // sammeln sich offene Einheiten unbegrenzt an.
+      const day = today()
+      const open = sessions
+        .filter((session) => session.status === 'active' && session.deletedAt === null)
+        // Jüngste zuerst — bei mehreren offenen ist die letzte gemeint.
+        .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
+
+      const stale = open.filter((session) => dayOf(session) !== day)
+      for (const session of stale) {
+        await abandonSession({ userId, session, notes: 'Automatisch geschlossen (Vortag)' })
+      }
+
+      const resumable = open.find((session) => dayOf(session) === day) ?? null
+      setActive(resumable)
+      setSessionLogs(
+        resumable ? setLogs.filter((log) => log.sessionId === resumable.id) : [],
+      )
+      setScreen('tabs')
+      setLoadError(null)
+    } catch (error) {
+      // Ohne diese Behandlung bliebe die App stumm auf „Lade …" stehen — der
+      // schlechteste mögliche Zustand, weil er nichts erklärt und sich nur
+      // durch einen Neustart auflöst.
+      setLoadError(error instanceof Error ? error.message : String(error))
     }
-
-    const resumable = open.find((session) => dayOf(session) === day) ?? null
-    setActive(resumable)
-    setSessionLogs(
-      resumable ? setLogs.filter((log) => log.sessionId === resumable.id) : [],
-    )
-    setScreen('tabs')
   }, [userId])
 
   // ── Anmeldung zuerst: Sie liefert die Profilkennung ──
@@ -178,13 +204,20 @@ export default function App() {
 
     // Auf Anmelden und Abmelden reagieren, auch in einem anderen Tab.
     const unsubscribe = onAuthChange((session) => {
+      const nextId = session?.user.id ?? null
+      const transition = screenAfterAuthChange(userIdRef.current, nextId)
+
       setAuth({
-        userId: session?.user.id ?? null,
+        userId: nextId,
         email: session?.user.email ?? null,
         needsSignIn: session === null,
         localOnly: false,
       })
-      setScreen(session === null ? 'signin' : 'loading')
+
+      // Bei `keep` — erneuertes Token für denselben Nutzer — darf der
+      // Bildschirm NICHT angefasst werden. Sonst hängt die App auf „Laden".
+      if (transition === 'signin') setScreen('signin')
+      else if (transition === 'reload') setScreen('loading')
     })
 
     return () => {
@@ -390,7 +423,29 @@ export default function App() {
   if (screen === 'loading' || auth === null) {
     return (
       <div className="min-h-svh grid place-items-center px-8 text-center">
-        <p className="text-muted text-sm">{restoring ?? 'Lade …'}</p>
+        {loadError !== null ? (
+          <div className="space-y-4 max-w-sm">
+            <Notice tone="warning">
+              <span className="font-medium text-text">Laden fehlgeschlagen. </span>
+              {loadError}
+            </Notice>
+            <p className="text-xs text-muted leading-relaxed">
+              Deine Daten sind nicht verloren — sie liegen lokal und in der Cloud. Nur
+              das Lesen hat gerade nicht geklappt.
+            </p>
+            <Button
+              full
+              onClick={() => {
+                setLoadError(null)
+                void load()
+              }}
+            >
+              Nochmal versuchen
+            </Button>
+          </div>
+        ) : (
+          <p className="text-muted text-sm">{restoring ?? 'Lade …'}</p>
+        )}
       </div>
     )
   }

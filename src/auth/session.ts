@@ -166,6 +166,34 @@ export async function signOut(): Promise<void> {
   await supabase()?.auth.signOut()
 }
 
+/**
+ * Was ein Anmelde-Ereignis für den angezeigten Bildschirm bedeutet.
+ *
+ *   `signin`  abgemeldet — Anmeldung zeigen
+ *   `reload`  anderer oder erstmaliger Nutzer — Daten neu laden
+ *   `keep`    derselbe Nutzer, nur ein erneuertes Token — nichts anfassen
+ *
+ * Die Unterscheidung ist der Kern eines echten Fehlers: Supabase erneuert
+ * das Token, sobald die App wieder sichtbar wird. Wurde daraufhin
+ * bedingungslos auf „Laden" geschaltet, blieb die App dort für immer stehen —
+ * der Effekt, der das Laden auslöst, hängt an der Profilkennung, und die
+ * hatte sich nicht geändert. Wer sein Handy sperrte und wieder aufweckte, sah
+ * nur noch „Lade …" und musste die App neu starten.
+ *
+ * Als eigene Funktion, weil sich die Entscheidung so prüfen lässt — im
+ * Effekt versteckt war sie es nicht.
+ */
+export type AuthTransition = 'signin' | 'reload' | 'keep'
+
+export function screenAfterAuthChange(
+  previousUserId: string | null,
+  nextUserId: string | null,
+): AuthTransition {
+  if (nextUserId === null) return 'signin'
+  if (nextUserId !== previousUserId) return 'reload'
+  return 'keep'
+}
+
 /** Reagiert auf Anmelden, Abmelden und erneuertes Token. */
 export function onAuthChange(handler: (session: Session | null) => void): () => void {
   const client = supabase()
