@@ -54,3 +54,184 @@ body {
 .tabular {
   font-variant-numeric: tabular-nums;
 }
+
+/* ------------------------------------------------------------------ */
+/*  Bewegungs-Schemata (src/ui/MovementAnimation.tsx)                  */
+/*                                                                     */
+/*  Neun Muster für 34 Bewegungsfamilien. Absichtlich langsam: Das      */
+/*  Schema soll die Bewegung zeigen, nicht flackern. Jede Bewegung hat  */
+/*  eine kurze Pause an den Endpunkten — dort passiert beim Training    */
+/*  das Entscheidende (gedehnte Position, Anspannung oben).             */
+/* ------------------------------------------------------------------ */
+.anim-press {
+  animation: anim-press 3s ease-in-out infinite;
+}
+@keyframes anim-press {
+  0%,
+  8% {
+    transform: translateY(0);
+  }
+  42%,
+  58% {
+    transform: translateY(26px);
+  }
+  92%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.anim-pulldown {
+  animation: anim-pulldown 3s ease-in-out infinite;
+}
+@keyframes anim-pulldown {
+  0%,
+  8% {
+    transform: translateY(0);
+  }
+  42%,
+  58% {
+    transform: translateY(30px);
+  }
+  92%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.anim-pullin {
+  animation: anim-pullin 3s ease-in-out infinite;
+}
+@keyframes anim-pullin {
+  0%,
+  8% {
+    transform: translateX(0);
+  }
+  42%,
+  58% {
+    transform: translateX(-68px);
+  }
+  92%,
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.anim-arc {
+  animation: anim-arc 3s ease-in-out infinite;
+}
+@keyframes anim-arc {
+  0%,
+  8% {
+    transform: rotate(78deg);
+  }
+  42%,
+  58% {
+    transform: rotate(2deg);
+  }
+  92%,
+  100% {
+    transform: rotate(78deg);
+  }
+}
+
+.anim-fold {
+  animation: anim-fold 3.2s ease-in-out infinite;
+}
+@keyframes anim-fold {
+  0%,
+  8% {
+    transform: rotate(0deg);
+  }
+  42%,
+  58% {
+    transform: rotate(52deg);
+  }
+  92%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.anim-short {
+  animation: anim-short 2.4s ease-in-out infinite;
+}
+@keyframes anim-short {
+  0%,
+  12% {
+    transform: translateY(0);
+  }
+  40%,
+  62% {
+    transform: translateY(-14px);
+  }
+  90%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Halten: keine Bewegung, sondern die Anspannung. Ein ruhiges Pulsieren
+   zeigt „Position bleibt", ohne eine Bewegung zu behaupten. */
+.anim-hold {
+  animation: anim-hold 2.6s ease-in-out infinite;
+}
+@keyframes anim-hold {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.anim-twist {
+  animation: anim-twist 3.4s ease-in-out infinite;
+}
+@keyframes anim-twist {
+  0%,
+  100% {
+    transform: rotate(-32deg);
+  }
+  46%,
+  58% {
+    transform: rotate(32deg);
+  }
+}
+
+/* Bewegungsfolge: mehrere Abschnitte, deshalb kein einfaches Hin und Her. */
+.anim-flow {
+  animation: anim-flow 3.6s ease-in-out infinite;
+}
+@keyframes anim-flow {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, 34px);
+  }
+  50% {
+    transform: translate(0, -14px);
+  }
+  75% {
+    transform: translate(0, 20px);
+  }
+}
+
+/* Wer Bewegung im System abgeschaltet hat, bekommt das Standbild.
+   Das Schema bleibt lesbar — es zeigt dann die Ausgangsposition. */
+@media (prefers-reduced-motion: reduce) {
+  .anim-press,
+  .anim-pulldown,
+  .anim-pullin,
+  .anim-arc,
+  .anim-fold,
+  .anim-short,
+  .anim-hold,
+  .anim-twist,
+  .anim-flow {
+    animation: none;
+  }
+}

@@ -12,12 +12,14 @@
 //  wenn man die Aufteilung wissen will.
 // ====================================================================
 
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import type { GeneratedWeek } from './domain/generator'
 import { splitLabel } from './domain/planning'
 import type { NutritionTarget, TrainingPlan, UserProfile, Weekday } from './domain/records'
 import { Button, Notice, Stack } from './ui/controls'
 import { Disclosure, Row } from './ui/Disclosure'
+import { InfoButton } from './ui/ExerciseInfo'
+import { ExerciseInfoOverlay } from './ui/ExerciseInfoOverlay'
 
 const WEEKDAY_LABEL: Record<Weekday, string> = {
   mon: 'Montag',
@@ -73,6 +75,9 @@ export function Home({
   onResume: () => void
   onDiscard: () => void
 }) {
+  // Auch hier eine Überlagerung: Man liest die Info oft, bevor man startet.
+  const [infoExerciseId, setInfoExerciseId] = useState<string | null>(null)
+
   const todaysSession = week?.sessions.find((session) => session.weekday === today) ?? null
   const nextSession =
     todaysSession ??
@@ -160,7 +165,7 @@ export function Home({
                   {todaysSession.exercises.map((exercise, index) => (
                     <li
                       key={`${exercise.exerciseId}-${index}`}
-                      className="flex items-baseline gap-3 text-sm"
+                      className="flex items-center gap-3 text-sm"
                     >
                       <span className="tabular text-xs text-muted w-4 shrink-0">
                         {index + 1}
@@ -175,6 +180,10 @@ export function Home({
                           ? ` · ${formatKg(exercise.weightKg)} kg`
                           : ''}
                       </span>
+                      <InfoButton
+                        exerciseName={exercise.exerciseName}
+                        onClick={() => setInfoExerciseId(exercise.exerciseId)}
+                      />
                     </li>
                   ))}
                 </ol>
@@ -325,6 +334,11 @@ export function Home({
           ) : null}
         </Stack>
       </main>
+
+      <ExerciseInfoOverlay
+        exerciseId={infoExerciseId}
+        onClose={() => setInfoExerciseId(null)}
+      />
     </div>
   )
 }

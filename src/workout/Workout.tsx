@@ -34,6 +34,8 @@ import type {
 } from '../domain/records'
 import { adjustBySteps, loadBearingEquipment, weightLabel } from '../domain/weights'
 import { Button, Notice } from '../ui/controls'
+import { InfoButton } from '../ui/ExerciseInfo'
+import { ExerciseInfoOverlay } from '../ui/ExerciseInfoOverlay'
 import { RestTimer } from './RestTimer'
 import { abandonSession, logSet, setSlots, type SetSlot } from './session'
 import { swapExercise } from './swap'
@@ -315,6 +317,10 @@ export function Workout({
     }
   }
 
+  // Getrennt von `phase`: Die Info liegt ÜBER dem Bildschirm, damit ein
+  // laufender Pausentimer nicht abgebaut und neu gestartet wird.
+  const [infoExerciseId, setInfoExerciseId] = useState<string | null>(null)
+
   const nextLabel = describeNext({ slots, position, exercises })
 
   return (
@@ -371,6 +377,7 @@ export function Workout({
                 setCorrected((prev) => ({ ...prev, [exercise.exerciseId]: next }))
               }
             }}
+            onInfo={() => setInfoExerciseId(exercise.exerciseId)}
             canSwap={loggedWorkingSets === 0}
             onSwap={() => setPhase('swap')}
             onAmount={submitAmount}
@@ -388,6 +395,7 @@ export function Workout({
           allSlots={allSlots}
           position={position}
           logs={logs}
+          onInfo={setInfoExerciseId}
         />
 
         <Button
@@ -400,6 +408,11 @@ export function Workout({
           Training abbrechen
         </Button>
       </main>
+
+      <ExerciseInfoOverlay
+        exerciseId={infoExerciseId}
+        onClose={() => setInfoExerciseId(null)}
+      />
     </div>
   )
 }
@@ -421,6 +434,7 @@ function CurrentSet({
   busy,
   pending,
   canSwap,
+  onInfo,
   onSwap,
   onWeightChange,
   onAmount,
@@ -440,6 +454,7 @@ function CurrentSet({
   pending: number | null
   /** Tauschen geht nur, solange kein Arbeitssatz steht. */
   canSwap: boolean
+  onInfo: () => void
   onSwap: () => void
   onWeightChange: (steps: number) => void
   onAmount: (value: number) => void
@@ -452,7 +467,14 @@ function CurrentSet({
 
   return (
     <section className="rounded-2xl border border-border bg-surface p-5">
-      <h1 className="text-2xl font-bold tracking-tight leading-tight">{exerciseName}</h1>
+      <div className="flex items-start gap-4">
+        <h1 className="text-2xl font-bold tracking-tight leading-tight">
+          {exerciseName}
+        </h1>
+        <div className="ml-auto mt-1.5">
+          <InfoButton exerciseName={exerciseName} onClick={onInfo} />
+        </div>
+      </div>
       <p className="text-sm text-muted mt-1">
         {slot.isWarmup
           ? `Aufwärmsatz ${slotIndex + 1}`
@@ -802,11 +824,13 @@ function SessionOutline({
   allSlots,
   position,
   logs,
+  onInfo,
 }: {
   exercises: WorkoutSession['planned']
   allSlots: readonly SetSlot[][]
   position: Position
   logs: readonly SetLog[]
+  onInfo: (exerciseId: string) => void
 }) {
   return (
     <section>
@@ -843,6 +867,10 @@ function SessionOutline({
               <span className="tabular text-xs shrink-0 w-16 text-right">
                 {describeTarget(exercise, allSlots[index])}
               </span>
+              <InfoButton
+                exerciseName={exercise.exerciseName}
+                onClick={() => onInfo(exercise.exerciseId)}
+              />
             </li>
           )
         })}

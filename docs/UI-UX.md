@@ -579,6 +579,52 @@ eine Entscheidung, keine Untätigkeit.
 | **Orientierung** | Nur Hochformat |
 | **Sichere Bereiche** | `env(safe-area-inset-*)` für Notch und Home-Indicator |
 
+### 13.1 Übungsinfo — das „i"
+
+Neben jedem Übungsnamen steht ein kleines `i`: auf dem Startbildschirm in der
+Liste „Heute", im Training über der aktuellen Übung und in der Einheiten-
+Übersicht darunter.
+
+| Entscheidung | Warum |
+|---|---|
+| Sichtbar 20 px, Tap-Fläche 44 px | Unauffällig im Layout, aber mit verschwitzten Fingern treffbar. Die Fläche wächst über negative Ränder nach außen, ohne die Zeile zu verschieben |
+| `stopPropagation` im Knopf | Das `i` sitzt in Zeilen, die selbst anklickbar sind. Sonst würde ein Tipp beides auslösen |
+| **Überlagerung**, kein Bildschirmwechsel | Wer im Training auf das `i` tippt, hat oft einen Pausentimer laufen. Ein Bildschirmwechsel würde den Timer abbauen und neu starten |
+| Schließen über ×, Hintergrund und Escape | Einhändige Bedienung |
+| Scrollcontainer außen, `items-end` innen | Steht `items-end` am scrollenden Element, schneidet der Browser lange Blätter oben ab und lässt sich nicht dorthin scrollen. Das war ein echter Fehler: Name und Schema waren unerreichbar |
+
+**Inhalt** in dieser Reihenfolge — was man am Gerät zuerst braucht:
+Schema · Aufbau · Bewegung · häufigster Fehler. Darunter zugeklappt: welche
+Muskeln, welches Gerät, welche Rolle im Plan.
+
+**Texte je Bewegungsfamilie, nicht je Übung** (`src/domain/instructions.ts`).
+372 Einzeltexte wären zu 90 % Wiederholung und im Rest erfunden. „Kurzhantel
+Bankdrücken flach" und „… Schrägbank" unterscheiden sich im Winkel, nicht in
+der Technik. 35 Familien deckt alles ab; genau eine Übung fällt auf den
+allgemeinen Auffangtext (Tibialis Raises), und der ist dafür geräteneutral
+formuliert.
+
+Die Zuordnung läuft über Namensmuster von spezifisch nach allgemein, mit dem
+Zielmuskel als Rückfallebene. Das ist zerbrechlich, und zwar nachweislich:
+`Handgelenkcurls` enthält „curl" und hätte Bizeps-Hinweise bekommen, ein
+`Klimmzug mit Zusatzgewicht (… kein Dipgürtel vorhanden)` wurde zum Dip,
+„Wa**ll Sit**" zum Beinheben, und Nordic Curls zur Armübung. Deshalb prüft
+`instructions.test.ts` die kniffligen Fälle namentlich und schlägt Alarm, wenn
+eine neue Regel eine bestehende überschattet.
+
+### 13.2 Bewegungs-Schema
+
+Die Animation zeigt **Richtung und Umfang** der Bewegung — sie ist keine
+Formvorlage, und das steht auch als Bildunterschrift darunter. Ein Strichbild
+kann eine Kniebeuge nicht zeigen und würde es täuschend versuchen.
+
+35 Familien teilen sich **neun Muster** (`src/ui/MovementAnimation.tsx`):
+Drücken, Ziehen nach unten, Ziehen zum Rumpf, Bogen um ein Gelenk, Beugen und
+Aufrichten, kurzer Weg, Halten, Drehung, Bewegungsfolge. Eigene SVG statt
+Videos: keine Rechtefragen, keine Ladezeit, funktioniert im Flugmodus, wenige
+Zeilen groß. `prefers-reduced-motion` schaltet auf das Standbild der
+Ausgangsposition.
+
 ---
 
 ## 14. Offline, Fehler und Robustheit
