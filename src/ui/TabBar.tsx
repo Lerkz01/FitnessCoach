@@ -5,15 +5,16 @@
 //  Hamburger-Menüs, kein verstecktes Navigieren: Die drei Bereiche, zwischen
 //  denen man wechselt, sind immer sichtbar.
 //
-//  Der Coach-Tab fehlt noch — er kommt mit der KI-Anbindung.
+//  Vier Bereiche: Heute, Fortschritt, Ernährung, Coach.
 // ====================================================================
 
-export type Tab = 'today' | 'progress' | 'nutrition'
+export type Tab = 'today' | 'progress' | 'nutrition' | 'coach'
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'today', label: 'Heute' },
   { id: 'progress', label: 'Fortschritt' },
   { id: 'nutrition', label: 'Ernährung' },
+  { id: 'coach', label: 'Coach' },
 ]
 
 export function TabBar({

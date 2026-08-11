@@ -337,6 +337,10 @@ export type AdjustmentScope =
   | 'deload'
   | 'exercise_rotation'
   | 'plan_rebuild'
+  /** Wunsch aus dem Coach-Chat: Schwerpunkt auf einem Muskel. */
+  | 'coach_focus'
+  /** Wunsch aus dem Coach-Chat: diese Übung bitte nicht. */
+  | 'coach_avoid'
 
 /**
  * Jede automatische Anpassung wird protokolliert — mit Begründung.
@@ -348,8 +352,15 @@ export type AdjustmentScope =
 export interface Adjustment extends BaseRecord {
   appliedAt: string
   scope: AdjustmentScope
-  /** Welcher Regelkreis hat gehandelt (docs/PLAN-ENGINE.md §1). */
-  circle: 1 | 2 | 3 | 4
+  /**
+   * Welcher Regelkreis hat gehandelt (docs/PLAN-ENGINE.md §1).
+   *
+   * 5 ist kein Regelkreis im engeren Sinn, sondern der Coach-Chat: eine
+   * Änderung, die der Nutzer selbst angestoßen hat. Bewusst unterscheidbar,
+   * damit im Protokoll sichtbar bleibt, was die App entschieden hat und was
+   * gewünscht war.
+   */
+  circle: 1 | 2 | 3 | 4 | 5
   /** Übungs-ID, Muskelname oder null bei globalen Änderungen. */
   targetId: string | null
   targetLabel: string | null

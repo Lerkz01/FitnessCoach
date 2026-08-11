@@ -27,6 +27,8 @@ import {
 } from './domain/week'
 import { rotatedOutExerciseIds } from './domain/rotation'
 import { weeklyReview, type WeeklyReview } from './domain/weeklyReview'
+import { activeFocus, applyFocus, avoidedExerciseIds } from './domain/focus'
+import { Coach } from './screens/Coach'
 import { Checkin } from './checkin/Checkin'
 import { ReviewResult } from './checkin/ReviewResult'
 import { Home, weekdayOf } from './Home'
@@ -276,15 +278,28 @@ export default function App() {
   const week = useMemo<GeneratedWeek | null>(() => {
     if (!data?.plan || bodyweightKg === null) return null
     try {
+      // Wünsche aus dem Coach-Chat wirken HIER, beim Aufbau — nicht als
+      // gespeicherte Änderung am Plan. Damit bleibt der Plan die rohe
+      // Wahrheit, die Verschiebung ist jederzeit zurücknehmbar, und ein
+      // Schwerpunkt kann sich über die Wochen nicht aufaddieren.
+      const focus = applyFocus(
+        data.plan.volumeTargets,
+        activeFocus(data.adjustments),
+        data.profile.priorityMuscles,
+      )
+
       const generated = generateWeek({
         profile: data.profile,
-        volumeTargets: data.plan.volumeTargets,
+        volumeTargets: focus.targets,
         references: data.references,
         bodyweightKg,
         calibrationWeek,
-        // Herausrotierte Übungen bleiben einen Block draußen. Abgeleitet aus
-        // dem Anpassungsprotokoll, nicht als eigener Zustand gespeichert.
-        excludeExerciseIds: rotatedOutExerciseIds(data.adjustments),
+        // Zwei Quellen, dieselbe Tür: herausrotierte Übungen aus Regelkreis 3
+        // und im Chat abgelehnte Übungen.
+        excludeExerciseIds: new Set([
+          ...rotatedOutExerciseIds(data.adjustments),
+          ...avoidedExerciseIds(data.adjustments),
+        ]),
       })
 
       // Der Generator wählt die Übungen, kennt aber keine Historie. Ohne
@@ -293,6 +308,7 @@ export default function App() {
       // ohne Wirkung.
       return {
         ...generated,
+        notes: [...generated.notes, ...focus.notes],
         sessions: generated.sessions.map((session) => ({
           ...session,
           exercises: applyProgression({
@@ -612,6 +628,29 @@ export default function App() {
             metrics={data.metrics}
             sessions={data.sessions}
             logsBySession={logsBySession}
+          />
+        ) : null}
+
+        {tab === 'coach' ? (
+          <Coach
+            userId={userId ?? ''}
+            profile={data.profile}
+            plan={data.plan}
+            nutrition={data.nutrition}
+            week={week}
+            sessions={data.sessions}
+            setLogs={data.setLogs}
+            checkins={data.checkins}
+            metrics={data.metrics}
+            adjustments={data.adjustments}
+            today={weekdayOf()}
+            // Der Chat hat geschrieben — den Zustand nachziehen, damit die
+            // Woche mit dem neuen Schwerpunkt sofort neu gerechnet wird.
+            onChanged={(written) => {
+              setData((prev) =>
+                prev ? { ...prev, adjustments: [...prev.adjustments, ...written] } : prev,
+              )
+            }}
           />
         ) : null}
 

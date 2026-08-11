@@ -40,6 +40,11 @@ nur „nächste Woche mehr Gewicht" machen.
 └──────────────────────────────────────────────────────────────────┘
 ```
 
+**Kreis 5 ist kein Regelkreis, sondern der Nutzer.** Wünsche aus dem Coach-Chat
+(„mehr Fokus auf die Arme") landen als `circle: 5` im Anpassungsprotokoll — bewusst
+unterscheidbar von den vier automatischen Kreisen, damit im Protokoll sichtbar bleibt,
+was die App entschieden hat und was gewünscht war. Siehe §11.
+
 ---
 
 ## 2. „Fordernd" — was das konkret heißt (und wo die Grenze ist)
@@ -898,3 +903,75 @@ Rücken-Unterregionen abgedeckt, ohne dass eine Übung doppelt vorkommt.
    erfragen
 7. **Validierung der Volumen-Budgets in §3** an echten Daten: nach ein paar Monaten
    prüfen, ob die Startwerte und Obergrenzen für euch beide realistisch waren
+
+---
+
+## 11. Kreis 5: Schwerpunkte aus dem Coach-Chat
+
+Umsetzung: `src/domain/focus.ts`, Tests in `focus.test.ts`.
+
+Ein Chat, der einen Trainingsplan ändern darf, ist gefährlich — nicht weil das Modell
+böse wäre, sondern weil ein Plan ein zusammenhängendes System ist. Deshalb gibt es genau
+**einen Hebel**, und der ist an drei Stellen begrenzt.
+
+### 1. Nur ein Zahlenwert
+
+Ein Schwerpunkt verschiebt das Wochenvolumen **eines** Muskels um **±2 Sätze**. Er kann
+keine Übung erfinden, keinen Split ändern, keine Vorgabe überschreiben. Alles Weitere —
+welche Übungen daraus werden, mit welchen Gewichten und Wiederholungen — macht der
+Generator wie immer.
+
+Höchstens **drei** Muskeln gleichzeitig betont; ein vierter Wunsch verdrängt den
+ältesten. Bei mehr wäre es kein Schwerpunkt mehr, sondern ein neuer Plan.
+
+### 2. Nullsumme
+
+**Mehr Arme heißt etwas weniger woanders.** Das ist keine Zierde, sondern folgt aus zwei
+Bindungen:
+
+- Das Wochenvolumen ist an die **Erholung** gebunden. Einfach zu addieren würde die
+  Gesamtlast erhöhen, ohne dass jemand danach gefragt hat.
+- Es ist an die **gewählte Trainingsdauer** gebunden. Der Generator plant gegen
+  60 oder 75 Minuten. Mehr Sätze heißen längere Einheiten — oder der Generator lässt
+  am Ende etwas weg, unvorhersehbar.
+
+Dazu käme, dass Regelkreis 3 die stille Steigerung in der nächsten Woche als
+Überlastung wieder einsammeln würde. Zwei Mechanismen, die gegeneinander arbeiten, sind
+schlimmer als keiner.
+
+Abgezogen wird **reihum in halben Sätzen**, beginnend bei dem Muskel mit dem meisten
+Spielraum über seinem Boden. Nicht anteilig: Bei zwei abzuziehenden Sätzen und sechzehn
+Muskeln wäre jeder Anteil kleiner als ein halber Satz, würde auf null gerundet — und am
+Ende trüge ein einzelner Muskel die ganzen zwei Sätze. Das war im ersten Entwurf so und
+fiel erst beim Ausdrucken der echten Verschiebung auf.
+
+Was **nichts abgibt**: die betonten Muskeln selbst und die im Onboarding als wichtig
+markierten. Wer „Brust ist mir wichtig" gesagt hat, soll das nicht durch einen späteren
+Chatwunsch für den Bizeps verlieren.
+
+Der **Boden** ist das Anfängervolumen aus der Tabelle in §3 — das minimal wirksame
+Volumen. Ist im Plan nicht genug frei (Diät, Anfängerwoche), wird der **Schwerpunkt
+gekürzt**, nicht der Boden durchbrochen. Und das steht in der Rückmeldung, statt eine
+Änderung zu behaupten, die nicht stattgefunden hat.
+
+### 3. Abgeleitet, nicht gespeichert
+
+Ein Schwerpunkt ist ein Eintrag im Anpassungsprotokoll (`scope: 'coach_focus'`). Der
+gespeicherte Plan bleibt **unberührt**; die Verschiebung wird beim Planaufbau gerechnet.
+Drei Folgen:
+
+- Jederzeit zurücknehmbar, ohne den Plan reparieren zu müssen.
+- Nachlesbar mit Vorher, Nachher und Grund — wie jede andere Anpassung.
+- **Ein Schwerpunkt kann sich nicht aufaddieren.** Würde er in den Plan geschrieben,
+  läge der Bizeps nach zehn Wochen bei 30 Sätzen. Es gibt einen Test, der genau das
+  prüft: zweimal angewandt muss dasselbe herauskommen wie einmal.
+
+Abgelehnte Übungen (`scope: 'coach_avoid'`) gehen durch **dieselbe Tür** wie die
+Wochenrotation aus Kreis 3: als `excludeExerciseIds` in den Generator. Das Wochenvolumen
+bleibt gleich, der Generator sucht Ersatz für dieselbe Muskulatur.
+
+### Wirksam ab dem nächsten Planaufbau
+
+Nicht mitten in der Woche. Ein Tausch innerhalb einer laufenden Woche würde die
+Vergleichbarkeit zerstören, auf der die Progression beruht — dieselbe Begründung wie bei
+der Rotation in §9.

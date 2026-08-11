@@ -415,14 +415,68 @@ ist eine Behauptung; mit Begründung ist sie Coaching.
 
 ---
 
-## 10. Screen „Coach" (KI)
+## 10. Screen „Coach" (KI) — gebaut
 
-- Chat, der den aktuellen Plan, die Historie und das Profil kennt
-- Vorgeschlagene Fragen als Chips: *„Warum heute Beine?"* · *„Erklär mir diese Übung"*
-  · *„Ich hab morgen keine Zeit"* · *„Meine Schulter zwickt"*
-- Im Workout-Modus über `⋯` erreichbar, ohne das Training zu verlassen
-- **Wichtig:** Der Übungstausch geht auch ohne KI (Button, regelbasiert, sofort,
-  offline). Die KI ist für *Erklärungen* und *freie Anliegen* — nie ein Nadelöhr.
+Vierter Tab. Ein Chat, der Plan, Verlauf, Volumen und Profil kennt und den Plan in
+engen Grenzen verschieben darf.
+
+**Der Chat ist nie ein Nadelöhr.** Ohne Netz sagt er das, und alles andere läuft
+weiter: Training, Loggen, Übungsinfos, Gerät-besetzt-Tausch. Der Tausch war von Anfang
+an regelbasiert und offline — genau damit die KI nicht dazwischensteht.
+
+### Was gebaut ist
+
+| Entscheidung | Warum |
+|---|---|
+| **Streaming** | Eine Frage mit vollem Kontext braucht Sekunden. Ohne laufenden Text hält man die App für kaputt |
+| „überlegt …" vor dem ersten Wort | Opus 5 denkt vor der Antwort. Ohne diesen Hinweis wäre die Pause unerklärt |
+| Vorschläge zum Antippen im leeren Chat | Wer im Studio steht, tippt keine Sätze |
+| Enter sendet, Shift+Enter macht Absatz | Auf dem Handy gibt es keine bequeme Alternative |
+| Eingabe klebt über der **Tab-Leiste** | Bei `bottom-0` lag „Senden" 57 px hinter „Ernährung" — gemessen, nicht vermutet |
+| Verlauf nur lokal (`localStorage`, 40 Einträge) | Der Wortlaut ist keine Trainingsdaten. Was geändert wurde, steht im Anpassungsprotokoll und wird synchronisiert |
+
+### Planänderungen werden angezeigt, nicht behauptet
+
+Ändert das Gespräch etwas, erscheint das als **eigene Karte** unter der Antwort
+(„Plan geändert: Schwerpunkt mehr Bizeps"). Der Fließtext eines Modells ist keine
+verlässliche Quittung: Er kann eine Änderung beschreiben, die gar nicht stattgefunden
+hat. Die Karte kommt aus dem geschriebenen Datensatz.
+
+Umgekehrt gilt dasselbe nach innen: Die Rückmeldung an das Modell ist die **tatsächliche
+Wirkung**, nicht der Wunsch. Wurde ein Schwerpunkt gekürzt, weil im Plan kein Volumen
+frei war, steht das in der Rückmeldung — sonst würde das Modell dem Nutzer etwas
+bestätigen, was nicht passiert ist.
+
+### Wo der Schlüssel liegt
+
+Der Anthropic-Schlüssel liegt **ausschließlich** in einer Supabase Edge Function
+(`supabase/functions/coach`). Alles, was mit `VITE_` beginnt, landet im Bundle und ist
+öffentlich — auch bei einer App für zwei Personen. Die Funktion prüft die Anmeldung,
+setzt den Systemtext und leitet den Datenstrom weiter.
+
+**Die Funktion schreibt nichts in die Datenbank und führt kein Werkzeug aus.** Was das
+Modell tun möchte, kommt als Wunsch zurück in die App; dort wird geprüft, ausgeführt und
+protokolliert — über denselben Weg wie jede andere Änderung. Damit kann ein Fehler auf
+dem Server keinen Trainingsfortschritt beschädigen.
+
+### Was der Chat am Plan darf
+
+Vier Werkzeuge, absichtlich eng (Umsetzung: `src/domain/focus.ts`, Regelkreis 5 in
+PLAN-ENGINE.md §1):
+
+- `set_focus` — ±2 Sätze Wochenvolumen für **einen** Muskel, höchstens drei gleichzeitig
+- `clear_focus` — zurücknehmen
+- `avoid_exercise` / `allow_exercise` — nur Übungen, die diese Woche im Plan stehen
+
+Alles andere — Split, Trainingstage, Ziel, Kalorien — kann er nicht und verweist auf
+Profil bzw. Check-in.
+
+**Die gültigen Werte stehen als Aufzählung im Werkzeugschema**, gespeist aus
+`VOLUME_MUSCLES` und den Übungs-IDs der aktuellen Woche. Damit kann das Modell
+strukturell keinen Muskel und keine Übung erfinden — das ist mehr wert als jede Prüfung
+hinterher, denn ein erfundener Wert würde sonst als scheinbar erfolgreiche Änderung
+durchlaufen und nichts tun. Kommt trotzdem etwas Unbekanntes an, lehnt die App mit einer
+Begründung ab, die das Modell lesen kann.
 
 ### 10.1 Der Übungstausch — gebaut und wie er entscheidet
 

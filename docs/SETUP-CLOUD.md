@@ -127,6 +127,72 @@ oder auf einen Stick.
 
 ---
 
+## 7. Den Coach-Chat einschalten (optional)
+
+Alles bisher Beschriebene funktioniert ohne diesen Schritt. Der Chat ist der einzige
+Teil der App, der Geld kostet und Internet braucht.
+
+### Was du brauchst
+
+Einen **Anthropic-API-Schlüssel** — das ist **nicht** dasselbe wie ein Claude-Abo. Das
+Abo bezahlt die Chat-Oberfläche von Anthropic, der API-Schlüssel bezahlt Anfragen aus
+eigenen Programmen. Beides ist getrennt.
+
+Anlegen musst du ihn selbst unter `console.anthropic.com` → **API keys**. Ich lege
+keine Konten an und fasse den Schlüssel nicht an.
+
+**Der Schlüssel darf nirgends in die App.** Nicht in `.env`, nicht in eine
+`VITE_…`-Variable, nicht ins Repository. Alles, was mit `VITE_` beginnt, wird in das
+Bundle gebaut und ist damit öffentlich. Der Schlüssel gehört ausschließlich auf den
+Server.
+
+### Was es kostet
+
+Die App fragt Claude Opus 5 (5 $ je Million Token hinein, 25 $ hinaus). Eine Frage
+schickt den ganzen Trainingskontext mit — rund 1000 Token — plus den Gesprächsverlauf.
+Als Größenordnung: **etwa 3 bis 5 Cent pro Nachricht.** Zwanzig Fragen im Monat sind
+unter einem Euro.
+
+Der unveränderliche Teil des Systemtexts wird zwischengespeichert und kostet ab der
+zweiten Frage nur ein Zehntel. Wer günstiger will, ändert in
+`supabase/functions/coach/index.ts` die Zeile `const MODEL` auf `'claude-sonnet-5'` —
+etwa ein Drittel der Kosten, merkbar schwächer bei Rückfragen zum Verlauf.
+
+Setz dir im Anthropic-Konto ein **Ausgabenlimit**. Dann kann kein Fehler und kein
+Vertippen mehr kosten als du erlaubst.
+
+### Einrichten
+
+Beides braucht die Supabase-CLI (`npm i -g supabase`, dann `supabase login` und
+`supabase link --project-ref <deine-ref>`):
+
+```bash
+supabase secrets set ANTHROPIC_API_KEY=sk-ant-...
+```
+
+```bash
+supabase functions deploy coach
+```
+
+Danach im Coach-Tab eine Frage stellen. Kommt „Auf dem Server fehlt
+ANTHROPIC_API_KEY", war der erste Befehl nicht erfolgreich.
+
+### Was der Chat darf und was nicht
+
+| | |
+|---|---|
+| Fragen beantworten | zu Plan, Verlauf, Volumen, Übungen, Ernährungszielen |
+| Schwerpunkt setzen | ±2 Sätze pro Woche für einen Muskel, höchstens drei gleichzeitig |
+| Übung ablehnen | fällt beim nächsten Planaufbau weg, Ersatz kommt automatisch |
+| **Nicht:** Split, Trainingstage, Ziel, Kalorien ändern | das geht über Profil und Check-in |
+| **Nicht:** Trainingsdaten anfassen | Sätze, Gewichte und Verlauf sind für den Chat unerreichbar |
+
+Der Gesprächsverlauf liegt **nur auf dem Gerät** und wird nicht übertragen. Was am Plan
+geändert wurde, steht dagegen im Anpassungsprotokoll — das wird synchronisiert und ist
+in der Sicherungsdatei enthalten.
+
+---
+
 ## Was in welcher Lage passiert
 
 | Lage | Verhalten |
