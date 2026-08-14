@@ -1008,7 +1008,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-002",
@@ -1030,7 +1030,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-003",
@@ -1053,7 +1053,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-004",
@@ -1075,7 +1075,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-005",
@@ -1098,7 +1098,7 @@
     ],
     "unilateral": true,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-006",
@@ -1120,7 +1120,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-007",
@@ -1142,7 +1142,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-008",
@@ -1212,7 +1212,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-011",
@@ -1236,7 +1236,7 @@
     ],
     "unilateral": true,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-012",
@@ -1442,7 +1442,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-021",
@@ -1511,7 +1511,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-024",
@@ -1534,7 +1534,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-025",
@@ -1556,7 +1556,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-026",
@@ -1579,7 +1579,7 @@
     ],
     "unilateral": true,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-027",
@@ -1602,7 +1602,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-028",
@@ -1624,7 +1624,7 @@
     ],
     "unilateral": true,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-029",
@@ -2381,7 +2381,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "RUE-061",
@@ -5875,7 +5875,7 @@
     ],
     "unilateral": true,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "HAM-008",
@@ -8032,7 +8032,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "KET-001",
@@ -8056,7 +8056,7 @@
     ],
     "unilateral": false,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "KET-002",
@@ -8079,7 +8079,7 @@
     ],
     "unilateral": true,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "KET-003",
@@ -8283,7 +8283,7 @@
     ],
     "unilateral": true,
     "metric": "reps",
-    "compound": false
+    "compound": true
   },
   {
     "id": "KET-012",

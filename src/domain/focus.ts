@@ -44,6 +44,21 @@ export const MAX_FOCUS = 3
 /** Volumen wird in halben Sätzen gerechnet (Nebenmuskeln zählen 0,5). */
 const STEP = 0.5
 
+/**
+ * Wie viele Übungen gleichzeitig abgelehnt sein dürfen.
+ *
+ * Ohne Grenze wird der Plan still dünn: Der Generator sucht Ersatz für
+ * dieselbe Muskulatur, aber irgendwann findet er keinen mehr und meldet den
+ * Muskel als nicht abgedeckt. Das steht dann in einer Fußnote, die niemand
+ * liest. Zwölf ist reichlich für „diese Übung mag ich nicht" und wenig genug,
+ * dass das Wochenvolumen erreichbar bleibt.
+ *
+ * Wer mehr ausschließen will, meint eigentlich etwas anderes — fehlende
+ * Geräte gehören in die Einstellungen, Beschwerden ins Profil. Dort wirken
+ * sie auf die ganze Auswahl, nicht als Liste von Einzelfällen.
+ */
+export const MAX_AVOIDED = 12
+
 export type FocusDirection = 'more' | 'less'
 
 export interface Focus {

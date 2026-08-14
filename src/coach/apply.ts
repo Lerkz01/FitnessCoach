@@ -19,7 +19,13 @@
 // ====================================================================
 
 import { putRecord } from '../data/db'
-import { activeFocus, applyFocus, type Focus } from '../domain/focus'
+import {
+  activeFocus,
+  applyFocus,
+  avoidedExerciseIds,
+  MAX_AVOIDED,
+  type Focus,
+} from '../domain/focus'
 import type { VolumeMuscle } from '../domain/muscles'
 import { VOLUME_MUSCLES } from '../domain/muscles'
 import type { Adjustment, TrainingPlan, UserProfile } from '../domain/records'
@@ -200,6 +206,24 @@ export async function applyCoachTool(input: ApplyInput): Promise<ToolOutcome> {
             `Die Übungs-ID „${exerciseId}" steht nicht im aktuellen Plan. ` +
             'Nichts geändert. Nenn eine Übung aus der Wochenliste.',
           label: 'Änderung abgelehnt: unbekannte Übung',
+          adjustment: null,
+        }
+      }
+
+      // Obergrenze, damit der Plan nicht still dünn wird: Irgendwann findet
+      // der Generator keinen Ersatz mehr und meldet den Muskel als nicht
+      // abgedeckt — in einer Fußnote, die niemand liest.
+      const bereitsAbgelehnt = avoidedExerciseIds(adjustments)
+      if (!bereitsAbgelehnt.has(exerciseId) && bereitsAbgelehnt.size >= MAX_AVOIDED) {
+        return {
+          result:
+            `Es sind schon ${MAX_AVOIDED} Übungen abgelehnt — mehr geht nicht, sonst ` +
+            'findet der Generator für manche Muskeln keinen Ersatz mehr und das ' +
+            'Wochenvolumen wird nicht erreicht. Sag der Person, sie soll zuerst eine ' +
+            'Ablehnung aufheben (allow_exercise). Falls es um fehlende Geräte oder ' +
+            'Beschwerden geht: Das gehört in die Einstellungen bzw. ins Profil, dort ' +
+            'wirkt es auf die ganze Auswahl statt als Liste von Einzelfällen.',
+          label: `Nicht abgelehnt: schon ${MAX_AVOIDED} auf der Liste`,
           adjustment: null,
         }
       }

@@ -6,9 +6,10 @@
 //  (docs/UI-UX.md §5.5).
 // ====================================================================
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Button } from '../ui/controls'
 import { formatSeconds, useTicker } from './useTicker'
+import { signalRestOver } from './useWakeLock'
 
 export function RestTimer({
   seconds,
@@ -21,6 +22,7 @@ export function RestTimer({
   nextLabel: string
 }) {
   const ticker = useTicker()
+  const signalled = useRef(false)
 
   useEffect(() => {
     ticker.start()
@@ -28,6 +30,15 @@ export function RestTimer({
 
   const remaining = seconds - ticker.elapsed
   const over = remaining <= 0
+
+  // Ein Signal, genau einmal. Ohne die Sperre würde es bei jedem
+  // Neuzeichnen erneut piepen, also viermal pro Sekunde.
+  useEffect(() => {
+    if (over && !signalled.current) {
+      signalled.current = true
+      signalRestOver()
+    }
+  }, [over])
   const percent = Math.min(100, (ticker.elapsed / Math.max(1, seconds)) * 100)
 
   return (

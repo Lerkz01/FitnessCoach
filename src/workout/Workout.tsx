@@ -48,6 +48,7 @@ import {
 import { swapExercise } from './swap'
 import { SwapSheet } from './SwapSheet'
 import { formatSeconds, useTicker } from './useTicker'
+import { useWakeLock } from './useWakeLock'
 
 // ────────────────────────────────────────────────────────────────────
 
@@ -130,6 +131,10 @@ export function Workout({
    */
   const [blockedEquipment, setBlockedEquipment] = useState<Set<string>>(new Set())
   const [swapNote, setSwapNote] = useState<string | null>(null)
+
+  // Bildschirm an, solange trainiert wird. Ein Handy, das nach 30 Sekunden
+  // zusperrt, zeigt keinen Pausentimer.
+  useWakeLock(true)
 
   const exercise = exercises[position.exerciseIndex]
   const slots = useMemo(() => (exercise ? setSlots(exercise) : []), [exercise])

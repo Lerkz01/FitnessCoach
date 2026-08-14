@@ -360,6 +360,8 @@ export type AdjustmentScope =
   | 'deload'
   | 'exercise_rotation'
   | 'plan_rebuild'
+  /** Kreis 4: Ein Block ist ausgewertet und der nächste beginnt. */
+  | 'block_review'
   /** Wunsch aus dem Coach-Chat: Schwerpunkt auf einem Muskel. */
   | 'coach_focus'
   /** Wunsch aus dem Coach-Chat: diese Übung bitte nicht. */

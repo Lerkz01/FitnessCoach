@@ -16,6 +16,8 @@ import { useState, type ReactNode } from 'react'
 import type { GeneratedWeek } from './domain/generator'
 import { splitLabel } from './domain/planning'
 import type { NutritionTarget, TrainingPlan, UserProfile, Weekday } from './domain/records'
+import type { BlockReview as BlockReviewData } from './domain/blockReview'
+import { BlockReviewCard } from './screens/BlockReviewCard'
 import { Button, Notice, Stack } from './ui/controls'
 import { Disclosure, Row } from './ui/Disclosure'
 import { InfoButton } from './ui/ExerciseInfo'
@@ -44,6 +46,8 @@ export function Home({
   week,
   today,
   calibration,
+  blockReview,
+  onAcknowledgeBlock,
   checkinPending,
   backupSection,
   accountEmail,
@@ -63,6 +67,9 @@ export function Home({
   today: Weekday
   /** Einmessphase: Läuft sie noch, und wie weit ist sie? */
   calibration: { active: boolean; done: number; needed: number }
+  /** Regelkreis 4 — `null`, solange der Block läuft oder Daten fehlen. */
+  blockReview: BlockReviewData | null
+  onAcknowledgeBlock: () => void
   /** Steht der Wochen-Check-in an? */
   checkinPending: boolean
   /** Der Sicherungs-Abschnitt, von App.tsx gestellt. */
@@ -106,6 +113,15 @@ export function Home({
 
       <main className="px-5 pb-8 flex-1">
         <Stack gap={3}>
+          {/*
+            Der Block-Review steht ganz oben, weil er selten ist und eine
+            Entscheidung verlangt. Er blockiert aber genauso wenig wie der
+            Check-in — wer trainieren will, scrollt vorbei.
+          */}
+          {blockReview ? (
+            <BlockReviewCard review={blockReview} onAcknowledge={onAcknowledgeBlock} />
+          ) : null}
+
           {/*
             Der Check-in steht oben, aber er blockiert nichts: Wer trainieren
             will, soll nicht erst sieben Fragen beantworten müssen.

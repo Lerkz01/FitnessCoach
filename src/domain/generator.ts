@@ -503,8 +503,32 @@ function selectExercises(input: {
         .filter((p): p is MovementPattern => p !== null),
     )
 
+    /**
+     * Würde diese Übung die Wochengrenze eines ihrer Hauptmuskeln reißen?
+     *
+     * Die Grenze wird oben nur für den Muskel geprüft, FÜR den ausgewählt
+     * wird. Verbucht wird die Übung aber bei allen ihren Hauptmuskeln — eine
+     * Übung mit zwei Hauptmuskeln (Überzüge zählen Brust und Lat) konnte die
+     * Grenze des zweiten also überschreiten, ohne dass es jemand prüfte.
+     *
+     * Aufgefallen, als Latzug und Rudermaschinen von Isolation auf
+     * mehrgelenkig umgestellt wurden: Die Auswahl verschob sich, und plötzlich
+     * standen fünf Brustübungen in einer Woche statt der erlaubten vier.
+     */
+    const wouldExceedWeeklyLimit = (exercise: Exercise): boolean => {
+      for (const raw of exercise.primary) {
+        for (const muscle of resolveMuscles(raw)) {
+          const bereits = state.exercisesPerMuscleWeek.get(muscle)
+          if (!bereits || bereits.has(exercise.id)) continue
+          if (bereits.size >= MAX_EXERCISES_PER_MUSCLE_PER_WEEK) return true
+        }
+      }
+      return false
+    }
+
     const eligible = pool.filter((exercise) => {
       if (usedIds.has(exercise.id)) return false
+      if (wouldExceedWeeklyLimit(exercise)) return false
       const exerciseTier = tierOf(exercise)
       if (exerciseTier === 'heavy_compound') {
         if (heavyCount >= MAX_HEAVY_PER_SESSION) return false

@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { equipmentById, exerciseById } from './data'
-import { closeLocalDb, databaseName, listRecords } from './data/db'
+import { closeLocalDb, databaseName, listRecords, putRecord } from './data/db'
 import { applyProgression } from './domain/applyProgression'
 import { generateWeek, type GeneratedWeek } from './domain/generator'
-import { today } from './domain/ids'
+import { newId, today } from './domain/ids'
 import { loadBearingEquipment } from './domain/weights'
 import type { VolumeMuscle } from './domain/muscles'
+import { baseFields } from './domain/records'
 import type {
   Adjustment,
   BodyMetric,
@@ -29,6 +30,14 @@ import { rotatedOutExerciseIds } from './domain/rotation'
 import { weeklyReview, type WeeklyReview } from './domain/weeklyReview'
 import { activeFocus, applyFocus, avoidedExerciseIds } from './domain/focus'
 import { calibrationState, toCalibrationExercise } from './domain/calibration'
+import {
+  blockReview,
+  blockReviewDue,
+  blockReviewUseful,
+  currentBlockStart,
+  type BlockReview,
+} from './domain/blockReview'
+import { exerciseVolume } from './domain/volume'
 import { Coach } from './screens/Coach'
 import { Checkin } from './checkin/Checkin'
 import { ReviewResult } from './checkin/ReviewResult'
@@ -285,6 +294,40 @@ export default function App() {
     [data?.profile.trainingDays, data?.sessions],
   )
 
+  /**
+   * Regelkreis 4. Bewusst hier und nicht im Check-in: Er läuft über einen
+   * ganzen Block, nicht über eine Woche, und soll nicht in der wöchentlichen
+   * Routine untergehen.
+   */
+  const block = useMemo<BlockReview | null>(() => {
+    if (!data?.plan) return null
+    const start = currentBlockStart({
+      adjustments: data.adjustments,
+      onboardingCompletedAt: data.profile.onboardingCompletedAt,
+    })
+    const heute = today()
+    if (!blockReviewDue({ blockStartMonday: start, today: heute })) return null
+
+    const fertig = data.sessions.filter(
+      (session) => session.status === 'completed' && session.deletedAt === null,
+    ).length
+    if (!blockReviewUseful(fertig)) return null
+
+    return blockReview({
+      profile: data.profile,
+      sessions: data.sessions,
+      setLogs: data.setLogs,
+      checkins: data.checkins,
+      volumeTargets: data.plan.volumeTargets,
+      blockStartMonday: start,
+      today: heute,
+      volumeForExercise: (exerciseId, sets) => {
+        const exercise = exerciseById.get(exerciseId)
+        return exercise ? exerciseVolume(exercise, sets) : {}
+      },
+    })
+  }, [data?.plan, data?.profile, data?.sessions, data?.setLogs, data?.checkins, data?.adjustments])
+
   const logsBySession = useMemo(() => {
     const map = new Map<string, SetLog[]>()
     for (const log of data?.setLogs ?? []) {
@@ -406,6 +449,35 @@ export default function App() {
     localStorage.clear()
     location.reload()
   }, [])
+
+  /** Block abschließen — der nächste beginnt ab heute. */
+  const acknowledgeBlock = useCallback(async () => {
+    if (!data || userId === null) return
+    const at = new Date().toISOString()
+    const record: Adjustment = {
+      ...baseFields(userId, newId(), at),
+      appliedAt: at,
+      scope: 'block_review',
+      circle: 4,
+      targetId: null,
+      targetLabel: 'Block-Review',
+      before: `Block über ${weeksBetween(
+        currentBlockStart({
+          adjustments: data.adjustments,
+          onboardingCompletedAt: data.profile.onboardingCompletedAt,
+        }),
+        mondayOf(new Date()),
+      )} Wochen`,
+      after: 'durchgesehen, neuer Block',
+      reason: 'Vom Nutzer zur Kenntnis genommen',
+      applied: true,
+      userAccepted: true,
+    }
+    await putRecord(userId, 'adjustments', record)
+    setData((prev) =>
+      prev ? { ...prev, adjustments: [...prev.adjustments, record] } : prev,
+    )
+  }, [data, userId])
 
   // ── Ablauf ──
   const begin = useCallback(
@@ -656,6 +728,8 @@ export default function App() {
             week={week}
             today={weekdayOf()}
             calibration={calibration}
+            blockReview={block}
+            onAcknowledgeBlock={() => void acknowledgeBlock()}
             onResetDevice={resetDevice}
             checkinPending={checkinPending}
             backupSection={backupSection}
