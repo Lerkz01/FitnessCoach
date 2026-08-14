@@ -21,6 +21,7 @@ import { newId, nowIso, deviceId, today } from '../domain/ids'
 import { RIR_DELTA } from '../domain/progression'
 import type {
   PlannedExercise,
+  SessionKind,
   SetFeedback,
   SetLog,
   WorkoutSession,
@@ -39,6 +40,8 @@ export async function startSession(input: {
   label: string
   exercises: readonly PlannedExercise[]
   scheduledFor?: string | null
+  /** `calibration` = Einmess-Einheit, nicht für die Progression auswertbar. */
+  kind?: SessionKind
 }): Promise<WorkoutSession> {
   const now = nowIso()
   const session: WorkoutSession = {
@@ -48,6 +51,7 @@ export async function startSession(input: {
     updatedAt: now,
     deletedAt: null,
     planId: input.planId,
+    kind: input.kind ?? 'plan',
     label: input.label,
     scheduledFor: input.scheduledFor ?? today(),
     startedAt: now,
@@ -246,4 +250,32 @@ export function setSlots(exercise: PlannedExercise): SetSlot[] {
   }
 
   return slots
+}
+
+/**
+ * Schreibt ein in der Einmessphase gefundenes Gewicht in die Vorgabe.
+ *
+ * Bewusst in die Einheit und nicht in einen neuen Datensatz: `applyProgression`
+ * nimmt beim nächsten Planaufbau die zuletzt genutzte Vorgabe, wenn keine
+ * Progressionsentscheidung vorliegt. Damit greift der Messwert über einen Weg,
+ * der schon existiert und geprüft ist — statt über einen zweiten, der
+ * irgendwann davon abweichen würde.
+ */
+export async function recordFoundWeight(input: {
+  userId: string
+  session: WorkoutSession
+  exerciseId: string
+  weightKg: number
+}): Promise<WorkoutSession> {
+  const updated: WorkoutSession = {
+    ...input.session,
+    planned: input.session.planned.map((planned) =>
+      planned.exerciseId === input.exerciseId
+        ? { ...planned, weightKg: input.weightKg }
+        : planned,
+    ),
+  }
+  await putRecord(input.userId, 'sessions', updated)
+  requestUpload()
+  return updated
 }

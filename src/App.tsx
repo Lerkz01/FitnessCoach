@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { equipmentById, exerciseById } from './data'
-import { listRecords } from './data/db'
+import { closeLocalDb, databaseName, listRecords } from './data/db'
 import { applyProgression } from './domain/applyProgression'
 import { generateWeek, type GeneratedWeek } from './domain/generator'
 import { today } from './domain/ids'
@@ -28,6 +28,7 @@ import {
 import { rotatedOutExerciseIds } from './domain/rotation'
 import { weeklyReview, type WeeklyReview } from './domain/weeklyReview'
 import { activeFocus, applyFocus, avoidedExerciseIds } from './domain/focus'
+import { calibrationState, toCalibrationExercise } from './domain/calibration'
 import { Coach } from './screens/Coach'
 import { Checkin } from './checkin/Checkin'
 import { ReviewResult } from './checkin/ReviewResult'
@@ -265,6 +266,25 @@ export default function App() {
     return since < CALIBRATION_DAYS * 24 * 60 * 60 * 1000
   }, [data?.profile.onboardingCompletedAt])
 
+  /**
+   * Die Einmessphase: eine Runde durch den Split, bevor nach Plan trainiert
+   * wird. Gezählt werden abgeschlossene Einmess-Einheiten, nicht Tage — wer
+   * eine Woche aussetzt, soll nicht mit geschätzten Gewichten weitermachen.
+   */
+  const calibration = useMemo(
+    () =>
+      calibrationState({
+        trainingDays: data?.profile.trainingDays ?? [],
+        completedCalibrationSessions: (data?.sessions ?? []).filter(
+          (session) =>
+            session.kind === 'calibration' &&
+            session.status === 'completed' &&
+            session.deletedAt === null,
+        ).length,
+      }),
+    [data?.profile.trainingDays, data?.sessions],
+  )
+
   const logsBySession = useMemo(() => {
     const map = new Map<string, SetLog[]>()
     for (const log of data?.setLogs ?? []) {
@@ -302,6 +322,11 @@ export default function App() {
         ]),
       })
 
+      const equipmentFor = (exerciseId: string) => {
+        const exercise = exerciseById.get(exerciseId)
+        return exercise ? loadBearingEquipment(exercise, equipmentById) : null
+      }
+
       // Der Generator wählt die Übungen, kennt aber keine Historie. Ohne
       // diesen Schritt wären alle Gewichte und Wiederholungen wieder die
       // Erstschätzung aus dem Onboarding — der gesamte Fortschritt wäre
@@ -309,22 +334,31 @@ export default function App() {
       return {
         ...generated,
         notes: [...generated.notes, ...focus.notes],
-        sessions: generated.sessions.map((session) => ({
-          ...session,
-          exercises: applyProgression({
+        sessions: generated.sessions.map((session) => {
+          const angewandt = applyProgression({
             exercises: session.exercises,
             sessions: data.sessions,
             logsBySession,
             level: data.profile.level,
             goal: data.profile.goal,
             calibrationWeek,
-            equipmentForExercise: (exerciseId) => {
-              const exercise = exerciseById.get(exerciseId)
-              return exercise ? loadBearingEquipment(exercise, equipmentById) : null
-            },
+            equipmentForExercise: equipmentFor,
             bodyweightTrendKg: weightTrend(data.metrics),
-          }),
-        })),
+          })
+
+          // In der Einmessphase wird aus derselben Übungsauswahl eine
+          // Tast-Einheit. Erst NACH applyProgression, damit sie auf dem
+          // bestmöglichen Startwert aufsetzt — auch eine Schätzung ist ein
+          // besserer Ausgangspunkt als nichts.
+          if (!calibration.active) return { ...session, exercises: angewandt }
+          return {
+            ...session,
+            exercises: angewandt.map((exercise) => ({
+              ...exercise,
+              ...toCalibrationExercise(exercise, equipmentFor(exercise.exerciseId)),
+            })),
+          }
+        }),
       }
     } catch {
       // Ein Fehler in der Planerzeugung darf die App nicht unbenutzbar
@@ -341,7 +375,37 @@ export default function App() {
     logsBySession,
     bodyweightKg,
     calibrationWeek,
+    calibration.active,
   ])
+
+  /**
+   * Leert die lokale Ablage dieses Geräts.
+   *
+   * WICHTIG und der Grund, warum es diese Funktion überhaupt gibt: Der alte
+   * Knopf rief nur `localStorage.clear()`. Das Profil liegt aber in IndexedDB
+   * — der Knopf hat also nichts zurückgesetzt und war schlimmer als keiner,
+   * weil er Erfolg vortäuschte.
+   *
+   * Reihenfolge: Verbindung zur Datenbank schließen (sonst bleibt das Löschen
+   * hängen, bis der letzte Tab zu ist), dann löschen, dann neu laden.
+   */
+  const resetDevice = useCallback(async () => {
+    const id = userIdRef.current
+    if (id === null) return
+
+    await closeLocalDb(id)
+    await new Promise<void>((resolve) => {
+      const request = indexedDB.deleteDatabase(databaseName(id))
+      request.onsuccess = () => resolve()
+      request.onerror = () => resolve()
+      // `blocked` heißt: eine andere Lasche hält die Datenbank offen. Nicht
+      // ewig warten — nach dem Neuladen ist sie zu und der nächste Versuch
+      // greift.
+      request.onblocked = () => resolve()
+    })
+    localStorage.clear()
+    location.reload()
+  }, [])
 
   // ── Ablauf ──
   const begin = useCallback(
@@ -355,6 +419,7 @@ export default function App() {
         planId: data.plan?.id ?? null,
         label: generated.label,
         exercises: generated.exercises,
+        kind: calibration.active ? 'calibration' : 'plan',
       })
       setActive(session)
       setSessionLogs([])
@@ -590,6 +655,8 @@ export default function App() {
             nutrition={data.nutrition}
             week={week}
             today={weekdayOf()}
+            calibration={calibration}
+            onResetDevice={resetDevice}
             checkinPending={checkinPending}
             backupSection={backupSection}
             accountEmail={auth.email}

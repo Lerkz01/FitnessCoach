@@ -196,6 +196,16 @@ export interface PlannedExercise {
   warmups: PlannedWarmup[]
   /** Grund, warum diese Übung an dieser Stelle steht (Transparenz). */
   selectionReason: string | null
+  /**
+   * Nur in der Einmessphase gesetzt: Wiederholungen, auf die gemessen wird.
+   *
+   * Ein Tastsatz läuft mit einem höheren Wiederholungsziel als der Plan, weil
+   * die Zahl der geschafften Wiederholungen das Messinstrument ist
+   * (docs/PLAN-ENGINE.md §12). `targetReps` trägt also die Vorgabe für JETZT,
+   * dieses Feld das Ziel, für das ein Gewicht gesucht wird. Ohne die
+   * Trennung wäre die eigentliche Vorgabe verloren.
+   */
+  probeForReps?: number | null
 }
 
 // ────────────────────────────────────────────────────────────────────
@@ -204,8 +214,21 @@ export interface PlannedExercise {
 
 export type SessionStatus = 'planned' | 'active' | 'completed' | 'skipped'
 
+/**
+ * Wozu eine Einheit da war.
+ *
+ * `calibration` ist die Einmessphase: dieselben Übungen wie im Plan, aber mit
+ * Tastsätzen statt Arbeitssätzen. Diese Einheiten sind für die Progression
+ * NICHT auswertbar — ein Tastsatz bei bewusst zu leichtem Gewicht sieht wie
+ * ein glänzender Fortschritt aus und wäre in einer Bestätigungsregel eine
+ * Katastrophe. Das Feld ist optional, damit Datensätze aus der Zeit davor
+ * gültig bleiben; fehlt es, ist es eine Planeinheit.
+ */
+export type SessionKind = 'plan' | 'calibration'
+
 export interface WorkoutSession extends BaseRecord {
   planId: string | null
+  kind?: SessionKind
   /** z.B. "Oberkörper A" */
   label: string
   scheduledFor: string | null

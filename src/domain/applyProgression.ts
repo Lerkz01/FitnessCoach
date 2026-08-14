@@ -89,6 +89,27 @@ export function applyProgression(input: ApplyProgressionInput): AppliedExercise[
       session.planned.some((planned) => planned.exerciseId === exercise.exerciseId),
     )
 
+    // Einmess-Einheit: Das GEFUNDENE Gewicht steht in der Vorgabe dieser
+    // Einheit (der Trainingsbildschirm schreibt es dort hinein). Es zu
+    // übernehmen ist genau der Zweck der Phase.
+    //
+    // Die Progression darf sie dagegen NICHT auswerten: Tastsätze laufen mit
+    // zwölf Wiederholungen bei bewusst zu leichtem Gewicht. Für die
+    // Doppelprogression sähe das aus wie eine glänzend übertroffene Vorgabe —
+    // und die nächste Einheit stünde auf einem Gewicht, das nie jemand
+    // bewegt hat.
+    if (last && last.kind === 'calibration') {
+      const gemessen = last.planned.find(
+        (planned) => planned.exerciseId === exercise.exerciseId,
+      )
+      return {
+        ...exercise,
+        weightKg: gemessen?.weightKg ?? exercise.weightKg,
+        prescriptionSource: 'held',
+        progressionReason: 'Gewicht aus der Einmessphase.',
+      }
+    }
+
     // Noch nie trainiert: Es bleibt bei der Schätzung des Generators.
     if (!last) {
       return { ...exercise, prescriptionSource: 'estimate', progressionReason: null }

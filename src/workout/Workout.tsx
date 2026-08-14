@@ -25,6 +25,7 @@ import {
   type Alternative,
 } from '../domain/alternatives'
 import { inSessionCorrection } from '../domain/progression'
+import { probeNext } from '../domain/calibration'
 import type {
   SetFeedback,
   SetLog,
@@ -37,7 +38,13 @@ import { Button, Notice } from '../ui/controls'
 import { InfoButton } from '../ui/ExerciseInfo'
 import { ExerciseInfoOverlay } from '../ui/ExerciseInfoOverlay'
 import { RestTimer } from './RestTimer'
-import { abandonSession, logSet, setSlots, type SetSlot } from './session'
+import {
+  abandonSession,
+  logSet,
+  recordFoundWeight,
+  setSlots,
+  type SetSlot,
+} from './session'
 import { swapExercise } from './swap'
 import { SwapSheet } from './SwapSheet'
 import { formatSeconds, useTicker } from './useTicker'
@@ -279,19 +286,82 @@ export function Workout({
       const next = [...logs, log]
       setLogs(next)
 
-      // Regelkreis 1: nur nach dem ERSTEN Arbeitssatz einer Übung und nur
-      // einmal — er soll einen Schätzfehler retten, nicht progressieren.
-      const applied = maybeCorrect({
-        slot,
-        exercise,
-        log,
-        equipment,
-        calibrationWeek,
-        alreadyCorrected: corrected[exercise.exerciseId] !== undefined,
-      })
-      if (applied) {
-        setCorrected((prev) => ({ ...prev, [exercise.exerciseId]: applied.weightKg }))
-        setCorrectionNote(applied.message)
+      // ── Einmessphase: Tastsatz auswerten ──
+      //
+      // Sie ersetzt Regelkreis 1 für diese Einheit. Beides gleichzeitig wäre
+      // widersprüchlich: Kreis 1 rettet einen Schätzfehler in EINEM Schritt,
+      // das Einmessen tastet gezielt heran.
+      const probeFor = exercise.probeForReps
+      if (
+        current.kind === 'calibration' &&
+        !slot.isWarmup &&
+        probeFor != null &&
+        weightKg !== null &&
+        equipment !== null &&
+        !isTimed
+      ) {
+        const probeNumber = next.filter(
+          (entry) => entry.exerciseId === exercise.exerciseId && !entry.isWarmup,
+        ).length
+
+        const result = probeNext({
+          weightKg,
+          actualReps: amount,
+          feedback,
+          targetReps: probeFor,
+          targetRir: exercise.targetRir,
+          probeReps: exercise.targetReps ?? amount,
+          equipment,
+          probeNumber,
+        })
+
+        setCorrectionNote(result.message)
+
+        if (result.found && result.foundWeightKg !== null) {
+          // Das gefundene Gewicht IN DIE VORGABE der Einheit schreiben. Von
+          // dort holt es `applyProgression` beim nächsten Planaufbau — kein
+          // neuer Datensatz, kein neuer Weg, keine zweite Wahrheit.
+          await recordFoundWeight({
+            userId,
+            session: current,
+            exerciseId: exercise.exerciseId,
+            weightKg: result.foundWeightKg,
+          })
+          // Restliche Tastsätze dieser Übung entfallen. `next` statt `logs`,
+          // weil der gerade geschriebene Satz sonst fehlte.
+          setPendingReps(null)
+          setPendingSeconds(null)
+          setSwapNote(null)
+          if (position.exerciseIndex + 1 < exercises.length) {
+            setPosition({ exerciseIndex: position.exerciseIndex + 1, slotIndex: 0 })
+            setPhase('input')
+          } else {
+            onFinished(next)
+          }
+          return
+        }
+
+        if (result.nextWeightKg !== null) {
+          setCorrected((prev) => ({
+            ...prev,
+            [exercise.exerciseId]: result.nextWeightKg as number,
+          }))
+        }
+      } else {
+        // Regelkreis 1: nur nach dem ERSTEN Arbeitssatz einer Übung und nur
+        // einmal — er soll einen Schätzfehler retten, nicht progressieren.
+        const applied = maybeCorrect({
+          slot,
+          exercise,
+          log,
+          equipment,
+          calibrationWeek,
+          alreadyCorrected: corrected[exercise.exerciseId] !== undefined,
+        })
+        if (applied) {
+          setCorrected((prev) => ({ ...prev, [exercise.exerciseId]: applied.weightKg }))
+          setCorrectionNote(applied.message)
+        }
       }
 
       const lastOfExercise = position.slotIndex + 1 >= slots.length

@@ -144,7 +144,14 @@ export function exerciseHistory(input: {
   const { exerciseId, sessions, logsBySession, limit = 8 } = input
 
   const completed = sessions
-    .filter((s) => s.status === 'completed' && s.deletedAt === null)
+    // Einmess-Einheiten zählen NICHT als Versuch. Die Doppelprogression
+    // fragt „wurde dieselbe Vorgabe zweimal getragen?" — ein Tastsatz mit
+    // zwölf Wiederholungen bei absichtlich zu leichtem Gewicht wäre darauf
+    // eine falsche Antwort und würde eine Steigerung bestätigen, die nie
+    // stattgefunden hat.
+    .filter(
+      (s) => s.status === 'completed' && s.deletedAt === null && s.kind !== 'calibration',
+    )
     .sort((a, b) => {
       const left = a.completedAt ?? a.scheduledFor ?? a.createdAt
       const right = b.completedAt ?? b.scheduledFor ?? b.createdAt

@@ -43,6 +43,7 @@ export function Home({
   nutrition,
   week,
   today,
+  calibration,
   checkinPending,
   backupSection,
   accountEmail,
@@ -53,12 +54,15 @@ export function Home({
   onStart,
   onResume,
   onDiscard,
+  onResetDevice,
 }: {
   profile: UserProfile
   plan: TrainingPlan | null
   nutrition: NutritionTarget | null
   week: GeneratedWeek | null
   today: Weekday
+  /** Einmessphase: Läuft sie noch, und wie weit ist sie? */
+  calibration: { active: boolean; done: number; needed: number }
   /** Steht der Wochen-Check-in an? */
   checkinPending: boolean
   /** Der Sicherungs-Abschnitt, von App.tsx gestellt. */
@@ -74,9 +78,12 @@ export function Home({
   onStart: (weekday: Weekday) => void
   onResume: () => void
   onDiscard: () => void
+  /** Leert die lokale Ablage dieses Geräts und startet neu. */
+  onResetDevice: () => Promise<void>
 }) {
   // Auch hier eine Überlagerung: Man liest die Info oft, bevor man startet.
   const [infoExerciseId, setInfoExerciseId] = useState<string | null>(null)
+  const [resetAsked, setResetAsked] = useState(false)
 
   const todaysSession = week?.sessions.find((session) => session.weekday === today) ?? null
   const nextSession =
@@ -151,6 +158,23 @@ export function Home({
           >
             {todaysSession ? (
               <>
+                {calibration.active ? (
+                  <div className="mb-4">
+                    <Notice>
+                      <strong className="font-semibold">
+                        Einmessphase — Einheit {calibration.done + 1} von{' '}
+                        {calibration.needed}
+                      </strong>
+                      <br />
+                      Heute wird noch nicht nach Plan trainiert. Bei jeder Übung tastest
+                      du dich in bis zu drei Sätzen an dein Gewicht heran: Die
+                      Startgewichte sind absichtlich zu leicht, du machst so viele
+                      Wiederholungen wie sauber gehen, und die App rechnet daraus das
+                      nächste Gewicht. Ab der nächsten Runde stehen dann echte Zahlen
+                      im Plan statt Schätzungen.
+                    </Notice>
+                  </div>
+                ) : null}
                 <p className="text-sm text-muted">Heute</p>
                 <p className="text-2xl font-bold mt-1 tracking-tight">
                   {todaysSession.label}
@@ -314,16 +338,33 @@ export function Home({
               </div>
             ) : null}
             <div className="mt-4">
-              <Button
-                variant="secondary"
-                full
-                onClick={() => {
-                  localStorage.clear()
-                  location.reload()
-                }}
-              >
-                Onboarding zurücksetzen (Test)
+              <Button variant="secondary" full onClick={() => setResetAsked(true)}>
+                Dieses Gerät zurücksetzen (Test)
               </Button>
+              {resetAsked ? (
+                <div className="mt-3 rounded-2xl border border-danger/50 bg-surface-2 p-4">
+                  <p className="text-sm leading-relaxed">
+                    Löscht <strong>alle Trainingsdaten auf diesem Gerät</strong> und
+                    startet das Onboarding neu.
+                  </p>
+                  <p className="text-xs text-muted mt-2 leading-relaxed">
+                    In der Cloud bleibt alles liegen. Melde dich danach wieder an, ist
+                    dein Fortschritt zurück. Für einen echten Neuanfang musst du
+                    zusätzlich in Supabase{' '}
+                    <code className="text-text">delete from public.records;</code>{' '}
+                    ausführen — und zwar <strong>nachdem</strong> du jedes Gerät
+                    zurückgesetzt hast, sonst lädt eines die alten Daten wieder hoch.
+                  </p>
+                  <div className="mt-4 flex gap-2">
+                    <Button variant="secondary" onClick={() => setResetAsked(false)}>
+                      Abbrechen
+                    </Button>
+                    <Button onClick={() => void onResetDevice()}>
+                      Ja, Gerät leeren
+                    </Button>
+                  </div>
+                </div>
+              ) : null}
             </div>
           </Disclosure>
 

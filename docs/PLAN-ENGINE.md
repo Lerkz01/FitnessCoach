@@ -975,3 +975,112 @@ bleibt gleich, der Generator sucht Ersatz für dieselbe Muskulatur.
 Nicht mitten in der Woche. Ein Tausch innerhalb einer laufenden Woche würde die
 Vergleichbarkeit zerstören, auf der die Progression beruht — dieselbe Begründung wie bei
 der Rotation in §9.
+
+---
+
+## 12. Die Einmessphase
+
+Umsetzung: `src/domain/calibration.ts`, Tests in `calibration.test.ts`.
+
+### Das Problem
+
+Die Startgewichte kommen aus sechs Referenzangaben des Onboardings und den
+Bewegungsmuster-Koeffizienten. Für eine Langhantel ist das brauchbar. Für eine
+Maschine ist es Raten: „50 kg" auf dem Steckgewicht eines Herstellers sind nicht
+50 kg beim nächsten, und für 50 der 61 Geräte im Inventar ist der Faktor
+unbekannt.
+
+Der naive Ausweg — jedes Gewicht in der ersten Einheit hart einmessen — ist zu
+langsam: Ein Plan hat rund 30 verschiedene Übungen.
+
+### Der Weg: eine Runde durch den Split
+
+Die **erste Runde durch den Split** ist die Einmessphase (bei vier
+Trainingstagen also vier Einheiten, Obergrenze fünf). Dieselben Übungen, die der
+Plan ohnehin gewählt hätte — nur die Satzstruktur ist anders. Nach einer Runde
+ist jede Übung des Plans einmal mit einem echten Gewicht geloggt.
+
+Gezählt werden **abgeschlossene Einmess-Einheiten, nicht Tage.** Wer eine Woche
+aussetzt, soll nicht mit geschätzten Gewichten weitermachen.
+
+| | Plan | Einmessung |
+|---|---|---|
+| Sätze | 3–4 | bis zu 3 Tastsätze |
+| Aufwärmsätze | ja | keine — der erste Tastsatz ist das Aufwärmen |
+| Startgewicht | Schätzung | 85 % davon |
+| Wiederholungsziel | 5–12 | mindestens 12 |
+| Pause | 75–180 s | 90 s |
+
+### Warum das Wiederholungsziel hochgeht
+
+**Hier liegt der Kern, und der erste Entwurf ist daran gescheitert.**
+
+Die Rückmeldung nach einem Satz kennt drei Stufen: wie geplant, mehr drin, am
+Limit. „Mehr drin" lässt sich nur als etwa zwei Wiederholungen Reserve deuten.
+Bei einem Satz mit fünf Wiederholungen trägt das fast keine Auskunft — die
+Epley-Rechnung kam damit pro Tastsatz **2,5 %** vom Fleck. Ein um 30 % zu tiefer
+Start wäre nie eingeholt worden; die Simulation lieferte 42,5 kg, wo 75 kg
+richtig gewesen wären.
+
+Bei zwölf Wiederholungen trägt die **Zahl der geschafften Wiederholungen** die
+Auskunft. Wer bei 40 kg zwölf Wiederholungen macht und noch Reserve hat, verrät
+damit sein Arbeitsgewicht. Ein Tastsatz mit hohem Wiederholungsziel ist ein
+Maximalversuch in Verkleidung — und braucht dafür keine neue Bedienung.
+
+Das echte Ziel bleibt in `PlannedExercise.probeForReps` erhalten. `targetReps`
+trägt die Vorgabe für jetzt, `probeForReps` das Ziel, für das ein Gewicht
+gesucht wird.
+
+### Der gedeckelte Tastsatz
+
+Wer das Wiederholungsziel **erreicht** und „mehr drin" meldet, hat nur eine
+UNTERGRENZE geliefert — zwei Wiederholungen Reserve oder dreißig, das sagt die
+Rückmeldung nicht. Die Epley-Formel darauf anzuwenden ergibt ein Plus von neun
+Prozent; an einer Maschine mit 10-kg-Stufen bewegt sich das Gewicht damit
+überhaupt nicht (43,8 gerechnet, gerundet wieder 40). In der Simulation: drei
+Tastsätze, kein Millimeter Fortschritt, Ergebnis 28 kg zu niedrig.
+
+Deshalb greift in diesem Fall ein **fester Sprung von einem Fünftel**. Drei
+Tastsätze kommen damit auf plus 73 %, und die Stufe bewegt sich auch bei grobem
+Steckgewicht.
+
+Gerundet wird zur **nächsten** Stufe, nicht auf und nicht ab: Aufrunden würde
+bei 10-kg-Stufen um eine ganze Stufe überschießen — ein zu schwerer Tastsatz ist
+beim Einmessen das Letzte, was passieren darf. Abrunden würde beim Klettern
+jeden Satz bremsen. Bei **invertierten Geräten** (unterstützte Klimmzugmaschine)
+wird die Richtung umgedreht, weil dort mehr Gewicht mehr Hilfe bedeutet.
+
+### Was gemessen wurde, wo landet es
+
+Das gefundene Gewicht wird in die **Vorgabe der Einheit** geschrieben.
+`applyProgression` nimmt bei fehlender Progressionsentscheidung die zuletzt
+genutzte Vorgabe — der Messwert greift damit über einen Weg, der schon existiert
+und geprüft ist, statt über einen zweiten, der irgendwann davon abweichen würde.
+
+Einmess-Einheiten sind für die Progression **nicht auswertbar** und werden aus
+`exerciseHistory` ausgeschlossen. Ein Tastsatz mit zwölf Wiederholungen bei
+absichtlich zu leichtem Gewicht wäre für die Bestätigungsregel eine glänzend
+übertroffene Vorgabe — und die nächste Einheit stünde auf einem Gewicht, das nie
+jemand bewegt hat.
+
+Innerhalb der Einmess-Einheit ist Regelkreis 1 **abgeschaltet**. Beides
+gleichzeitig wäre widersprüchlich: Kreis 1 rettet einen Schätzfehler in einem
+Schritt, das Einmessen tastet gezielt heran.
+
+### Genauigkeit, gemessen
+
+Simulation über die Kraftspanne, Ziel 8 Wdh. bei RIR 2, Start bei 85 % einer
+bewusst falschen Schätzung:
+
+| Fall | Abweichung nach 3 Tastsätzen |
+|---|---|
+| Langhantel, 1RM 100 | 0,0 kg |
+| Langhantel, 1RM 40 | 0,0 kg |
+| Langhantel, 1RM 160, Ziel 5 Wdh. | 0,3 kg |
+| Maschine mit 10-kg-Stufen, 1RM 95 | 2,1 kg |
+| **Schätzung 5-fach zu niedrig** | **70 kg zu niedrig** |
+
+Der letzte Fall ist die ehrliche Grenze. Ein fester Sprung von einem Fünftel
+kommt in drei Sätzen nicht von 20 auf 105 kg, und ein größerer Sprung wäre nicht
+mehr sicher. Solche Ausgangslagen brauchen zwei Einheiten — die Einmessphase
+bringt in die richtige Größenordnung, den Rest macht die normale Progression.
