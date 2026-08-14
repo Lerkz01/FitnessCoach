@@ -39,17 +39,17 @@ export function RestTimer({
       signalRestOver()
     }
   }, [over])
-  // Der Sweep. Ein umlaufender Zeiger statt eines Balkens — der eine
-  // orchestrierte Bewegungsmoment der App. Gerechnet über den Umfang, damit
-  // der Ring nicht über eine Skalierung verzerrt wird.
-  const RADIUS = 52
+  // Ein dünner Ring, der sich schließt. Gerechnet über den Umfang, damit er
+  // nicht über eine Skalierung verzerrt wird. Der Ring ist nur der Rahmen —
+  // getragen wird die Anzeige von der Zahl in seiner Mitte.
+  const RADIUS = 58
   const UMFANG = 2 * Math.PI * RADIUS
   const anteil = Math.min(1, ticker.elapsed / Math.max(1, seconds))
 
   return (
     <div
       className={
-        'rounded-lg border border-border bg-surface p-5 text-center ' +
+        'rounded-2xl border border-border bg-surface p-5 text-center ' +
         (over ? 'sweep-over' : '')
       }
     >
@@ -65,7 +65,7 @@ export function RestTimer({
             r={RADIUS}
             fill="none"
             stroke="var(--color-reference)"
-            strokeWidth="16"
+            strokeWidth="14"
             opacity="0"
           />
           <circle
@@ -74,7 +74,7 @@ export function RestTimer({
             cy="66"
             r={RADIUS}
             fill="none"
-            strokeWidth="3"
+            strokeWidth="1.5"
           />
           <circle
             className="sweep-value"
@@ -82,36 +82,17 @@ export function RestTimer({
             cy="66"
             r={RADIUS}
             fill="none"
-            strokeWidth="3"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeDasharray={UMFANG}
             strokeDashoffset={UMFANG * (1 - anteil)}
           />
-          {/* Skalenstriche alle 15 Grad — die Anmutung eines Zifferblatts,
-              ohne Ziffern, die niemand liest. */}
-          {Array.from({ length: 24 }, (_, index) => {
-            const winkel = (index / 24) * 2 * Math.PI
-            const innen = RADIUS - 9
-            const aussen = RADIUS - 5
-            return (
-              <line
-                key={index}
-                x1={66 + Math.cos(winkel) * innen}
-                y1={66 + Math.sin(winkel) * innen}
-                x2={66 + Math.cos(winkel) * aussen}
-                y2={66 + Math.sin(winkel) * aussen}
-                stroke="var(--color-rule)"
-                strokeWidth="1.5"
-              />
-            )
-          })}
         </svg>
 
         <div className="absolute inset-0 grid place-items-center">
           <p
             className={
-              'text-4xl font-semibold tabular leading-none ' +
-              (over ? 'text-accent' : 'text-text')
+              'display text-5xl ' + (over ? 'text-accent' : 'text-text')
             }
             // Nur die abgelaufene Zeit ansagen, nicht jede Sekunde vorlesen.
             aria-live={over ? 'polite' : 'off'}

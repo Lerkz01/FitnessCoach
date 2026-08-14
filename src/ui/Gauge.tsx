@@ -1,8 +1,10 @@
 // ====================================================================
 //  Die Messanzeige — das Signaturelement
 //
-//  Eine Skala mit ZWEI Marken: die Referenz (was geplant war, Bernstein)
-//  und das Signal (was erreicht wurde, Türkis).
+//  Eine Skala mit ZWEI Marken: die Vorgabe (eine feine Linie) und das
+//  Erreichte (Champagner). Bewusst monochrom — zwei gesättigte Farben
+//  nebeneinander wären lauter, nicht klarer, und die Position der Marke
+//  sagt es schon.
 //
 //  Warum das das eine besondere Element dieser App ist: Der Leitsatz der
 //  ganzen Progressionslogik heißt „Vergleich statt Bewertung"
@@ -42,8 +44,7 @@ export function Gauge({
    * müsste jede Zeile einzeln lesen.
    *
    * Bei fester Position wird die Marke zu einer geraden senkrechten Linie
-   * durch die ganze Liste, und die türkisen Balken sind sichtbar kürzer oder
-   * länger. Damit ist die Frage „wo stehe ich gegenüber dem Plan" mit einem
+   * durch die ganze Liste, und die Balken sind sichtbar kürzer oder länger. Damit ist die Frage „wo stehe ich gegenüber dem Plan" mit einem
    * Blick über die Spalte beantwortet statt mit dreimal Rechnen.
    */
   const REFERENCE_AT = 0.72
@@ -83,9 +84,8 @@ export function Gauge({
           className="gauge-fill"
           style={{
             width: anteil(value),
-            // Darüber hinaus in Bernstein: dieselbe Farbe wie die Referenz,
-            // weil es dann um die Vorgabe geht und nicht mehr um den Weg
-            // dorthin.
+            // Über der Vorgabe wird der Balken heller statt bunt: mehr Licht
+            // heißt mehr. Eine zweite Farbe wäre an dieser Stelle Lärm.
             background: darueber ? 'var(--color-reference)' : undefined,
           }}
         />
@@ -102,13 +102,13 @@ export function Gauge({
 }
 
 /**
- * Ein Wert, wie ein Gerät ihn anzeigt: kleine gesperrte Beschriftung, große
- * Zahl im Monospace, Einheit daneben.
+ * Ein Wert: kleine gesperrte Beschriftung, große Zahl im Serif, Einheit
+ * klein daneben im Grotesk.
  *
- * Der Grund für das Monospace ist nicht Ästhetik: Zwischen zwei Sätzen
- * wechselt die Zahl ständig, und in einer proportionalen Schrift springt
- * dabei die ganze Zeile. Beim Zählen ist das genau die Bewegung, die
- * ablenkt.
+ * Die Ziffern laufen tabellarisch (gleiche Breite). Das ist keine Ästhetik:
+ * Zwischen zwei Sätzen wechselt die Zahl ständig, und mit unterschiedlich
+ * breiten Ziffern springt dabei die ganze Zeile. Beim Zählen ist das genau
+ * die Bewegung, die ablenkt.
  */
 export function Readout({
   label,
@@ -131,12 +131,19 @@ export function Readout({
   return (
     <div>
       <p className="instrument-label">{label}</p>
-      <p className={`tabular font-semibold leading-none mt-1 ${farbe} ${
-        size === 'xl' ? 'text-5xl' : 'text-3xl'
-      }`}>
+      {/*
+        Die Zahl im Serif, die Einheit klein im Grotesk. Das ist die
+        typografische Signatur: Der Größenunterschied und der Schriftwechsel
+        machen aus einer Angabe eine Aussage.
+      */}
+      <p
+        className={`display mt-1.5 ${farbe} ${size === 'xl' ? 'text-6xl' : 'text-4xl'}`}
+      >
         {value}
         {unit ? (
-          <span className="text-muted font-normal text-base ml-1.5">{unit}</span>
+          <span className="font-sans text-muted text-sm ml-2 tracking-normal">
+            {unit}
+          </span>
         ) : null}
       </p>
       {hint ? <p className="text-xs text-muted mt-1.5 leading-snug">{hint}</p> : null}

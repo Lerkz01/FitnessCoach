@@ -35,7 +35,7 @@ export function ReviewResult({
   return (
     <div className="min-h-svh flex flex-col">
       <header className="px-5 pt-8 pb-5">
-        <h1 className="text-3xl font-bold tracking-tight">Das habe ich angepasst</h1>
+        <h1 className="text-3xl tracking-tight">Das habe ich angepasst</h1>
         <p className="text-muted text-sm mt-1">
           {review.recovery.ok
             ? 'Erholung sieht gut aus.'
@@ -56,7 +56,7 @@ export function ReviewResult({
           {review.deload.recommendation !== 'none' ? (
             <section
               className={
-                'rounded-lg border p-5 ' +
+                'rounded-2xl border p-5 ' +
                 (review.deload.recommendation === 'urgent'
                   ? 'border-warning/50 bg-warning/10'
                   : 'border-primary/50 bg-primary/10')

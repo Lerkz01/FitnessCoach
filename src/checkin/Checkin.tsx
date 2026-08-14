@@ -372,7 +372,7 @@ function Block({
         type="button"
         onClick={onReopen}
         className={
-          'w-full flex items-center justify-between gap-3 min-h-14 px-4 rounded-lg ' +
+          'w-full flex items-center justify-between gap-3 min-h-14 px-4 rounded-2xl ' +
           'border border-border bg-surface text-left transition-colors hover:border-muted ' +
           'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
         }
@@ -389,7 +389,7 @@ function Block({
   }
 
   return (
-    <section className="rounded-lg border border-border bg-surface p-4">{children}</section>
+    <section className="rounded-2xl border border-border bg-surface p-4">{children}</section>
   )
 }
 
@@ -420,7 +420,7 @@ function Options<T extends string | number>({
           aria-pressed={selected === option.value}
           onClick={() => onPick(option.value)}
           className={
-            'w-full text-left min-h-14 px-4 rounded-xl border transition-colors ' +
+            'w-full text-left min-h-14 px-4 rounded-2xl border transition-colors ' +
             'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ' +
             (selected === option.value
               ? 'border-primary bg-primary/15 text-text'

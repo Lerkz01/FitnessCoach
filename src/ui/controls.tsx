@@ -30,13 +30,13 @@ export function Button({
   full = false,
 }: ButtonProps) {
   const base =
-    'min-h-14 px-6 rounded-lg font-semibold text-base transition-colors ' +
+    'min-h-14 px-6 rounded-2xl font-semibold text-base transition-colors ' +
     'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ' +
     'disabled:opacity-40 disabled:cursor-not-allowed'
 
-  // Signal-Türkis ist hell. Weiße Schrift darauf wäre kaum lesbar —
-  // der Knopf trägt deshalb die Grundfarbe als Schrift, wie eine
-  // beleuchtete Taste an einem Gerät.
+  // Der Champagner-Akzent ist hell. Weiße Schrift darauf wäre kaum lesbar,
+  // deshalb trägt der Knopf die Grundfarbe als Schrift. Das ist zugleich der
+  // stärkste Kontrast, den die Palette hergibt.
   const look =
     variant === 'primary'
       ? 'bg-primary text-bg hover:bg-primary-hover'
@@ -84,7 +84,7 @@ export function ChoiceCard({
       onClick={onClick}
       aria-pressed={selected}
       className={
-        'w-full text-left min-h-14 px-4 py-3 rounded-lg border transition-colors ' +
+        'w-full text-left min-h-14 px-4 py-3 rounded-2xl border transition-colors ' +
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ' +
         (selected
           ? 'border-primary bg-primary/15 text-text'
@@ -148,7 +148,7 @@ export function NumberField({
             onChange(raw === '' ? null : Number(raw))
           }}
           className={
-            'flex-1 min-h-14 px-4 rounded-lg bg-surface border border-border ' +
+            'flex-1 min-h-14 px-4 rounded-2xl bg-surface border border-border ' +
             'text-text text-lg tabular placeholder:text-muted/60 ' +
             'focus:outline-2 focus:outline-offset-0 focus:outline-primary'
           }
@@ -187,7 +187,7 @@ export function TextField({
         maxLength={maxLength}
         onChange={(event) => onChange(event.target.value)}
         className={
-          'w-full min-h-14 px-4 rounded-lg bg-surface border border-border ' +
+          'w-full min-h-14 px-4 rounded-2xl bg-surface border border-border ' +
           'text-text text-lg placeholder:text-muted/60 ' +
           'focus:outline-2 focus:outline-offset-0 focus:outline-primary'
         }
@@ -213,7 +213,7 @@ export function ToggleChip({ label, selected, onClick, disabled }: ToggleChipPro
       disabled={disabled}
       aria-pressed={selected}
       className={
-        'min-h-12 px-4 rounded-xl border text-sm font-medium transition-colors ' +
+        'min-h-12 px-4 rounded-2xl border text-sm font-medium transition-colors ' +
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ' +
         'disabled:opacity-35 disabled:cursor-not-allowed ' +
         (selected
@@ -257,7 +257,7 @@ export function StepTitle({
 }) {
   return (
     <div className="mb-5">
-      <h1 className="text-2xl font-bold tracking-tight leading-tight">{title}</h1>
+      <h1 className="text-2xl tracking-tight leading-tight">{title}</h1>
       {subtitle ? (
         <p className="text-sm text-muted mt-2 leading-relaxed">{subtitle}</p>
       ) : null}
@@ -281,7 +281,7 @@ export function Notice({
       ? 'border-warning/40 bg-warning/10 text-text'
       : 'border-border bg-surface text-muted'
   return (
-    <div className={`rounded-lg border px-4 py-3 text-sm leading-relaxed ${look}`}>
+    <div className={`rounded-2xl border px-4 py-3 text-sm leading-relaxed ${look}`}>
       {tone === 'warning' ? <span className="mr-1">⚠</span> : null}
       {children}
     </div>

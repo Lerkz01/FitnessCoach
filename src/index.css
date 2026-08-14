@@ -1,52 +1,49 @@
 /* ====================================================================
-   Gestaltung: „Messgerät"
+   Gestaltung: „Nachtseide"
 
-   Diese App ist kein Motivationswerkzeug. Ihr eigenes Vokabular sagt, was
-   sie ist: Regelkreis, Einmessen, Tastsatz, Belastbarkeit, Referenzwert.
-   Das ist die Sprache der Mess- und Regeltechnik, nicht die von
-   Fitness-Apps. Die Gestaltung kommt deshalb aus dieser Welt —
-   Oszilloskop, Messschieber, Leitstand — und nicht aus der Welt der
-   Hantelsymbole und Neon-Gradienten.
+   Was eine teure App teuer aussehen lässt, ist nicht mehr Effekt, sondern
+   ZURÜCKHALTUNG. Vier Dinge tragen das hier:
 
-   DIE ZWEI AKZENTFARBEN BEDEUTEN ETWAS. Das ist der Kern:
+   1. EINE Akzentfarbe. Champagner, entsättigt. Sie erscheint nur an der
+      wichtigsten Handlung und am erreichten Wert — nirgends dekorativ. Wo
+      zwei Akzentfarben um Aufmerksamkeit ringen, sieht es billig aus.
 
-     signal     — was du getan hast (Phosphor-Türkis)
-     reference  — was geplant war (Bernstein)
+   2. EINE SCHRIFT MIT CHARAKTER, sparsam eingesetzt. Instrument Serif für
+      Überschriften und die große Zahl, Instrument Sans für alles andere.
+      Beide sind zusammen entworfen — diese Stimmigkeit ist der Unterschied
+      zwischen „Schriftart gewählt" und „Typografie gemacht". Der Serif steht
+      NUR groß: hochkontrastige Serifen werden klein auf Dunkel dünn und
+      schlecht lesbar.
 
-   „Vergleich statt Bewertung" ist der Leitsatz der ganzen
-   Progressionslogik (docs/PLAN-ENGINE.md §9). Hier ist er die Palette.
-   Wo beide Farben nebeneinander stehen, sieht man ohne ein Wort, ob die
-   Vorgabe getroffen wurde. Eine einzelne „Markenfarbe" könnte das nicht.
+   3. LICHT AUF EINER OBERFLÄCHE. Jede Fläche bekommt eine haarfeine helle
+      Oberkante und einen kaum wahrnehmbaren Verlauf nach unten — so, wie
+      Licht wirklich auf ein Material fällt. Das ist der Griff, der aus
+      „farbiges Rechteck" ein Ding macht, und er kostet keine einzige
+      zusätzliche Farbe.
 
-   Der Grund ist bewusst NICHT schwarz, sondern ein tiefes, kaltes Petrol
-   mit Grünstich — die Farbe eines unbeleuchteten Phosphorschirms. Reines
-   Schwarz mit einer grellen Akzentfarbe ist der Standardweg für dunkle
-   Oberflächen; er hätte ausgesehen wie jede andere App auch.
+   4. BEWEGUNG MIT MASSE. Alles bremst am Ende ab, nichts federt. Feder und
+      Überschwung wirken spielerisch; ruhiges Ausklingen wirkt gebaut.
 
-   Darüber liegt ein feines Messraster. Kein Dekor: Es gibt der Fläche die
-   Anmutung eines Geräts, ohne ein Symbol zu bemühen.
+   Der Grund ist ein tiefes warmes Anthrazit, kein Schwarz und kein Blau.
+   Warm, weil die App abends und im Studio benutzt wird und kaltes Blau dort
+   klinisch wirkt. Nicht Schwarz, weil Schwarz keine Tiefe hat: Man sieht
+   erst, dass eine Fläche darüberliegt, wenn der Grund selbst eine Farbe ist.
    ==================================================================== */
 
 @import 'tailwindcss';
 
 /*
-  Schriften mitgebaut, nicht von einem CDN geladen — die App muss im
-  Flugmodus starten.
-
-  Bewusst als eigene @font-face-Regeln und nicht über die fertigen
-  Sammel-Importe von Fontsource: Die ziehen Kyrillisch, Vietnamesisch und
-  Latin-Extended mit, insgesamt 18 Dateien. Der Browser lädt davon nur, was
-  er braucht — der Service Worker legt aber ALLE für den Offline-Betrieb ab.
-  Das waren 230 KiB Schriftdateien, die diese App nie rendert.
-
-  Vier Dateien statt achtzehn. Latin genügt für eine deutschsprachige App.
+  Schriften mitgebaut, nicht von einem CDN — die App muss im Flugmodus
+  starten. Eigene @font-face statt der Sammelimporte von Fontsource: Die
+  ziehen Kyrillisch, Vietnamesisch und Latin-Extended mit, und der Service
+  Worker legt alles offline ab. Drei Dateien statt achtzehn.
 */
 @font-face {
-  font-family: 'Archivo Variable';
+  font-family: 'Instrument Sans Variable';
   font-style: normal;
   font-display: swap;
-  font-weight: 100 900;
-  src: url('@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2')
+  font-weight: 400 700;
+  src: url('@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2')
     format('woff2-variations');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
     U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
@@ -54,35 +51,11 @@
 }
 
 @font-face {
-  font-family: 'IBM Plex Mono';
+  font-family: 'Instrument Serif';
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url('@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2')
-    format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-    U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 500;
-  src: url('@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2')
-    format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-    U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: 'IBM Plex Mono';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 600;
-  src: url('@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2')
+  src: url('@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2')
     format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
     U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
@@ -90,45 +63,51 @@
 }
 
 @theme {
-  /* ── Grund und Gehäuse ─────────────────────────────────────────── */
-  --color-bg: #08110f;
-  --color-surface: #0e1a19;
-  --color-surface-2: #142523;
-  --color-border: #1f3a37;
-  /* Hairline für Raster und Trennlinien — schwächer als border. */
-  --color-rule: #16302d;
+  /* ── Grund und Flächen ─────────────────────────────────────────── */
+  /* Tiefes warmes Anthrazit. Kein Schwarz: Schwarz hat keine Tiefe. */
+  --color-bg: #14110f;
+  --color-surface: #1d1917;
+  --color-surface-2: #272120;
+  /* Haarlinie. Sichtbar, aber nie als Rahmen wahrgenommen. */
+  --color-border: #332c29;
+  --color-rule: #241f1d;
 
   /* ── Schrift ───────────────────────────────────────────────────── */
-  --color-text: #e6f2ef;
-  --color-muted: #7d9a96;
+  /* Warmes Off-White, kein Reinweiß — Reinweiß auf Dunkel flimmert. */
+  --color-text: #f4efe9;
+  --color-muted: #a0958c;
 
-  /* ── Die zwei Messfarben ───────────────────────────────────────── */
-  /* Was passiert ist. */
-  --color-signal: #2fdfbc;
-  /* Was geplant war. */
-  --color-reference: #f0b94a;
+  /* ── DIE Akzentfarbe ───────────────────────────────────────────── */
+  /*
+    Champagner, entsättigt. Gesättigtes Gold auf Dunkel kippt sofort ins
+    Spielkasino; erst die Entsättigung macht daraus Messing und Seide.
+  */
+  --color-accent: #d8b98d;
+  --color-primary: #d8b98d;
+  --color-primary-hover: #e6cfae;
 
-  /* Kompatibilität: `primary` bleibt als Name bestehen, ist aber das
-     Signal. So mussten nicht alle Bildschirme gleichzeitig umgeschrieben
-     werden — und `primary` heißt jetzt überall dasselbe wie `signal`. */
-  --color-primary: #2fdfbc;
-  --color-primary-hover: #4bebcb;
-  --color-accent: #f0b94a;
+  /*
+    Erreicht und geplant bleiben unterscheidbar, aber MONOCHROM: Der
+    erreichte Wert ist Champagner, die Vorgabe eine feine Linie in der
+    Schriftfarbe. Zwei gesättigte Farben nebeneinander wären lauter, nicht
+    klarer — die Position der Marke sagt es schon.
+  */
+  --color-signal: #d8b98d;
+  --color-reference: #f4efe9;
 
-  --color-success: #2fdfbc;
-  --color-warning: #f0b94a;
-  --color-danger: #ff6b5a;
+  --color-success: #d8b98d;
+  --color-warning: #d89b6a;
+  --color-danger: #c8695c;
 
   /* ── Typografie ────────────────────────────────────────────────── */
-  /* Archivo: technische Grotesk mit Breitenachse. Bewusst nicht Inter —
-     Inter ist die Standardschrift jeder zweiten App. */
-  --font-sans: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
-  /* JEDE ZAHL steht im Monospace. In dieser App ist die Zahl der
-     Hauptdarsteller, und IBM Plex Mono hat den Registerton eines
-     Messgeräts — sachlich, tabellarisch, ohne Attitüde. */
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --font-sans: 'Instrument Sans Variable', system-ui, sans-serif;
+  /* Nur groß einsetzen. Siehe Kopf dieser Datei. */
+  --font-display: 'Instrument Serif', Georgia, serif;
 
-  --radius-card: 0.75rem;
+  --radius-card: 1.25rem;
+
+  /* Bewegung mit Masse: bremst ab, federt nicht. */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ------------------------------------------------------------------ */
@@ -145,29 +124,24 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.5;
+  /* Etwas offener als der Standard. Luft ist das billigste Mittel für
+     einen ruhigen Eindruck — und das wirksamste. */
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-bottom: env(safe-area-inset-bottom);
 
   /*
-    Das Messraster. Zwei feine Linienlagen auf dem Petrolgrund, plus ein
-    kaum sichtbarer Lichtschein oben — wie der Rand einer Röhre.
-
-    `background-attachment: fixed` sorgt dafür, dass das Raster beim
-    Scrollen stehen bleibt: Der Inhalt bewegt sich über der Skala, nicht
-    mit ihr. Genau das macht den Unterschied zwischen „Muster" und
-    „Gerät".
+    Ein einziger Lichtfall von oben, sehr weich und in Champagner getönt.
+    `fixed`, damit er beim Scrollen liegen bleibt: Licht hängt am Raum, nicht
+    am Inhalt. Bewegt es sich mit, wirkt es wie ein Farbverlauf im Bild.
   */
   background-color: var(--color-bg);
-  background-image:
-    radial-gradient(120% 60% at 50% -10%, rgba(47, 223, 188, 0.06), transparent 70%),
-    linear-gradient(to right, var(--color-rule) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-rule) 1px, transparent 1px);
-  background-size:
-    100% 100%,
-    32px 32px,
-    32px 32px;
+  background-image: radial-gradient(
+    130% 55% at 50% -8%,
+    rgba(216, 185, 141, 0.09),
+    transparent 68%
+  );
   background-attachment: fixed;
 }
 
@@ -178,60 +152,122 @@ body {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Überschriften                                                     */
+/* ------------------------------------------------------------------ */
+
+/*
+  Der Serif, groß und leicht enger gesetzt. Instrument Serif hat von Haus aus
+  eine grosszügige Laufweite, die in Überschriften auseinanderfällt.
+*/
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+}
+
+/* h1 im Serif darf größer sein als im Grotesk — die Form trägt es. */
+h1 {
+  font-size: 2.125rem;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Licht auf einer Oberfläche                                        */
+/*                                                                    */
+/*  Der Griff, der aus einem farbigen Rechteck ein Ding macht.         */
+/*                                                                    */
+/*  Bewusst an `.bg-surface` gehängt und nicht als neue Klasse: Jede    */
+/*  Karte der App trägt sie schon. Es wird nur `background-image` und   */
+/*  `box-shadow` gesetzt — die Hintergrundfarbe kommt weiter von        */
+/*  Tailwind, also gibt es keinen Streit um Spezifität.                 */
+/* ------------------------------------------------------------------ */
+/*
+  Die Ausnahmen sind wichtig: `bg-surface` sitzt auch auf Eingabefeldern und
+  auf kleinen Auswahlknöpfen. Ein 32 px weicher Schatten lässt ein Textfeld
+  schweben und einen Chip nach Aufkleber aussehen — genau der billige
+  Eindruck, der hier vermieden werden soll. Karten liegen AUF der Fläche,
+  Felder liegen DARIN.
+*/
+.bg-surface:not(input):not(textarea):not(button) {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.035),
+    rgba(255, 255, 255, 0) 42%
+  );
+  /* Innen oben eine Haarlinie Licht, außen ein weicher, tiefer Schatten.
+     Der Schatten ist groß und schwach — ein kleiner harter Schatten sieht
+     nach Aufkleber aus, ein großer weicher nach Gewicht. */
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 12px 32px -12px rgba(0, 0, 0, 0.55);
+}
+
+/*
+  Eingabefelder umgekehrt: eingelassen statt aufliegend. Ein zarter
+  Innenschatten von oben ist das, was eine Vertiefung ausmacht — und es ist
+  derselbe Lichteinfall wie bei den Karten, nur andersherum gedacht.
+*/
+input.bg-surface,
+textarea.bg-surface {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* ------------------------------------------------------------------ */
 /*  Zahlen                                                            */
 /* ------------------------------------------------------------------ */
 
 /*
-  `tabular` gab es vorher schon und wird überall benutzt. Es bekommt
-  jetzt zusätzlich die Monospace-Schrift: Damit steht jede Zahl in der
-  App automatisch im richtigen Register, ohne dass ein einziger
-  Bildschirm angefasst werden musste.
+  `tabular` gab es vorher schon überall. Es sorgt weiter dafür, dass Ziffern
+  gleich breit sind — sonst springt beim Zählen die ganze Zeile. Aber ohne
+  Monospace: Die technische Anmutung war der Grund, warum das letzte Design
+  kühl wirkte.
 */
 .tabular {
-  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
-  font-feature-settings: 'zero' 1;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 /*
-  Beschriftungen auf einem Gerät sind klein, gesperrt und in
-  Großbuchstaben. Das trägt hier die Rolle, die sonst Icons hätten.
+  Die große Zahl im Serif. Das ist die typografische Signatur der App: Ein
+  Arbeitsgewicht in einer hochkontrastigen Serifenschrift, daneben die
+  Einheit klein im Grotesk. Unverwechselbar und kostet nichts.
+*/
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+/*
+  Kleine Beschriftung: gesperrt, in Kapitälchen-Anmutung. Sie trägt die
+  Rolle, die sonst Symbole hätten — und gesperrte Kleinschrift ist eines der
+  verlässlichsten Mittel für einen gehobenen Eindruck.
 */
 .instrument-label {
-  font-family: var(--font-mono);
   font-size: 0.6875rem;
   line-height: 1.2;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-muted);
-}
-
-/*
-  Überschriften: enger gesetzt als üblich, dafür schwer. Archivo hat eine
-  Breitenachse, aber die steckt in einer eigenen Schriftdatei — sie
-  mitzuladen wäre eine fünfte Datei für einen Effekt, den auch Gewicht und
-  Laufweite tragen.
-*/
-h1,
-h2 {
-  letter-spacing: -0.02em;
-  font-weight: 700;
 }
 
 /* ------------------------------------------------------------------ */
 /*  Signatur: die Messanzeige                                         */
 /*                                                                    */
-/*  Eine Skala mit zwei Marken — Referenz (geplant) und Signal         */
-/*  (erreicht). Sie ist das eine Element, an dem man diese App          */
-/*  wiedererkennt, und sie sagt in einem Blick, was sonst zwei Zahlen   */
-/*  und ein Satz bräuchten.                                            */
+/*  Bleibt, weil sie etwas kann, was ein Fortschrittsbalken nicht kann: */
+/*  Sie zeigt Vorgabe UND Ergebnis in derselben Skala. Nur monochrom     */
+/*  statt zweifarbig — Champagner für das Erreichte, eine feine Linie    */
+/*  für die Vorgabe.                                                    */
 /* ------------------------------------------------------------------ */
 .gauge {
   position: relative;
-  height: 3px;
+  height: 2px;
   border-radius: 999px;
-  background: var(--color-surface-2);
+  background: var(--color-border);
   overflow: visible;
 }
 
@@ -241,26 +277,25 @@ h2 {
   left: 0;
   border-radius: 999px;
   background: var(--color-signal);
-  transition: width 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: width 520ms var(--ease-settle);
 }
 
-/* Die Referenzmarke: ein senkrechter Strich, der über die Skala hinausragt. */
 .gauge-mark {
   position: absolute;
-  top: -4px;
-  bottom: -4px;
-  width: 2px;
-  border-radius: 1px;
+  top: -3px;
+  bottom: -3px;
+  width: 1px;
   background: var(--color-reference);
-  transform: translateX(-1px);
+  opacity: 0.55;
+  transform: translateX(-0.5px);
 }
 
 /* ------------------------------------------------------------------ */
-/*  Der Pausentimer als Sweep                                         */
+/*  Der Pausentimer                                                   */
 /*                                                                    */
-/*  Statt eines Fortschrittsbalkens ein umlaufender Zeiger wie auf     */
-/*  einem Radarschirm. Ein einziger orchestrierter Bewegungsmoment in  */
-/*  der ganzen App — mehr wäre Deko.                                   */
+/*  Ein dünner Ring, der sich schließt. Kein Zifferblatt, keine        */
+/*  Skalenstriche — die waren Teil der Messgerät-Sprache. Hier trägt    */
+/*  die große Zahl im Serif, und der Ring ist nur ihr Rahmen.           */
 /* ------------------------------------------------------------------ */
 .sweep-ring {
   transform: rotate(-90deg);
@@ -268,30 +303,26 @@ h2 {
 }
 
 .sweep-track {
-  stroke: var(--color-surface-2);
+  stroke: var(--color-border);
 }
 
 .sweep-value {
-  stroke: var(--color-signal);
-  transition: stroke-dashoffset 300ms linear;
+  stroke: var(--color-accent);
+  transition: stroke-dashoffset 520ms var(--ease-settle);
 }
 
-.sweep-over .sweep-value {
-  stroke: var(--color-reference);
-}
-
-/* Ein leiser Puls, sobald die Pause um ist — nicht vorher. */
+/* Ist die Pause um, atmet der Ring einmal ruhig — kein Blinken. */
 .sweep-over .sweep-glow {
-  animation: sweep-pulse 1.6s ease-in-out infinite;
+  animation: sweep-breathe 3.2s ease-in-out infinite;
 }
 
-@keyframes sweep-pulse {
+@keyframes sweep-breathe {
   0%,
   100% {
-    opacity: 0.12;
+    opacity: 0.07;
   }
   50% {
-    opacity: 0.3;
+    opacity: 0.18;
   }
 }
 

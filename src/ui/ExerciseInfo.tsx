@@ -76,12 +76,12 @@ export function ExerciseInfoSheet({
     <section
       role="dialog"
       aria-label={`Infos zu ${exercise.name}`}
-      className="rounded-lg border border-border bg-surface p-5"
+      className="rounded-2xl border border-border bg-surface p-5"
     >
       <div className="flex items-start gap-3">
         <div className="min-w-0">
           <p className="text-sm text-muted">{info.instruction.label}</p>
-          <h2 className="text-xl font-bold mt-1 leading-tight">{exercise.name}</h2>
+          <h2 className="text-xl mt-1 leading-tight">{exercise.name}</h2>
         </div>
         <button
           type="button"

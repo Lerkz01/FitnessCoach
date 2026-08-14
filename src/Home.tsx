@@ -106,7 +106,7 @@ export function Home({
   return (
     <div className="min-h-svh flex flex-col">
       <header className="px-5 pt-8 pb-5">
-        <h1 className="text-3xl font-bold tracking-tight">Moin {profile.displayName}</h1>
+        <h1 className="text-3xl tracking-tight">Moin {profile.displayName}</h1>
         <p className="text-muted text-sm mt-1">
           {WEEKDAY_LABEL[today]}
           {plan ? ` · ${splitLabel(plan.splitType)}` : ''}
@@ -129,7 +129,7 @@ export function Home({
             will, soll nicht erst sieben Fragen beantworten müssen.
           */}
           {checkinPending ? (
-            <section className="rounded-lg border border-accent/50 bg-accent/10 p-5">
+            <section className="rounded-2xl border border-accent/50 bg-accent/10 p-5">
               <p className="text-sm text-muted">Wochen-Check-in</p>
               <p className="text-xl font-bold mt-1">Wie war die Woche?</p>
               <p className="text-sm text-muted mt-1 leading-relaxed">
@@ -150,7 +150,7 @@ export function Home({
             die Sätze verteilen sich auf zwei Datensätze.
           */}
           {openSessionLabel ? (
-            <section className="rounded-lg border border-primary/50 bg-primary/10 p-5">
+            <section className="rounded-2xl border border-primary/50 bg-primary/10 p-5">
               <p className="text-sm text-muted">Angefangen und nicht abgeschlossen</p>
               <p className="text-xl font-bold mt-1">{openSessionLabel}</p>
               <p className="text-sm text-muted mt-1 tabular">
@@ -171,7 +171,7 @@ export function Home({
 
           {/* ── Heute: immer offen, das ist der Zweck der App ── */}
           <section
-            className="rounded-lg border border-border bg-surface p-5"
+            className="rounded-2xl border border-border bg-surface p-5"
             hidden={openSessionLabel !== null}
           >
             {todaysSession ? (
@@ -371,7 +371,7 @@ export function Home({
                 Dieses Gerät zurücksetzen (Test)
               </Button>
               {resetAsked ? (
-                <div className="mt-3 rounded-lg border border-danger/50 bg-surface-2 p-4">
+                <div className="mt-3 rounded-2xl border border-danger/50 bg-surface-2 p-4">
                   <p className="text-sm leading-relaxed">
                     Löscht <strong>alle Trainingsdaten auf diesem Gerät</strong> und
                     startet das Onboarding neu.

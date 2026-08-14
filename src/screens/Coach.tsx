@@ -199,8 +199,8 @@ export function Coach({
       ) : null}
 
       {entries.length === 0 ? (
-        <section className="rounded-lg border border-border bg-surface p-5">
-          <h2 className="text-lg font-bold">Frag den Coach</h2>
+        <section className="rounded-2xl border border-border bg-surface p-5">
+          <h2 className="text-lg ">Frag den Coach</h2>
           <p className="text-sm text-muted mt-2 leading-relaxed">
             Er kennt deinen Plan, deinen Verlauf und dein Volumen. Du kannst auch
             Wünsche äußern — „mehr Fokus auf die Arme" verschiebt den Plan ein wenig.
@@ -216,7 +216,7 @@ export function Coach({
         {entries.map((entry) => (
           <li key={entry.id}>
             {entry.role === 'user' ? (
-              <div className="ml-8 rounded-lg rounded-br-sm bg-primary/20 border border-primary/40 px-4 py-3">
+              <div className="ml-8 rounded-2xl rounded-br-sm bg-primary/20 border border-primary/40 px-4 py-3">
                 <p className="text-sm leading-relaxed whitespace-pre-wrap">{entry.text}</p>
               </div>
             ) : (
@@ -232,7 +232,7 @@ export function Coach({
                       <li
                         key={index}
                         className={
-                          'flex items-baseline gap-2 text-xs rounded-xl px-3 py-2 ' +
+                          'flex items-baseline gap-2 text-xs rounded-2xl px-3 py-2 ' +
                           'bg-surface-2 border border-border'
                         }
                       >
@@ -277,7 +277,7 @@ export function Coach({
                 disabled={busy}
                 onClick={() => void send(suggestion)}
                 className={
-                  'w-full text-left min-h-12 px-4 py-3 rounded-lg border border-border ' +
+                  'w-full text-left min-h-12 px-4 py-3 rounded-2xl border border-border ' +
                   'bg-bg text-sm hover:border-muted transition-colors ' +
                   'disabled:opacity-40 ' +
                   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
@@ -320,7 +320,7 @@ export function Coach({
           placeholder="Frage oder Wunsch …"
           aria-label="Nachricht an den Coach"
           className={
-            'flex-1 min-h-14 max-h-40 px-4 py-3.5 rounded-lg resize-y ' +
+            'flex-1 min-h-14 max-h-40 px-4 py-3.5 rounded-2xl resize-y ' +
             'bg-surface border border-border text-base leading-snug ' +
             'placeholder:text-muted disabled:opacity-40 ' +
             'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'

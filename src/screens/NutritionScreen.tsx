@@ -56,7 +56,7 @@ export function NutritionScreen({
       <main className="px-5 pb-8 flex-1">
         <Stack gap={3}>
           {/* ── Die Zahlen selbst: immer offen, das ist der Zweck ── */}
-          <section className="rounded-lg border border-border bg-surface p-5">
+          <section className="rounded-2xl border border-border bg-surface p-5">
             <p className="text-4xl font-bold tabular">{nutrition.kcal} kcal</p>
             <p className="text-xs text-muted mt-1">pro Tag</p>
 
@@ -173,7 +173,7 @@ export function NutritionScreen({
 function Header() {
   return (
     <header className="px-5 pt-8 pb-5">
-      <h1 className="text-3xl font-bold tracking-tight">Ernährung</h1>
+      <h1 className="text-3xl tracking-tight">Ernährung</h1>
     </header>
   )
 }

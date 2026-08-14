@@ -24,11 +24,11 @@ export function BlockReviewCard({
   const zuTun = review.findings.filter((finding) => finding.severity === 'action')
 
   return (
-    <section className="rounded-lg border border-accent/50 bg-accent/10 p-5">
+    <section className="rounded-2xl border border-accent/50 bg-accent/10 p-5">
       <p className="text-sm text-muted">
         Block-Review · {review.weeks} {review.weeks === 1 ? 'Woche' : 'Wochen'}
       </p>
-      <h2 className="text-xl font-bold mt-1 leading-tight">
+      <h2 className="text-xl mt-1 leading-tight">
         {zuTun.length === 0
           ? 'Der Block ist durch — es passt'
           : zuTun.length === 1
@@ -37,18 +37,18 @@ export function BlockReviewCard({
       </h2>
 
       <dl className="mt-3 grid grid-cols-3 gap-3 text-center">
-        <div className="rounded-xl bg-bg border border-border py-2">
+        <div className="rounded-2xl bg-bg border border-border py-2">
           <dt className="text-xs text-muted">Einheiten</dt>
           <dd className="tabular font-semibold">
             {review.sessionsDone}
             <span className="text-muted font-normal">/{review.sessionsExpected}</span>
           </dd>
         </div>
-        <div className="rounded-xl bg-bg border border-border py-2">
+        <div className="rounded-2xl bg-bg border border-border py-2">
           <dt className="text-xs text-muted">Einhaltung</dt>
           <dd className="tabular font-semibold">{Math.round(review.adherence * 100)} %</dd>
         </div>
-        <div className="rounded-xl bg-bg border border-border py-2">
+        <div className="rounded-2xl bg-bg border border-border py-2">
           <dt className="text-xs text-muted">Dauer</dt>
           <dd className="tabular font-semibold">
             {review.medianMinutes === null ? '—' : Math.round(review.medianMinutes)}
@@ -62,7 +62,7 @@ export function BlockReviewCard({
           <li
             key={index}
             className={
-              'rounded-xl border p-4 ' +
+              'rounded-2xl border p-4 ' +
               (finding.severity === 'action'
                 ? 'border-warning/50 bg-surface'
                 : 'border-border bg-surface/60')

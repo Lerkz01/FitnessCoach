@@ -84,7 +84,7 @@ export function Complete({
   return (
     <div className="min-h-svh flex flex-col">
       <header className="px-5 pt-8 pb-5">
-        <h1 className="text-3xl font-bold tracking-tight">Einheit fertig</h1>
+        <h1 className="text-3xl tracking-tight">Einheit fertig</h1>
         <p className="text-muted text-sm mt-1">{session.label}</p>
       </header>
 
@@ -169,7 +169,7 @@ export function Complete({
             </Notice>
           ) : null}
 
-          <section className="rounded-lg border border-border bg-surface p-4">
+          <section className="rounded-2xl border border-border bg-surface p-4">
             <p className="text-sm font-medium mb-3">Wie war die Einheit insgesamt?</p>
             <div className="grid grid-cols-4 gap-2">
               {(
@@ -186,7 +186,7 @@ export function Complete({
                   aria-pressed={feeling === value}
                   onClick={() => setFeeling(value)}
                   className={
-                    'min-h-14 rounded-xl border text-sm font-medium transition-colors ' +
+                    'min-h-14 rounded-2xl border text-sm font-medium transition-colors ' +
                     'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ' +
                     (feeling === value
                       ? 'border-primary bg-primary/15 text-text'

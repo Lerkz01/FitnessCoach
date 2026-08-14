@@ -242,7 +242,7 @@ export function Progress({
 function Header() {
   return (
     <header className="px-5 pt-8 pb-5">
-      <h1 className="text-3xl font-bold tracking-tight">Fortschritt</h1>
+      <h1 className="text-3xl tracking-tight">Fortschritt</h1>
     </header>
   )
 }

@@ -108,7 +108,7 @@ export function SignIn({ onSignedIn }: { onSignedIn: () => void }) {
             autoComplete={mode === 'in' ? 'current-password' : 'new-password'}
             onChange={(event) => setPassword(event.target.value)}
             className={
-              'w-full min-h-14 px-4 rounded-lg bg-surface border border-border ' +
+              'w-full min-h-14 px-4 rounded-2xl bg-surface border border-border ' +
               'text-text text-lg focus:outline-2 focus:outline-offset-0 focus:outline-primary'
             }
           />

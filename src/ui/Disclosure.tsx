@@ -40,7 +40,7 @@ export function Disclosure({
     <details
       open={defaultOpen}
       className={
-        'group rounded-lg border bg-surface overflow-hidden ' +
+        'group rounded-2xl border bg-surface overflow-hidden ' +
         (tone === 'attention' ? 'border-primary/50' : 'border-border')
       }
     >
