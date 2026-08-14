@@ -142,6 +142,18 @@ describe('blockReviewDue', () => {
     expect(blockReviewDue({ blockStartMonday: START, today: '2026-07-27' })).toBe(false)
   })
 
+  it('parst den Datumsstring lokal, nicht als UTC', () => {
+    // `new Date('2026-08-10')` ist UTC-Mitternacht. Westlich von UTC läge der
+    // lokale Tag davor, `mondayOf` gäbe den Montag der Vorwoche zurück und die
+    // Blockgrenze verschöbe sich um eine ganze Woche. Der Montag selbst muss
+    // deshalb genau BLOCK_WEEKS ergeben, nicht eine mehr.
+    const start = '2026-07-06'
+    const genauFuenf = '2026-08-10'
+    expect(blockReviewDue({ blockStartMonday: start, today: genauFuenf })).toBe(true)
+    // Der Sonntag davor gehört noch zur fünften Woche und ist nicht fällig.
+    expect(blockReviewDue({ blockStartMonday: start, today: '2026-08-09' })).toBe(false)
+  })
+
   it('rechnet mit ganzen Wochen ab Montag', () => {
     // Mitten in der fünften Woche ist der Block noch nicht um.
     const mitte = new Date(Date.parse(`${START}T00:00:00.000Z`) + (BLOCK_WEEKS * 7 - 3) * 86400000)
@@ -285,6 +297,29 @@ describe('blockReview — Fortschritt', () => {
     const befund = review.findings.find((f) => f.kind === 'stagnation')
     expect(befund?.detail).toMatch(/geplant \d+ Sätze\/Woche/)
     expect(befund?.detail).toMatch(/geleistet [\d.]+/)
+  })
+
+  it('meldet keine Stagnation, wenn es nur einen Messpunkt gibt', () => {
+    // Unter zwei Messpunkten ist NICHTS bekannt — weder Fortschritt noch
+    // Stagnation. Vorher wurde „keine Datenlage" als „nicht stärker
+    // geworden" gezählt, und der Review meldete beim ersten Block
+    // systematisch Stagnation.
+    const alle = sessionsOverBlock(18, 55)
+    const review = blockReview(
+      input({ sessions: alle, setLogs: logsFor(alle.slice(0, 1), 'BRU-001', false) }),
+    )
+    const befund = review.findings.find((f) => f.kind === 'stagnation')
+    expect(befund).toBeUndefined()
+  })
+
+  it('meldet Stagnation ab zwei Messpunkten', () => {
+    // Die Gegenprobe: Mit zwei Punkten und keiner Verbesserung ist es ein
+    // echter Befund und muss gemeldet werden.
+    const alle = sessionsOverBlock(18, 55)
+    const review = blockReview(
+      input({ sessions: alle, setLogs: logsFor(alle.slice(0, 2), 'BRU-001', false) }),
+    )
+    expect(review.findings.find((f) => f.kind === 'stagnation')).toBeDefined()
   })
 
   it('meldet Fortschritt als eigenen Befund', () => {

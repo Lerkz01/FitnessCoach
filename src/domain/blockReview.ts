@@ -107,11 +107,26 @@ export interface BlockReviewInput {
 //  Fällig?
 // ────────────────────────────────────────────────────────────────────
 
+/**
+ * Ein reiner Datumsstring, lokal geparst.
+ *
+ * `new Date('2026-08-10')` ist UTC-Mitternacht, `mondayOf` liest aber lokale
+ * Datumsfelder. Westlich von UTC läge der lokale Tag davor, und die
+ * Blockgrenze verschöbe sich um eine ganze Woche. `weeksBetween` macht es im
+ * selben Modul richtig vor — es hängt `T00:00:00` an.
+ */
+function localMidnight(day: string): Date {
+  return new Date(`${day}T00:00:00`)
+}
+
 export function blockReviewDue(input: {
   blockStartMonday: string
   today: string
 }): boolean {
-  return weeksBetween(input.blockStartMonday, mondayOf(new Date(input.today))) >= BLOCK_WEEKS
+  return (
+    weeksBetween(input.blockStartMonday, mondayOf(localMidnight(input.today))) >=
+    BLOCK_WEEKS
+  )
 }
 
 // ────────────────────────────────────────────────────────────────────
@@ -129,7 +144,7 @@ export function blockReview(input: BlockReviewInput): BlockReview {
   const { profile } = input
   const weeks = Math.max(
     1,
-    weeksBetween(input.blockStartMonday, mondayOf(new Date(input.today))),
+    weeksBetween(input.blockStartMonday, mondayOf(localMidnight(input.today))),
   )
 
   const imBlock = input.sessions.filter((session) => {
@@ -190,8 +205,18 @@ export function blockReview(input: BlockReviewInput): BlockReview {
       limit: 20,
     })
     const werte = history.e1rms.filter((value): value is number => value !== null)
-    const stieg =
-      werte.length >= 2 && werte[werte.length - 1] > Math.max(...werte.slice(0, -1))
+
+    // Unter zwei Messpunkten ist NICHTS bekannt — weder Fortschritt noch
+    // Stagnation. Diese Übung darf deshalb überhaupt keine Aussage über ihre
+    // Muskeln beisteuern.
+    //
+    // Vorher wurde sie als „nicht stärker geworden" gezählt. Damit meldete
+    // der Review beim ersten Block systematisch Stagnation: Die
+    // Einmess-Einheiten liegen darin, und die filtert `exerciseHistory`
+    // heraus — die Übung hatte also gar keine auswertbaren Versuche.
+    if (werte.length < 2) continue
+
+    const stieg = werte[werte.length - 1] > Math.max(...werte.slice(0, -1))
 
     // Welche Muskeln betrifft diese Übung? Über den Volumenbeitrag, damit
     // Haupt- und Nebenmuskeln dieselbe Quelle haben wie das Budget.

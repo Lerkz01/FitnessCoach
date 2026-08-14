@@ -81,6 +81,7 @@ export function Workout({
   logsBySession,
   onFinished,
   onAbandoned,
+  onSessionChanged,
 }: {
   userId: string
   session: WorkoutSession
@@ -93,6 +94,16 @@ export function Workout({
   logsBySession: ReadonlyMap<string, readonly SetLog[]>
   onFinished: (logs: SetLog[]) => void
   onAbandoned: () => void
+  /**
+   * Der Datensatz der Einheit hat sich geändert.
+   *
+   * MUSS behandelt werden. Der Trainingsbildschirm schreibt die Einheit
+   * während des Trainings um — beim Übungstausch und beim Einmessen. Ohne
+   * diese Meldung hält die App weiter die Fassung vom Start in der Hand, und
+   * der Abschluss schreibt sie zurück: Der Tausch und die eingemessenen
+   * Gewichte sind dann weg.
+   */
+  onSessionChanged: (session: WorkoutSession) => void
 }) {
   /**
    * Die Einheit als eigener Zustand.
@@ -217,6 +228,7 @@ export function Workout({
       })
 
       setCurrent(result.session)
+      onSessionChanged(result.session)
       setBlockedEquipment((prev) => new Set([...prev, ...result.blockedEquipmentIds]))
       // Beim Tausch von vorn: Die Ersatzübung hat eigene Aufwärmsätze.
       setPosition({ ...position, slotIndex: 0 })
@@ -326,17 +338,23 @@ export function Workout({
           // Das gefundene Gewicht IN DIE VORGABE der Einheit schreiben. Von
           // dort holt es `applyProgression` beim nächsten Planaufbau — kein
           // neuer Datensatz, kein neuer Weg, keine zweite Wahrheit.
-          await recordFoundWeight({
+          const aktualisiert = await recordFoundWeight({
             userId,
             session: current,
             exerciseId: exercise.exerciseId,
             weightKg: result.foundWeightKg,
           })
+          setCurrent(aktualisiert)
+          onSessionChanged(aktualisiert)
           // Restliche Tastsätze dieser Übung entfallen. `next` statt `logs`,
           // weil der gerade geschriebene Satz sonst fehlte.
           setPendingReps(null)
           setPendingSeconds(null)
           setSwapNote(null)
+          // Die Gefunden-Meldung gehört zur abgeschlossenen Übung. Bliebe sie
+          // stehen, stünde am nächsten Gerät „Gefunden: 75 kg", während dort
+          // 30 kg vorgegeben sind.
+          setCorrectionNote(null)
           if (position.exerciseIndex + 1 < exercises.length) {
             setPosition({ exerciseIndex: position.exerciseIndex + 1, slotIndex: 0 })
             setPhase('input')

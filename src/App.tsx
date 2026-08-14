@@ -630,6 +630,10 @@ export default function App() {
         bodyweightKg={bodyweightKg ?? 80}
         previousSessions={data.sessions.filter((s) => s.id !== active.id)}
         logsBySession={logsBySession}
+        // Der Trainingsbildschirm hat den Datensatz umgeschrieben (Tausch
+        // oder eingemessenes Gewicht). Ohne dieses Nachziehen würde der
+        // Abschluss die Fassung vom Start zurückschreiben.
+        onSessionChanged={(updated) => setActive(updated)}
         onFinished={(logs) => {
           setSessionLogs(logs)
           setScreen('complete')
