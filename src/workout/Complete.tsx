@@ -169,7 +169,7 @@ export function Complete({
             </Notice>
           ) : null}
 
-          <section className="rounded-2xl border border-border bg-surface p-4">
+          <section className="rounded-lg border border-border bg-surface p-4">
             <p className="text-sm font-medium mb-3">Wie war die Einheit insgesamt?</p>
             <div className="grid grid-cols-4 gap-2">
               {(

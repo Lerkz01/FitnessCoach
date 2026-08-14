@@ -24,7 +24,7 @@ export function BlockReviewCard({
   const zuTun = review.findings.filter((finding) => finding.severity === 'action')
 
   return (
-    <section className="rounded-2xl border border-accent/50 bg-accent/10 p-5">
+    <section className="rounded-lg border border-accent/50 bg-accent/10 p-5">
       <p className="text-sm text-muted">
         Block-Review · {review.weeks} {review.weeks === 1 ? 'Woche' : 'Wochen'}
       </p>

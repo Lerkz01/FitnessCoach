@@ -17,6 +17,8 @@ import type { GeneratedWeek } from './domain/generator'
 import { splitLabel } from './domain/planning'
 import type { NutritionTarget, TrainingPlan, UserProfile, Weekday } from './domain/records'
 import type { BlockReview as BlockReviewData } from './domain/blockReview'
+import type { VolumeMuscle } from './domain/muscles'
+import { Gauge } from './ui/Gauge'
 import { BlockReviewCard } from './screens/BlockReviewCard'
 import { Button, Notice, Stack } from './ui/controls'
 import { Disclosure, Row } from './ui/Disclosure'
@@ -127,7 +129,7 @@ export function Home({
             will, soll nicht erst sieben Fragen beantworten müssen.
           */}
           {checkinPending ? (
-            <section className="rounded-2xl border border-accent/50 bg-accent/10 p-5">
+            <section className="rounded-lg border border-accent/50 bg-accent/10 p-5">
               <p className="text-sm text-muted">Wochen-Check-in</p>
               <p className="text-xl font-bold mt-1">Wie war die Woche?</p>
               <p className="text-sm text-muted mt-1 leading-relaxed">
@@ -148,7 +150,7 @@ export function Home({
             die Sätze verteilen sich auf zwei Datensätze.
           */}
           {openSessionLabel ? (
-            <section className="rounded-2xl border border-primary/50 bg-primary/10 p-5">
+            <section className="rounded-lg border border-primary/50 bg-primary/10 p-5">
               <p className="text-sm text-muted">Angefangen und nicht abgeschlossen</p>
               <p className="text-xl font-bold mt-1">{openSessionLabel}</p>
               <p className="text-sm text-muted mt-1 tabular">
@@ -169,7 +171,7 @@ export function Home({
 
           {/* ── Heute: immer offen, das ist der Zweck der App ── */}
           <section
-            className="rounded-2xl border border-border bg-surface p-5"
+            className="rounded-lg border border-border bg-surface p-5"
             hidden={openSessionLabel !== null}
           >
             {todaysSession ? (
@@ -314,24 +316,35 @@ export function Home({
               title="Wochenvolumen"
               summary={`${volumeEntries.length} Muskeln`}
             >
-              <div className="space-y-1.5 pt-1">
-                {volumeEntries.map(([muscle, sets]) => (
-                  <div key={muscle} className="flex items-center gap-3 text-sm">
-                    <span className="w-32 shrink-0 text-muted truncate">{muscle}</span>
-                    <div className="flex-1 h-1.5 rounded-full bg-surface-2 overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-primary"
-                        style={{ width: `${Math.min(100, (sets / 22) * 100)}%` }}
-                      />
-                    </div>
-                    <span className="w-10 text-right tabular text-muted">
-                      {String(sets).replace('.', ',')}
-                    </span>
-                  </div>
-                ))}
+              {/*
+                Vorher stand hier ein Balken je Muskel, der das Budget gegen
+                eine feste Obergrenze von 22 Sätzen zeigte. Das beantwortete
+                keine Frage, die jemand hat: Interessant ist nicht „13 von 22",
+                sondern ob die Woche das Budget überhaupt abdeckt.
+
+                Jetzt: Türkis = was der Plan diese Woche wirklich verteilt,
+                Bernstein = das Budget. Die Marken fluchten, deshalb sieht man
+                die Lücke beim Überfliegen der Spalte statt in einer Fußnote.
+              */}
+              <div className="space-y-3 pt-1">
+                {volumeEntries.map(([muscle, sets]) => {
+                  const geplant = week?.weeklyVolume?.[muscle as VolumeMuscle] ?? 0
+                  return (
+                    <Gauge
+                      key={muscle}
+                      value={geplant}
+                      reference={sets}
+                      label={muscle}
+                      readout={`${format(geplant)} / ${format(sets)}`}
+                    />
+                  )
+                })}
               </div>
-              <p className="text-xs text-muted mt-3 leading-relaxed">
-                Fraktional gezählt — mittrainierte Muskeln zählen halb.
+              <p className="text-xs text-muted mt-4 leading-relaxed">
+                <span className="text-primary">Türkis</span> ist das Volumen, das der
+                Plan diese Woche verteilt, <span className="text-accent">Bernstein</span>{' '}
+                das Budget. Fraktional gezählt — mittrainierte Muskeln zählen halb,
+                deshalb kommen halbe Sätze vor.
               </p>
             </Disclosure>
           ) : null}
@@ -358,7 +371,7 @@ export function Home({
                 Dieses Gerät zurücksetzen (Test)
               </Button>
               {resetAsked ? (
-                <div className="mt-3 rounded-2xl border border-danger/50 bg-surface-2 p-4">
+                <div className="mt-3 rounded-lg border border-danger/50 bg-surface-2 p-4">
                   <p className="text-sm leading-relaxed">
                     Löscht <strong>alle Trainingsdaten auf diesem Gerät</strong> und
                     startet das Onboarding neu.
@@ -425,6 +438,11 @@ function levelLabel(level: UserProfile['level']): string {
     : level === 'intermediate'
       ? 'Fortgeschritten'
       : 'Erfahren'
+}
+
+/** Halbe Sätze mit Komma, ganze ohne Nachkomma. */
+function format(value: number): string {
+  return (Number.isInteger(value) ? String(value) : value.toFixed(1)).replace('.', ',')
 }
 
 function formatKg(value: number): string {

@@ -1,29 +1,138 @@
+/* ====================================================================
+   Gestaltung: „Messgerät"
+
+   Diese App ist kein Motivationswerkzeug. Ihr eigenes Vokabular sagt, was
+   sie ist: Regelkreis, Einmessen, Tastsatz, Belastbarkeit, Referenzwert.
+   Das ist die Sprache der Mess- und Regeltechnik, nicht die von
+   Fitness-Apps. Die Gestaltung kommt deshalb aus dieser Welt —
+   Oszilloskop, Messschieber, Leitstand — und nicht aus der Welt der
+   Hantelsymbole und Neon-Gradienten.
+
+   DIE ZWEI AKZENTFARBEN BEDEUTEN ETWAS. Das ist der Kern:
+
+     signal     — was du getan hast (Phosphor-Türkis)
+     reference  — was geplant war (Bernstein)
+
+   „Vergleich statt Bewertung" ist der Leitsatz der ganzen
+   Progressionslogik (docs/PLAN-ENGINE.md §9). Hier ist er die Palette.
+   Wo beide Farben nebeneinander stehen, sieht man ohne ein Wort, ob die
+   Vorgabe getroffen wurde. Eine einzelne „Markenfarbe" könnte das nicht.
+
+   Der Grund ist bewusst NICHT schwarz, sondern ein tiefes, kaltes Petrol
+   mit Grünstich — die Farbe eines unbeleuchteten Phosphorschirms. Reines
+   Schwarz mit einer grellen Akzentfarbe ist der Standardweg für dunkle
+   Oberflächen; er hätte ausgesehen wie jede andere App auch.
+
+   Darüber liegt ein feines Messraster. Kein Dekor: Es gibt der Fläche die
+   Anmutung eines Geräts, ohne ein Symbol zu bemühen.
+   ==================================================================== */
+
 @import 'tailwindcss';
 
-/* ------------------------------------------------------------------ */
-/*  Design-Tokens (Tailwind v4 @theme)                                 */
-/* ------------------------------------------------------------------ */
+/*
+  Schriften mitgebaut, nicht von einem CDN geladen — die App muss im
+  Flugmodus starten.
+
+  Bewusst als eigene @font-face-Regeln und nicht über die fertigen
+  Sammel-Importe von Fontsource: Die ziehen Kyrillisch, Vietnamesisch und
+  Latin-Extended mit, insgesamt 18 Dateien. Der Browser lädt davon nur, was
+  er braucht — der Service Worker legt aber ALLE für den Offline-Betrieb ab.
+  Das waren 230 KiB Schriftdateien, die diese App nie rendert.
+
+  Vier Dateien statt achtzehn. Latin genügt für eine deutschsprachige App.
+*/
+@font-face {
+  font-family: 'Archivo Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2')
+    format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2')
+    format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2')
+    format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2')
+    format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
 @theme {
-  --color-bg: #0b0f17;
-  --color-surface: #141a24;
-  --color-surface-2: #1c2431;
-  --color-border: #26303f;
-  --color-muted: #8b97a8;
-  --color-text: #e7edf5;
-  --color-primary: #3b82f6;
-  --color-primary-hover: #2563eb;
-  --color-accent: #22d3ee;
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-danger: #ef4444;
+  /* ── Grund und Gehäuse ─────────────────────────────────────────── */
+  --color-bg: #08110f;
+  --color-surface: #0e1a19;
+  --color-surface-2: #142523;
+  --color-border: #1f3a37;
+  /* Hairline für Raster und Trennlinien — schwächer als border. */
+  --color-rule: #16302d;
 
-  --font-sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  /* ── Schrift ───────────────────────────────────────────────────── */
+  --color-text: #e6f2ef;
+  --color-muted: #7d9a96;
 
-  --radius-card: 1rem;
+  /* ── Die zwei Messfarben ───────────────────────────────────────── */
+  /* Was passiert ist. */
+  --color-signal: #2fdfbc;
+  /* Was geplant war. */
+  --color-reference: #f0b94a;
+
+  /* Kompatibilität: `primary` bleibt als Name bestehen, ist aber das
+     Signal. So mussten nicht alle Bildschirme gleichzeitig umgeschrieben
+     werden — und `primary` heißt jetzt überall dasselbe wie `signal`. */
+  --color-primary: #2fdfbc;
+  --color-primary-hover: #4bebcb;
+  --color-accent: #f0b94a;
+
+  --color-success: #2fdfbc;
+  --color-warning: #f0b94a;
+  --color-danger: #ff6b5a;
+
+  /* ── Typografie ────────────────────────────────────────────────── */
+  /* Archivo: technische Grotesk mit Breitenachse. Bewusst nicht Inter —
+     Inter ist die Standardschrift jeder zweiten App. */
+  --font-sans: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  /* JEDE ZAHL steht im Monospace. In dieser App ist die Zahl der
+     Hauptdarsteller, und IBM Plex Mono hat den Registerton eines
+     Messgeräts — sachlich, tabellarisch, ohne Attitüde. */
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  --radius-card: 0.75rem;
 }
 
 /* ------------------------------------------------------------------ */
-/*  Basis                                                              */
+/*  Basis                                                             */
 /* ------------------------------------------------------------------ */
 html {
   color-scheme: dark;
@@ -33,15 +142,33 @@ html {
 body {
   margin: 0;
   min-height: 100svh;
-  background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* sichere Bereiche für Notch / Home-Indicator auf dem Handy */
   padding-bottom: env(safe-area-inset-bottom);
+
+  /*
+    Das Messraster. Zwei feine Linienlagen auf dem Petrolgrund, plus ein
+    kaum sichtbarer Lichtschein oben — wie der Rand einer Röhre.
+
+    `background-attachment: fixed` sorgt dafür, dass das Raster beim
+    Scrollen stehen bleibt: Der Inhalt bewegt sich über der Skala, nicht
+    mit ihr. Genau das macht den Unterschied zwischen „Muster" und
+    „Gerät".
+  */
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(120% 60% at 50% -10%, rgba(47, 223, 188, 0.06), transparent 70%),
+    linear-gradient(to right, var(--color-rule) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-rule) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    32px 32px,
+    32px 32px;
+  background-attachment: fixed;
 }
 
 #root {
@@ -50,15 +177,128 @@ body {
   margin-inline: auto;
 }
 
-/* Zahlen tabellarisch ausrichten (Gewichte, Wiederholungen) */
+/* ------------------------------------------------------------------ */
+/*  Zahlen                                                            */
+/* ------------------------------------------------------------------ */
+
+/*
+  `tabular` gab es vorher schon und wird überall benutzt. Es bekommt
+  jetzt zusätzlich die Monospace-Schrift: Damit steht jede Zahl in der
+  App automatisch im richtigen Register, ohne dass ein einziger
+  Bildschirm angefasst werden musste.
+*/
 .tabular {
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
+  font-feature-settings: 'zero' 1;
+  letter-spacing: -0.01em;
+}
+
+/*
+  Beschriftungen auf einem Gerät sind klein, gesperrt und in
+  Großbuchstaben. Das trägt hier die Rolle, die sonst Icons hätten.
+*/
+.instrument-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/*
+  Überschriften: enger gesetzt als üblich, dafür schwer. Archivo hat eine
+  Breitenachse, aber die steckt in einer eigenen Schriftdatei — sie
+  mitzuladen wäre eine fünfte Datei für einen Effekt, den auch Gewicht und
+  Laufweite tragen.
+*/
+h1,
+h2 {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Signatur: die Messanzeige                                         */
+/*                                                                    */
+/*  Eine Skala mit zwei Marken — Referenz (geplant) und Signal         */
+/*  (erreicht). Sie ist das eine Element, an dem man diese App          */
+/*  wiedererkennt, und sie sagt in einem Blick, was sonst zwei Zahlen   */
+/*  und ein Satz bräuchten.                                            */
+/* ------------------------------------------------------------------ */
+.gauge {
+  position: relative;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--color-surface-2);
+  overflow: visible;
+}
+
+.gauge-fill {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  border-radius: 999px;
+  background: var(--color-signal);
+  transition: width 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Die Referenzmarke: ein senkrechter Strich, der über die Skala hinausragt. */
+.gauge-mark {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--color-reference);
+  transform: translateX(-1px);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Der Pausentimer als Sweep                                         */
+/*                                                                    */
+/*  Statt eines Fortschrittsbalkens ein umlaufender Zeiger wie auf     */
+/*  einem Radarschirm. Ein einziger orchestrierter Bewegungsmoment in  */
+/*  der ganzen App — mehr wäre Deko.                                   */
+/* ------------------------------------------------------------------ */
+.sweep-ring {
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.sweep-track {
+  stroke: var(--color-surface-2);
+}
+
+.sweep-value {
+  stroke: var(--color-signal);
+  transition: stroke-dashoffset 300ms linear;
+}
+
+.sweep-over .sweep-value {
+  stroke: var(--color-reference);
+}
+
+/* Ein leiser Puls, sobald die Pause um ist — nicht vorher. */
+.sweep-over .sweep-glow {
+  animation: sweep-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes sweep-pulse {
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }
 
 /* ------------------------------------------------------------------ */
 /*  Bewegungs-Schemata (src/ui/MovementAnimation.tsx)                  */
 /*                                                                     */
-/*  Neun Muster für 34 Bewegungsfamilien. Absichtlich langsam: Das      */
+/*  Neun Muster für 35 Bewegungsfamilien. Absichtlich langsam: Das      */
 /*  Schema soll die Bewegung zeigen, nicht flackern. Jede Bewegung hat  */
 /*  eine kurze Pause an den Endpunkten — dort passiert beim Training    */
 /*  das Entscheidende (gedehnte Position, Anspannung oben).             */
@@ -231,7 +471,13 @@ body {
   .anim-short,
   .anim-hold,
   .anim-twist,
-  .anim-flow {
+  .anim-flow,
+  .sweep-over .sweep-glow {
     animation: none;
+  }
+
+  .gauge-fill,
+  .sweep-value {
+    transition: none;
   }
 }

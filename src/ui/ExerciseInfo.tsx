@@ -76,7 +76,7 @@ export function ExerciseInfoSheet({
     <section
       role="dialog"
       aria-label={`Infos zu ${exercise.name}`}
-      className="rounded-2xl border border-border bg-surface p-5"
+      className="rounded-lg border border-border bg-surface p-5"
     >
       <div className="flex items-start gap-3">
         <div className="min-w-0">

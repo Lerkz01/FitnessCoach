@@ -39,32 +39,95 @@ export function RestTimer({
       signalRestOver()
     }
   }, [over])
-  const percent = Math.min(100, (ticker.elapsed / Math.max(1, seconds)) * 100)
+  // Der Sweep. Ein umlaufender Zeiger statt eines Balkens — der eine
+  // orchestrierte Bewegungsmoment der App. Gerechnet über den Umfang, damit
+  // der Ring nicht über eine Skalierung verzerrt wird.
+  const RADIUS = 52
+  const UMFANG = 2 * Math.PI * RADIUS
+  const anteil = Math.min(1, ticker.elapsed / Math.max(1, seconds))
 
   return (
-    <div className="rounded-2xl border border-border bg-surface p-5 text-center">
-      <p className="text-sm text-muted">Pause</p>
-      <p
-        className={
-          'text-5xl font-bold tabular mt-1 ' + (over ? 'text-success' : 'text-text')
-        }
-        // Nur die abgelaufene Zeit ansagen, nicht jede Sekunde vorlesen.
-        aria-live={over ? 'polite' : 'off'}
-      >
-        {over ? formatSeconds(-remaining) : formatSeconds(remaining)}
-      </p>
-      <p className="text-xs text-muted mt-1">
-        {over ? 'Pause vorbei — los' : `von ${formatSeconds(seconds)}`}
-      </p>
+    <div
+      className={
+        'rounded-lg border border-border bg-surface p-5 text-center ' +
+        (over ? 'sweep-over' : '')
+      }
+    >
+      <p className="instrument-label">{over ? 'Pause vorbei' : 'Pause läuft'}</p>
 
-      <div className="h-1.5 rounded-full bg-surface-2 overflow-hidden mt-4">
-        <div
-          className={'h-full rounded-full ' + (over ? 'bg-success' : 'bg-primary')}
-          style={{ width: `${percent}%` }}
-        />
+      <div className="relative mx-auto mt-3 w-[132px] h-[132px]">
+        <svg viewBox="0 0 132 132" className="w-full h-full sweep-ring" aria-hidden="true">
+          {/* Leiser Schein hinter dem Ring — wird erst nach Ablauf sichtbar. */}
+          <circle
+            className="sweep-glow"
+            cx="66"
+            cy="66"
+            r={RADIUS}
+            fill="none"
+            stroke="var(--color-reference)"
+            strokeWidth="16"
+            opacity="0"
+          />
+          <circle
+            className="sweep-track"
+            cx="66"
+            cy="66"
+            r={RADIUS}
+            fill="none"
+            strokeWidth="3"
+          />
+          <circle
+            className="sweep-value"
+            cx="66"
+            cy="66"
+            r={RADIUS}
+            fill="none"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeDasharray={UMFANG}
+            strokeDashoffset={UMFANG * (1 - anteil)}
+          />
+          {/* Skalenstriche alle 15 Grad — die Anmutung eines Zifferblatts,
+              ohne Ziffern, die niemand liest. */}
+          {Array.from({ length: 24 }, (_, index) => {
+            const winkel = (index / 24) * 2 * Math.PI
+            const innen = RADIUS - 9
+            const aussen = RADIUS - 5
+            return (
+              <line
+                key={index}
+                x1={66 + Math.cos(winkel) * innen}
+                y1={66 + Math.sin(winkel) * innen}
+                x2={66 + Math.cos(winkel) * aussen}
+                y2={66 + Math.sin(winkel) * aussen}
+                stroke="var(--color-rule)"
+                strokeWidth="1.5"
+              />
+            )
+          })}
+        </svg>
+
+        <div className="absolute inset-0 grid place-items-center">
+          <p
+            className={
+              'text-4xl font-semibold tabular leading-none ' +
+              (over ? 'text-accent' : 'text-text')
+            }
+            // Nur die abgelaufene Zeit ansagen, nicht jede Sekunde vorlesen.
+            aria-live={over ? 'polite' : 'off'}
+          >
+            {over ? `+${formatSeconds(-remaining)}` : formatSeconds(remaining)}
+          </p>
+          <p className="instrument-label mt-1">
+            {over ? 'los' : `von ${formatSeconds(seconds)}`}
+          </p>
+        </div>
       </div>
 
-      <p className="text-sm text-muted mt-4">Als Nächstes: {nextLabel}</p>
+      <p className="text-sm text-muted mt-4">
+        <span className="instrument-label">danach</span>{' '}
+        <span className="text-text">{nextLabel}</span>
+      </p>
 
       <div className="mt-4">
         <Button full onClick={onDone}>

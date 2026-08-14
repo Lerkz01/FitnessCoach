@@ -223,7 +223,7 @@ function ReferenceTable({ draft, patch }: StepContext) {
         const isPullup = entry.exerciseId === 'RUE-012'
 
         return (
-          <div key={group.pattern} className="rounded-2xl border border-border bg-surface p-4">
+          <div key={group.pattern} className="rounded-lg border border-border bg-surface p-4">
             <p className="text-sm font-semibold text-text mb-2">{group.title}</p>
 
             <div className="flex flex-wrap gap-2 mb-3">
@@ -315,7 +315,7 @@ function Summary({ draft }: StepContext) {
 
   return (
     <Stack gap={4}>
-      <div className="rounded-2xl border border-border bg-surface px-4 py-2">
+      <div className="rounded-lg border border-border bg-surface px-4 py-2">
         {row('Ziel', goalLabels[draft.goal!])}
         {row('Split', summary.splitLabelText)}
         {row(
@@ -338,7 +338,7 @@ function Summary({ draft }: StepContext) {
         {row('Check-in', WEEKDAY_LONG[draft.checkinWeekday!])}
       </div>
 
-      <div className="rounded-2xl border border-border bg-surface p-4">
+      <div className="rounded-lg border border-border bg-surface p-4">
         <p className="text-sm font-semibold mb-2">Startvolumen pro Woche</p>
         <div className="space-y-1">
           {summary.startVolumeExample.map(({ muscle, sets }) => (
@@ -386,7 +386,7 @@ export const STEPS: Step[] = [
           title="Willkommen"
           subtitle="Ich richte dir jetzt einen Trainings- und Ernährungsplan ein, der sich fortlaufend an dich anpasst."
         />
-        <div className="rounded-2xl border border-border bg-surface p-4 space-y-3 text-sm text-muted leading-relaxed">
+        <div className="rounded-lg border border-border bg-surface p-4 space-y-3 text-sm text-muted leading-relaxed">
           <p>
             <span className="text-text font-medium">Etwa 7 Minuten.</span> 20 Fragen, die
             meisten mit einem Tap.
@@ -883,7 +883,7 @@ export const STEPS: Step[] = [
               {draft.injuries.map((injury) => (
                 <div
                   key={injury.region}
-                  className="rounded-2xl border border-border bg-surface p-3"
+                  className="rounded-lg border border-border bg-surface p-3"
                 >
                   <p className="text-sm font-medium mb-2">{INJURY_LABELS[injury.region]}</p>
                   <div className="flex gap-2">

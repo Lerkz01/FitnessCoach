@@ -187,7 +187,7 @@ export function BackupSection({
 
         <label
           className={
-            'block w-full min-h-14 px-6 rounded-2xl bg-surface-2 text-text ' +
+            'block w-full min-h-14 px-6 rounded-lg bg-surface-2 text-text ' +
             'font-semibold text-base text-center leading-[3.5rem] cursor-pointer ' +
             'hover:bg-border transition-colors'
           }

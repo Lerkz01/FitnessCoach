@@ -97,7 +97,7 @@ export function MovementAnimation({ family }: { family: MovementFamily }) {
 
   return (
     <figure className="m-0">
-      <div className="rounded-2xl bg-bg border border-border overflow-hidden">
+      <div className="rounded-lg bg-bg border border-border overflow-hidden">
         <svg
           viewBox="0 0 200 110"
           role="img"

@@ -541,7 +541,7 @@ function CurrentSet({
   const isTimed = slot.seconds !== null
 
   return (
-    <section className="rounded-2xl border border-border bg-surface p-5">
+    <section className="rounded-lg border border-border bg-surface p-5">
       <div className="flex items-start gap-4">
         <h1 className="text-2xl font-bold tracking-tight leading-tight">
           {exerciseName}
@@ -650,7 +650,7 @@ function Stepper({
       onClick={onClick}
       disabled={disabled}
       className={
-        'w-14 h-14 shrink-0 rounded-2xl border border-border bg-surface-2 ' +
+        'w-14 h-14 shrink-0 rounded-lg border border-border bg-surface-2 ' +
         'text-2xl font-semibold text-text disabled:opacity-40 ' +
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
       }
@@ -699,7 +699,7 @@ function RepPad({
             value={value}
             onChange={(event) => setValue(event.target.value)}
             className={
-              'flex-1 min-h-14 px-4 rounded-2xl bg-bg border border-border ' +
+              'flex-1 min-h-14 px-4 rounded-lg bg-bg border border-border ' +
               'text-2xl tabular text-center focus:outline-2 focus:outline-primary'
             }
           />
@@ -732,7 +732,7 @@ function RepPad({
             disabled={busy}
             onClick={() => onPick(reps)}
             className={
-              'h-16 rounded-2xl border text-xl font-semibold tabular transition-colors ' +
+              'h-16 rounded-lg border text-xl font-semibold tabular transition-colors ' +
               'disabled:opacity-40 ' +
               'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ' +
               (reps === target
@@ -864,7 +864,7 @@ function FeedbackPad({
             disabled={busy}
             onClick={() => onPick(option.feedback)}
             className={
-              'w-full text-left min-h-16 px-4 py-3 rounded-2xl border border-border ' +
+              'w-full text-left min-h-16 px-4 py-3 rounded-lg border border-border ' +
               'bg-bg hover:border-muted transition-colors disabled:opacity-40 ' +
               'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
             }

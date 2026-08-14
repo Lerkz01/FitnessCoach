@@ -56,7 +56,7 @@ export function ReviewResult({
           {review.deload.recommendation !== 'none' ? (
             <section
               className={
-                'rounded-2xl border p-5 ' +
+                'rounded-lg border p-5 ' +
                 (review.deload.recommendation === 'urgent'
                   ? 'border-warning/50 bg-warning/10'
                   : 'border-primary/50 bg-primary/10')
